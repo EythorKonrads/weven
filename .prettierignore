@@ -1,0 +1,9 @@
+pnpm-lock.yaml
+packages/core/src/database.types.ts
+factory/
+.claude/
+supabase/.temp/
+supabase/.branches/
+**/.expo/
+**/dist/
+**/*.md

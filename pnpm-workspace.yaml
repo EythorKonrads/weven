@@ -1,0 +1,12 @@
+packages:
+  - apps/*
+  - packages/*
+
+# Expo and React Native work best with a flat node_modules
+# (https://docs.expo.dev/guides/monorepos/). pnpm reads this from here, not .npmrc.
+nodeLinker: hoisted
+
+# Packages allowed to run install scripts (pnpm blocks the rest).
+allowBuilds:
+  lefthook: true
+  '@parcel/watcher': false # ships prebuilt binaries
