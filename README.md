@@ -34,3 +34,13 @@ Planning. No code yet. See [docs/roadmap.md](docs/roadmap.md) for phases and [do
 | Domain logic | `packages/core`, pure TypeScript |
 | CI | GitHub Actions |
 | Delivery | EAS Build/Submit/Update, EAS Hosting (free) for web, Supabase CLI migrations |
+
+## License
+
+The software factory is from the [ZazenCodes Software Factory for Claude Code v2](https://github.com/zazencodes/zazencodes-season-3/tree/main/src/software-factory-claude-code-v2), created by ZazenCodes, and is licensed under GPLv3 ([factory/LICENSE](factory/LICENSE)). It is modified for Weven (see [docs/software-factory.md](docs/software-factory.md#weven-tailoring)). This covers:
+
+- `factory/` (scripts, config, checks and dashboard)
+- `.claude/agents/`
+- `.claude/skills/factory/`
+
+These files are separate development tools; the Weven app code is not built on them and is not covered by the GPL.

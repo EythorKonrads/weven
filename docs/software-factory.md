@@ -91,4 +91,4 @@ Anthropic doesn't publish token numbers for Pro: it has a 5-hour session limit a
 - Start with small, low-risk issues and read every PR until you trust it. Lower `concurrency` to 1 if limits run out.
 - The factory pushes only `factory/*` branches, merges only through `gh pr merge`, and never deploys. Releases stay with the tag-based flow in [ci-cd.md](ci-cd.md).
 - Issue text reaches agents only as quoted data. Only people with triage/write access can add the `factory` label.
-- The factory files are GPLv3 (ZazenCodes). Fine for a private repo; if you ever distribute the repo, those files must stay GPLv3.
+- The factory files are GPLv3 (ZazenCodes); the repo is public, so they stay GPLv3 with the licence in [factory/LICENSE](../factory/LICENSE). See the License section in the README.
