@@ -19,7 +19,7 @@ Expo app (iOS, Android, web)
 pnpm workspaces in one GitHub repo. Add Turborepo only if builds get slow.
 
 ```
-billsplitt/
+weven/
   apps/
     app/              Expo app (iOS, Android, web)
       app/            Expo Router screens: (auth)/, (tabs)/, group/[id]/...

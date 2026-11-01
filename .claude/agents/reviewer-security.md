@@ -31,7 +31,7 @@ checkout; your one file goes there.
 
 ## What to look for
 
-BillSplitt hot spots first (see `docs/security.md` and `docs/architecture.md`):
+Weven hot spots first (see `docs/security.md` and `docs/architecture.md`):
 
 - **Row Level Security**: every new table has RLS enabled, policies that limit
   rows to members of the group, and explicit grants (Supabase no longer

@@ -28,7 +28,7 @@ checkout; your one file goes there.
 4. The styling the change should match: the design tokens and shared
    components in `apps/app/src/ui/` (navy accent, spacing and type scale live
    in the tokens file), the NativeWind/Tailwind config if present, and the
-   neighbouring screens in `apps/app/app/`. BillSplitt is mobile-first, so the
+   neighbouring screens in `apps/app/app/`. Weven is mobile-first, so the
    phone width is the primary view and desktop web must still look intended.
 5. From round 2 on, your own review from the last round that had reviews
    (`round-<M>/review-ui.md`). Check whether each finding was fixed.

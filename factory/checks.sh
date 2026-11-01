@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# BillSplitt's checks. Exit 0 only when the branch is fit to review.
+# Weven's checks. Exit 0 only when the branch is fit to review.
 #
 # The gate runs this script from the main checkout with the job's worktree as
 # the working directory. It must stay non-interactive and must not rewrite

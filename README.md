@@ -1,8 +1,8 @@
-# BillSplitt
+# Weven
 
 An app for splitting bills with friends and family. Native iOS and Android plus web, mobile-first, with the same features everywhere.
 
-> Working name: billsplitt.com is taken, so the final name and .com domain are still open.
+> Formerly Weven (weven.com was taken). The .com domain for Weven is still open.
 
 ## Status
 

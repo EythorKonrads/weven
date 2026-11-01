@@ -44,7 +44,7 @@ server may talk to real services. When you're done, run
 - The flow does what the spec promises, with no dead ends.
 - Loading, empty and error states exist and say something useful.
 - Each kind of user the change affects gets a sensible path, following the
-  patterns the app already uses. BillSplitt's users: someone signed out who
+  patterns the app already uses. Weven's users: someone signed out who
   opened an invite link (often on a laptop), a new member of a group, the
   person who created a group, a placeholder member who hasn't signed up yet,
   and non-technical family members on a phone. Amounts are formatted for the

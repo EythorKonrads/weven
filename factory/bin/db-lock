@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run a command while holding BillSplitt's shared local-Supabase lock.
+"""Run a command while holding Weven's shared local-Supabase lock.
 
 Usage: db-lock <command> [args...]
 
@@ -21,7 +21,7 @@ if len(sys.argv) < 2:
     print(__doc__.strip(), file=sys.stderr)
     sys.exit(2)
 
-path = os.path.join(tempfile.gettempdir(), "billsplitt-supabase.lock")
+path = os.path.join(tempfile.gettempdir(), "weven-supabase.lock")
 with open(path, "w") as lock:
     start = time.monotonic()
     try:

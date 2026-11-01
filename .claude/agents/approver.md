@@ -52,7 +52,7 @@ ESCALATE if any of them fails, or if the change:
 - rests on a spec Assumption that is really a product or business decision, such
   as pricing, public copy about the business, or what is free versus paid.
 
-In BillSplitt, also ESCALATE when the change:
+In Weven, also ESCALATE when the change:
 
 - touches split, balance, rounding or settle-up logic in `packages/core`, or
   how amounts and currencies are stored;

@@ -27,8 +27,8 @@ Notes:
 | --- | --- | --- | --- |
 | Local | `supabase start` (Docker) + `seed.sql` | `expo start --web` | Development build on simulator or phone |
 | PR preview | Local Supabase in CI (Supabase branching later) | EAS Hosting preview URL per PR | EAS Update, per-PR channel |
-| Staging | Supabase project `billsplitt-staging` | EAS Hosting alias `staging` | Internal distribution build, `staging` channel |
-| Production | Supabase project `billsplitt-prod`, EU region | EAS Hosting, custom .com domain | App Store + Google Play, `production` channel |
+| Staging | Supabase project `weven-staging` | EAS Hosting alias `staging` | Internal distribution build, `staging` channel |
+| Production | Supabase project `weven-prod`, EU region | EAS Hosting, custom .com domain | App Store + Google Play, `production` channel |
 
 ## How a change ships
 

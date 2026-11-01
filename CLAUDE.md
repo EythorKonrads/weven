@@ -4,7 +4,7 @@ Instructions for Claude Code (and any other agent) working in this repo. Read th
 
 ## Project
 
-BillSplitt splits bills between friends and family. One TypeScript codebase: an Expo app (iOS, Android, web) and a Supabase backend.
+Weven splits bills between friends and family. One TypeScript codebase: an Expo app (iOS, Android, web) and a Supabase backend.
 
 ## Layout
 

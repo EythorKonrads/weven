@@ -27,7 +27,7 @@ that, scoped so it can land as one small pull request.
 
 ## Decide
 
-BillSplitt is an app (iOS, Android and web from one Expo codebase, Supabase backend) for splitting bills and shared expenses between friends and family: groups, expenses, splits, balances and recording settle-up payments. It never moves money itself. Work outside that, or that pulls in payments, ads or unrelated social features, doesn't belong.
+Weven is an app (iOS, Android and web from one Expo codebase, Supabase backend) for splitting bills and shared expenses between friends and family: groups, expenses, splits, balances and recording settle-up payments. It never moves money itself. Work outside that, or that pulls in payments, ads or unrelated social features, doesn't belong.
 
 - **ACCEPT** when the request is clear, fits the project, and can be built and
   reviewed as one pull request. If it is too big, accept a smaller first slice
@@ -45,12 +45,12 @@ For ACCEPT, rate:
 - **Risk**: `low` (contained change, easy to verify, nothing sensitive),
   `medium` (several files or behaviours, or shared code), `high` (data,
   money, auth, migrations, concurrency, or anything hard to undo). In
-  BillSplitt, any change to split, balance or settle-up maths in
+  Weven, any change to split, balance or settle-up maths in
   `packages/core`, any new or changed SQL migration, and any change to RLS
   policies or storage policies is `high`.
 - **Surfaces**: `ui` if a user will see the change on a page or screen,
   `security` if it touches auth, permissions, user input reaching queries,
-  shells or HTML, secrets, or payments. Both, or `none`. In BillSplitt,
+  shells or HTML, secrets, or payments. Both, or `none`. In Weven,
   anything touching `supabase/migrations/`, RLS or storage policies, Edge
   Functions, invite tokens or group membership is `security`.
 

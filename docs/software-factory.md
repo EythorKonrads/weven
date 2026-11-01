@@ -1,6 +1,6 @@
 # Software factory
 
-BillSplitt uses the [ZazenCodes software factory v2](https://github.com/zazencodes/zazencodes-season-3/tree/main/src/software-factory-claude-code-v2) to build GitHub issues with Claude Code agents, several at once.
+Weven uses the [ZazenCodes software factory v2](https://github.com/zazencodes/zazencodes-season-3/tree/main/src/software-factory-claude-code-v2) to build GitHub issues with Claude Code agents, several at once.
 
 ## How it works
 
@@ -44,17 +44,17 @@ approver (opus) ── APPROVE  → sync with main, gate again, squash-merge the
 
 You approve an escalated job by merging its PR on GitHub.
 
-## BillSplitt tailoring
+## Weven tailoring
 
 | File | Change from the reference |
 | --- | --- |
 | `factory/checks.sh` | pnpm install, typecheck, lint, test, Expo web export, then locked Supabase reset + pgTAP + generated-types check |
 | `factory/bin/db-lock` | New: serialises the database step across parallel jobs (macOS has no `flock`) |
 | `factory/config.json` | `merge_method: squash`; protected paths add `supabase/migrations/*`, `supabase/tests/*`, `*.test.ts(x)`, `e2e/*`, `.github/workflows/*`, `factory/bin/*`, `.claude/*` |
-| `intake.md` | What BillSplitt is for; money maths, migrations and RLS rate `high`; migrations, RLS, invites, membership flag `security` |
+| `intake.md` | What Weven is for; money maths, migrations and RLS rate `high`; migrations, RLS, invites, membership flag `security` |
 | `reviewer-security.md` | RLS + grants + pgTAP, security-definer functions, invites, keys, receipts, Edge Functions, money integrity |
 | `reviewer-ui.md` | Tokens and components in `apps/app/src/ui/`, mobile-first |
-| `reviewer-ux.md` | BillSplitt's users: invitees on a laptop, placeholder members, family on phones; locale-aware amounts |
+| `reviewer-ux.md` | Weven's users: invitees on a laptop, placeholder members, family on phones; locale-aware amounts |
 | `approver.md` | Always escalates money logic, migrations/RLS, auth/invites, Edge Functions, native config/SDK, CLAUDE.md and docs |
 
 Protected paths mean a builder may **add** a migration or test but never edit an existing one; the gate fails the branch otherwise.
