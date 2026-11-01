@@ -67,7 +67,7 @@ The factory can't run until these are done, in order:
 - [ ] Install prerequisites: Claude Code 2.1.257+ (`claude --version`), Python 3.10+, Docker, pnpm, Supabase CLI, `gh` (`gh auth login`), and the [`agent-browser`](https://github.com/vercel-labs/agent-browser) CLI for the UX/UI reviewers.
 - [x] `git init -b main` and first commit
 - [ ] Create the GitHub repo and push (`gh repo create weven --private --source . --push`).
-- [ ] Do **Phase 0** (docs/roadmap.md) interactively with Claude Code, not the factory: scaffold the pnpm workspace, Expo app, `packages/core`, Supabase, `apps/app/.env.example`, the scripts `typecheck`, `lint`, `test`, and `packages/core/src/database.types.ts`. The factory can't gate the scaffold because `checks.sh` needs it to exist.
+- [ ] Do **Phase 0** ([docs/phase-0.md](phase-0.md); docs/roadmap.md) interactively with Claude Code, not the factory: scaffold the pnpm workspace, Expo app, `packages/core`, Supabase, `apps/app/.env.example`, the scripts `typecheck`, `lint`, `test`, and `packages/core/src/database.types.ts`. The factory can't gate the scaffold because `checks.sh` needs it to exist.
 - [ ] `bash factory/checks.sh` exits 0 on a clean `main`. If it doesn't, the factory can never pass a job.
 - [ ] Create the labels:
       `gh label create factory --color 5319E7 --description "Build this with the software factory"`

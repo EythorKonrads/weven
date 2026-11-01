@@ -2,8 +2,6 @@
 
 ## Open
 
-- [ ] **Client route**: Expo/React Native (recommended) or Vue + Ionic + Capacitor to stay in Vue.
-- [ ] **Backend**: Supabase (recommended) vs self-built on AWS (RDS Postgres + API on Lambda/containers + Cognito + S3) vs Django + DRF. Supabase Pro has a spend cap on by default; compute add-ons sit outside it. Keep schema plain Postgres and maths in `packages/core` so moving to RDS later is a migration, not a rewrite. See [stack.md](stack.md#supabase-vs-aws-cost-note).
 - [ ] **Account to join a group?** Placeholder members allow "add Mom now, she signs up later", but complicate merging identities.
 - [ ] **Multi-currency in v1?** Touches the schema early; decide before the first migration even if the UI comes later.
 - [ ] **Offline expense entry** in v1, or online-first with an outbox later.
@@ -15,7 +13,9 @@ Newest first. One line per decision: date · decision · why.
 
 | Date | Decision | Why |
 | --- | --- | --- |
-| 2026-11-01 | App name is Weven (was Weven); GitHub repo `weven` | weven.com was taken |
+| 2026-11-01 | Phase 0 scope: hello world proving app ↔ Edge Function ↔ Postgres, local + CI; no cloud deploys yet | Foundations first; staging comes with the first feature |
+| 2026-11-01 | Client: Expo / React Native; backend: Supabase | Native UI plus web from one codebase; Postgres + auth + RLS free to start. Plain migrations keep a move to RDS possible ([stack.md](stack.md#supabase-vs-aws-cost-note)) |
+| 2026-11-01 | App name is Weven (was BillSplitt); GitHub repo `weven` | billsplitt.com was taken |
 | 2026-11-01 | Start production on Supabase Free, upgrade to Pro when real users depend on it; nightly dumps as backup meanwhile | Saves ~2,500 kr./year early on; free limits are far above a friends-and-family app's needs |
 | 2026-11-01 | Host all web (staging, PR previews, production) on EAS Hosting free; not Netlify | Netlify Personal has 1,000 credits/month shared with another project; deploys cost 15 each, and the factory merges often enough to burn them |
 | 2026-11-01 | ~~Host web on the existing Netlify Personal plan~~ (superseded same day) | — |
