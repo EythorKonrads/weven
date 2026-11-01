@@ -80,6 +80,6 @@ When a decision changes, update docs/decisions.md and the affected doc in the sa
 intake → spec → build → gate → review → approve, one PR per issue, up to
 `concurrency` jobs at once (`factory/config.json`). State is in `factory/jobs/`
 (gitignored); `factory/bin/job` is its only writer. Checks:
-`factory/checks.sh`. Dashboard: `cd factory && python3 -m http.server`, then
-open http://localhost:8000/dashboard.html. Details: docs/software-factory.md.
+`factory/checks.sh`. Dashboard: `bash factory/dashboard.sh` (opens
+http://localhost:8000/dashboard.html). Details: docs/software-factory.md.
 
