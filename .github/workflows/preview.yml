@@ -61,7 +61,6 @@ jobs:
     outputs:
       url: ${{ steps.deploy.outputs.url }}
     env:
-      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
       # Staging's public values: they are inlined into the bundle anyway.
       # Previews use the staging Supabase project because CI's local Supabase is
       # unreachable from a deployed preview. They see staging's schema, which may
@@ -72,7 +71,12 @@ jobs:
       run:
         working-directory: apps/app
     steps:
+      # EXPO_TOKEN is only set on the steps that need it, so install and export
+      # (which run PR code) never see it. Runs before checkout, hence no apps/app.
       - name: Check preview environment
+        working-directory: .
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: |
           for name in EXPO_TOKEN EXPO_PUBLIC_SUPABASE_URL EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY; do
             if [ -z "${!name}" ]; then
@@ -82,6 +86,8 @@ jobs:
           done
 
       - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
 
       - uses: pnpm/action-setup@v6
 
@@ -99,10 +105,13 @@ jobs:
       # has only 5 aliases, so previews can't have one each.
       - name: Deploy to EAS Hosting
         id: deploy
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: |
           npx -y eas-cli@27.2.0 deploy --non-interactive --json > deploy.json
-          cat deploy.json
           url=$(jq -er '.url' deploy.json)
+          # PR code runs in this job, so only accept an EAS Hosting URL.
+          [[ "$url" =~ ^https://[a-z0-9.-]+\.expo\.app/?$ ]] || { echo "::error::Unexpected deployment URL"; exit 1; }
           echo "url=$url" >> "$GITHUB_OUTPUT"
 
   # Has write access but checks out nothing and gets no EXPO_TOKEN.

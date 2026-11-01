@@ -20,7 +20,7 @@ Notes:
 - Node 22+ in CI: Supabase JS libraries dropped Node 20 on 2026-06-30.
 - Secrets (Supabase access token, EAS token, Apple/Google credentials) in GitHub Environments `preview`, `staging` and `production`; production needs manual approval.
 - `staging` environment (deploys from protected branches only): secrets `SUPABASE_ACCESS_TOKEN`, `SUPABASE_DB_PASSWORD` and `EXPO_TOKEN`; variables `SUPABASE_PROJECT_REF`, `EXPO_PUBLIC_SUPABASE_URL` and `EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY` (public values, inlined into the web bundle). The staging DB password is also in the maintainer's macOS Keychain (`weven-staging-db`).
-- `preview` environment (all branches, no required reviewers): secret `EXPO_TOKEN`; variables `EXPO_PUBLIC_SUPABASE_URL` and `EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, set to staging's public values (see the Environments table). This is a manual maintainer setup step; `preview.yml` fails with a clear error until it is done. With `gh`:
+- `preview` environment (all branches, no required reviewers): secret `EXPO_TOKEN`; variables `EXPO_PUBLIC_SUPABASE_URL` and `EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, set to staging's public values (see the Environments table). Use a separate Expo robot token for `preview` with the fewest permissions that still allow a deploy, not staging's token, so it can be revoked on its own. The token is only exposed to the check and deploy steps, but `eas-cli` still loads the PR's app config while it holds it; that is accepted for same-repo PRs. This is a manual maintainer setup step; `preview.yml` fails with a clear error until it is done. With `gh`:
   ```
   gh api -X PUT repos/EythorKonrads/weven/environments/preview
   gh secret set EXPO_TOKEN --env preview
