@@ -1,0 +1,44 @@
+name: PR checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: pr-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+
+      # Version comes from "packageManager" in package.json.
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - uses: supabase/setup-cli@v3
+        with:
+          version: latest
+
+      # Local Supabase URL and publishable key (well-known dev defaults, not secrets).
+      - name: App env
+        run: cp apps/app/.env.example apps/app/.env.local
+
+      # The same script the factory gate and humans run: install, typecheck, lint,
+      # tests, web export, then Supabase reset + pgTAP + generated-types check.
+      - name: Checks
+        run: bash factory/checks.sh
+
+      - name: Prettier
+        run: pnpm format:check
