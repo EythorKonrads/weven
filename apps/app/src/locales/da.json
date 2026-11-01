@@ -1,0 +1,21 @@
+{
+  "home": {
+    "title": "Weven",
+    "subtitle": "Hænger det hele sammen?"
+  },
+  "status": {
+    "loading": "Tjekker…",
+    "ok": "OK",
+    "error": "Kan ikke nås",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "database": "Database",
+    "platform": {
+      "web": "Kører på web",
+      "ios": "Kører på iOS",
+      "android": "Kører på Android",
+      "other": "Kører"
+    },
+    "rowLabel": "{{name}}: {{state}}. {{detail}}"
+  }
+}

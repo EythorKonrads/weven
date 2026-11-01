@@ -6,7 +6,18 @@ An app for splitting bills with friends and family. Native iOS and Android plus 
 
 ## Status
 
-Planning. No code yet. See [docs/roadmap.md](docs/roadmap.md) for phases and [docs/decisions.md](docs/decisions.md) for what is still undecided.
+Phase 0 done: a hello-world Expo app (iOS, Android, web) that reads from a local Supabase Edge Function and Postgres, with CI running `factory/checks.sh`. No product features yet. See [docs/roadmap.md](docs/roadmap.md) for phases and [docs/decisions.md](docs/decisions.md) for what is still undecided.
+
+## Run it locally
+
+```
+pnpm install
+cp apps/app/.env.example apps/app/.env.local
+supabase start && supabase functions serve
+pnpm --filter app exec expo start --web
+```
+
+The home screen shows three rows (front end, back end, database); all green means everything is wired up.
 
 ## Documentation
 

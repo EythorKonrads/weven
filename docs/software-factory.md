@@ -66,10 +66,10 @@ The factory can't run until these are done, in order:
 - [x] Move the agent files into `.claude/`
 - [ ] Install prerequisites: Claude Code 2.1.257+ (`claude --version`), Python 3.10+, Docker, pnpm, Supabase CLI, `gh` (`gh auth login`), and the [`agent-browser`](https://github.com/vercel-labs/agent-browser) CLI for the UX/UI reviewers.
 - [x] `git init -b main` and first commit
-- [ ] Create the GitHub repo and push (`gh repo create weven --private --source . --push`).
-- [ ] Do **Phase 0** ([docs/phase-0.md](phase-0.md); docs/roadmap.md) interactively with Claude Code, not the factory: scaffold the pnpm workspace, Expo app, `packages/core`, Supabase, `apps/app/.env.example`, the scripts `typecheck`, `lint`, `test`, and `packages/core/src/database.types.ts`. The factory can't gate the scaffold because `checks.sh` needs it to exist.
-- [ ] `bash factory/checks.sh` exits 0 on a clean `main`. If it doesn't, the factory can never pass a job.
-- [ ] Create the labels:
+- [x] Create the GitHub repo and push (`gh repo create weven --private --source . --push`).
+- [x] Do **Phase 0** ([docs/phase-0.md](phase-0.md); docs/roadmap.md) interactively with Claude Code, not the factory: scaffold the pnpm workspace, Expo app, `packages/core`, Supabase, `apps/app/.env.example`, the scripts `typecheck`, `lint`, `test`, and `packages/core/src/database.types.ts`. The factory can't gate the scaffold because `checks.sh` needs it to exist.
+- [x] `bash factory/checks.sh` exits 0 on a clean `main`. If it doesn't, the factory can never pass a job.
+- [x] Create the labels:
       `gh label create factory --color 5319E7 --description "Build this with the software factory"`
       `gh label create factory:needs-info --color FBCA04 --description "The factory asked the author a question"`
       `gh label create factory:needs-human --color D93F0B --description "The factory needs a human decision on the PR"`
