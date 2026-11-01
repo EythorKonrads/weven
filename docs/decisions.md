@@ -13,6 +13,7 @@ Newest first. One line per decision: date · decision · why.
 
 | Date | Decision | Why |
 | --- | --- | --- |
+| 2026-11-01 | EAS project `@ekonrads/weven`; staging web at https://weven--staging.expo.app, deployed by `main.yml` after Supabase | Same vendor as builds and updates; Supabase deploys first so new app code never meets an old schema |
 | 2026-11-01 | Supabase region eu-north-1 (Stockholm) for staging, and for production later | Closest Supabase region to Denmark and Iceland; projects can't change region |
 | 2026-11-01 | Staging migrates and deploys Edge Functions from `main.yml` on merges touching `supabase/`; reference data lives in migrations, `seed.sql` is local-only | Staging matches `main` without manual steps; cloud projects never get dev seed data |
 | 2026-11-01 | `main` is protected: required `checks` job, branch up to date, admins included. CI skips `checks` for docs-only changes through a `changes` job, not `paths-ignore` | Green CI before every merge, also for the factory; no CI minutes spent on Markdown edits |
