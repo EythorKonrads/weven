@@ -1,0 +1,21 @@
+{
+  "home": {
+    "title": "Weven",
+    "subtitle": "Is everything connected?"
+  },
+  "status": {
+    "loading": "Checking…",
+    "ok": "OK",
+    "error": "Not reachable",
+    "frontend": "Front end",
+    "backend": "Back end",
+    "database": "Database",
+    "platform": {
+      "web": "Running on web",
+      "ios": "Running on iOS",
+      "android": "Running on Android",
+      "other": "Running"
+    },
+    "rowLabel": "{{name}}: {{state}}. {{detail}}"
+  }
+}

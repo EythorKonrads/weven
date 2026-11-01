@@ -1,0 +1,21 @@
+{
+  "home": {
+    "title": "Weven",
+    "subtitle": "Er allt tengt?"
+  },
+  "status": {
+    "loading": "Athuga…",
+    "ok": "Í lagi",
+    "error": "Næst ekki samband",
+    "frontend": "Framendi",
+    "backend": "Bakendi",
+    "database": "Gagnagrunnur",
+    "platform": {
+      "web": "Keyrir á vefnum",
+      "ios": "Keyrir á iOS",
+      "android": "Keyrir á Android",
+      "other": "Keyrir"
+    },
+    "rowLabel": "{{name}}: {{state}}. {{detail}}"
+  }
+}
