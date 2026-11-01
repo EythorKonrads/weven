@@ -1,0 +1,17 @@
+# Factory runtime state
+/factory/jobs/
+
+# Dependencies and builds
+node_modules/
+dist/
+web-build/
+.expo/
+*.tsbuildinfo
+
+# Env and secrets
+.env
+.env.local
+.env.*.local
+
+# OS / editor
+.DS_Store
