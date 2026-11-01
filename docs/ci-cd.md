@@ -4,11 +4,11 @@ Code moves local → PR preview → staging → production. The database schema 
 
 ## CI workflows (GitHub Actions)
 
-A PR merges only when PR checks are green.
+A PR merges only when PR checks are green. Branch protection on `main` requires the `checks` job to pass and the branch to be up to date with `main`, and applies to admins too. A docs-only PR still passes: the workflow always starts, and `checks` is skipped, which GitHub counts as passed. Don't switch to `paths-ignore`: a required check that never starts blocks the PR forever.
 
 | Workflow | Trigger | Steps |
 | --- | --- | --- |
-| `pr.yml` | Every PR | Install (pnpm cache) → typecheck → lint → unit tests → start local Supabase → migrations + seed → pgTAP → check generated types are current |
+| `pr.yml` | Every PR and push to `main` | Skipped when only docs, Markdown, `.claude/` or factory dashboard/config files changed. Otherwise runs `factory/checks.sh`: install (pnpm cache) → typecheck → lint → unit tests → start local Supabase → migrations + seed → pgTAP → check generated types are current |
 | `preview.yml` | Every PR | Web preview deploy; EAS Update to a PR channel (open the branch on your phone); Playwright against the preview |
 | `main.yml` | Merge to `main` | Migrate staging → deploy Edge Functions → deploy web → EAS Update to `staging` channel |
 | `release.yml` | Tag `v*` | Migrate production → deploy Edge Functions → deploy web → EAS Build + Submit (iOS, Android) |
