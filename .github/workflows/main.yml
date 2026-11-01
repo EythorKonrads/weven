@@ -1,14 +1,17 @@
 name: Deploy staging
 
-# Merges to main that touch supabase/ migrate the staging database and deploy Edge
-# Functions. Web deploy and EAS Update join this workflow when they are set up.
+# Merges to main deploy whatever changed to staging: Supabase (migrations + Edge
+# Functions) first, then the web app, so new app code never meets an old schema.
+# EAS Update to the staging channel joins this workflow when device builds exist.
 on:
   push:
     branches: [main]
-    paths:
-      - 'supabase/**'
-      - '.github/workflows/main.yml'
   workflow_dispatch:
+    inputs:
+      all:
+        description: Deploy everything, not only what changed
+        type: boolean
+        default: true
 
 # Never run two deploys at once, and never cancel one halfway through a migration.
 concurrency:
@@ -19,7 +22,32 @@ permissions:
   contents: read
 
 jobs:
+  changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      supabase: ${{ inputs.all || steps.filter.outputs.supabase }}
+      web: ${{ inputs.all || steps.filter.outputs.web }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dorny/paths-filter@v4
+        id: filter
+        with:
+          filters: |
+            supabase:
+              - 'supabase/**'
+              - '.github/workflows/main.yml'
+            web:
+              - 'apps/app/**'
+              - 'packages/**'
+              - 'package.json'
+              - 'pnpm-lock.yaml'
+              - 'pnpm-workspace.yaml'
+              - '.github/workflows/main.yml'
+
   supabase:
+    needs: changes
+    if: needs.changes.outputs.supabase == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     environment: staging
@@ -45,3 +73,41 @@ jobs:
       # (verify_jwt etc.) come from supabase/config.toml.
       - name: Deploy Edge Functions
         run: supabase functions deploy --project-ref "$PROJECT_REF" --use-api
+
+  web:
+    needs: [changes, supabase]
+    # Runs after a successful Supabase deploy, or when that job was skipped.
+    if: >-
+      !cancelled() && needs.changes.outputs.web == 'true' &&
+      (needs.supabase.result == 'success' || needs.supabase.result == 'skipped')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: staging
+      url: https://weven--staging.expo.app
+    env:
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+      # Public values: they are inlined into the bundle anyway.
+      EXPO_PUBLIC_SUPABASE_URL: ${{ vars.EXPO_PUBLIC_SUPABASE_URL }}
+      EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ vars.EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
+    defaults:
+      run:
+        working-directory: apps/app
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Export web
+        run: pnpm exec expo export --platform web
+
+      # Uploads dist/ to EAS Hosting and points the `staging` alias at it.
+      - name: Deploy to EAS Hosting
+        run: npx -y eas-cli@27.2.0 deploy --non-interactive --alias staging
