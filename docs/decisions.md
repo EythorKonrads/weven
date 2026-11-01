@@ -13,6 +13,12 @@ Newest first. One line per decision: date · decision · why.
 
 | Date | Decision | Why |
 | --- | --- | --- |
+| 2026-11-01 | Expo SDK 58; Expo Router screens in `apps/app/app/` (template default is `src/app/`) | Latest at scaffold; keeps the layout in architecture.md |
+| 2026-11-01 | pnpm 12 with `nodeLinker: hoisted` in `pnpm-workspace.yaml` | Expo's monorepo guide; flat node_modules avoids React Native resolution issues. pnpm 10+ reads settings from the workspace file, not `.npmrc` |
+| 2026-11-01 | Local Supabase on ports 553xx instead of 543xx | Runs alongside other local Supabase projects on the same machine |
+| 2026-11-01 | ESLint 9 (not 10) | eslint-config-expo's plugins (import, react) don't support ESLint 10 yet |
+| 2026-11-01 | Web output `single` (SPA), not server/static rendering | No SEO needs; avoids running device-locale and Supabase code at build time. Revisit for a public landing page |
+| 2026-11-01 | App uses the Supabase **publishable** key (`EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY`), not the legacy anon JWT | What the current CLI prints; Edge Functions validate it with `@supabase/server` |
 | 2026-11-01 | Phase 0 scope: hello world proving app ↔ Edge Function ↔ Postgres, local + CI; no cloud deploys yet | Foundations first; staging comes with the first feature |
 | 2026-11-01 | Client: Expo / React Native; backend: Supabase | Native UI plus web from one codebase; Postgres + auth + RLS free to start. Plain migrations keep a move to RDS possible ([stack.md](stack.md#supabase-vs-aws-cost-note)) |
 | 2026-11-01 | App name is Weven (was BillSplitt); GitHub repo `weven` | billsplitt.com was taken |

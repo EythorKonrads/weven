@@ -30,10 +30,16 @@ docs/                Project documentation
 ## Fresh checkout (also every factory worktree)
 
 ```
-pnpm install
-cp apps/app/.env.example apps/app/.env.local   # local Supabase URL + anon key
+pnpm install                                   # pnpm 12 (version pinned in package.json)
+cp apps/app/.env.example apps/app/.env.local   # local Supabase URL + publishable key
 supabase start                                 # needs Docker; shared by all worktrees
+supabase functions serve                       # Edge Functions with hot reload (optional)
 ```
+
+Weven's local Supabase uses ports 553xx (API http://127.0.0.1:55321, DB 55322,
+Studio 55323), not the CLI's default 543xx, so it can run next to other local
+Supabase projects. pnpm settings (`nodeLinker: hoisted`, `allowBuilds`) live in
+`pnpm-workspace.yaml`, not `.npmrc`.
 
 All worktrees share one local Supabase stack. Never run `supabase stop` or
 `supabase db reset` outside `factory/checks.sh` while factory jobs are running.
@@ -52,6 +58,7 @@ Web is the surface agents check in a browser; native is checked by humans.
 pnpm typecheck
 pnpm lint
 pnpm test                # unit + component tests, non-interactive (no watch mode)
+pnpm format              # Prettier (lefthook also formats + lints staged files on commit)
 supabase db reset        # apply migrations + seed
 supabase test db         # pgTAP tests
 supabase gen types typescript --local > packages/core/src/database.types.ts

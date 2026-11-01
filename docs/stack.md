@@ -4,7 +4,7 @@ One TypeScript codebase on Expo (iOS, Android and web from the same code) with S
 
 ## Client
 
-- **Expo, current SDK.** SDK 56 shipped May 2026 with React Native 0.85 and React 19.2; SDK 57 is expected autumn 2026. Start on whatever is latest at `create-expo-app`. ([Expo SDK 56](https://expo.dev/sdk/56))
+- **Expo, current SDK.** SDK 56 shipped May 2026 with React Native 0.85 and React 19.2; SDK 57 is expected autumn 2026. Start on whatever is latest at `create-expo-app`. Phase 0 started on **SDK 58** (React Native 0.88, React 19.3). ([Expo SDK 56](https://expo.dev/sdk/56))
 - **Expo Router**: file-based routing (similar to Nuxt pages). Gives deep links for invite links on all platforms.
 - **Web** via React Native Web from the same screens. Web is first-class: invitees often open a link on a laptop.
 - **Styling**: NativeWind (Tailwind for RN) or a small token-based StyleSheet layer. Navy accent and spacing live in one tokens file.
