@@ -11,9 +11,39 @@ concurrency:
 
 permissions:
   contents: read
+  pull-requests: read # paths-filter lists the PR's changed files
 
 jobs:
+  # Decides whether `checks` needs to run. The workflow itself always runs (no
+  # paths-ignore): `checks` is a required status check, and a required check that
+  # never starts blocks the PR forever, while a skipped one counts as passed.
+  changes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      code: ${{ steps.filter.outputs.code }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dorny/paths-filter@v4
+        id: filter
+        with:
+          # A file counts only if it matches every pattern, i.e. none of the exclusions.
+          predicate-quantifier: every
+          filters: |
+            code:
+              - '**'
+              - '!**/*.md'
+              - '!docs/**'
+              - '!.claude/**'
+              - '!factory/dashboard.*'
+              - '!factory/config.json'
+              - '!factory/LICENSE'
+              - '!.gitignore'
+              - '!.editorconfig'
+
   checks:
+    needs: changes
+    if: needs.changes.outputs.code == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
