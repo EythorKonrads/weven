@@ -13,6 +13,7 @@ Newest first. One line per decision: date · decision · why.
 
 | Date | Decision | Why |
 | --- | --- | --- |
+| 2026-11-01 | App identifier `com.weven.app` on iOS and Android; EAS profiles `development` and `staging` (Android APK plus iOS Simulator, internal distribution, manual `eas build`); `fingerprint` runtime version policy | Identifiers are permanent once registered; no Apple Developer account yet; fingerprint catches native changes without manual version bumps |
 | 2026-11-01 | EAS project `@ekonrads/weven`; staging web at https://weven--staging.expo.app, deployed by `main.yml` after Supabase | Same vendor as builds and updates; Supabase deploys first so new app code never meets an old schema |
 | 2026-11-01 | Supabase region eu-north-1 (Stockholm) for staging, and for production later | Closest Supabase region to Denmark and Iceland; projects can't change region |
 | 2026-11-01 | Staging migrates and deploys Edge Functions from `main.yml` on merges touching `supabase/`; reference data lives in migrations, `seed.sql` is local-only | Staging matches `main` without manual steps; cloud projects never get dev seed data |

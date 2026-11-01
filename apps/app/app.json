@@ -9,7 +9,8 @@
     "userInterfaceStyle": "light",
     "ios": {
       "icon": "./assets/expo.icon",
-      "infoPlist": {}
+      "infoPlist": {},
+      "bundleIdentifier": "com.weven.app"
     },
     "android": {
       "adaptiveIcon": {
@@ -18,7 +19,8 @@
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.weven.app"
     },
     "web": {
       "output": "single",
@@ -50,6 +52,12 @@
         "projectId": "1734ddf3-dbfc-4335-a3cb-3837ccf59534"
       }
     },
-    "owner": "ekonrads"
+    "owner": "ekonrads",
+    "updates": {
+      "url": "https://u.expo.dev/1734ddf3-dbfc-4335-a3cb-3837ccf59534"
+    },
+    "runtimeVersion": {
+      "policy": "fingerprint"
+    }
   }
 }
