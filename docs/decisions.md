@@ -32,3 +32,4 @@ Newest first. One line per decision: date · decision · why.
 | 2026-11-01 | Use the ZazenCodes software factory v2 to build issues in parallel | Several tickets at once, each in its own worktree and PR, with checks and reviews before merge |
 | 2026-11-01 | Navy accent colour for the design | Chosen during design work |
 | 2026-11-01 | Mobile-first, same features on web and native | Product scope |
+| 2026-11-01 | PR previews use the staging Supabase project and unaliased EAS Hosting deployments | CI's local Supabase is unreachable from a deployed preview, and the EAS free tier has only 5 aliases |

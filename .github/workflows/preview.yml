@@ -1,0 +1,140 @@
+name: PR preview
+
+# Deploys the web app of every same-repo PR to EAS Hosting and posts the URL as a
+# PR comment. EAS Update, Playwright and cleanup of old deployments come later.
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+# Own prefix: concurrency groups are shared across workflows, and `pr-` would
+# make this run cancel pr.yml's checks.
+concurrency:
+  group: preview-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  # Same filter as pr.yml: docs-only and agent-only PRs get no preview.
+  # Fork PRs are skipped by every job: they get no secrets, and a preview would
+  # need EXPO_TOKEN to run code from the fork.
+  changes:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: read # paths-filter lists the PR's changed files
+    outputs:
+      code: ${{ steps.filter.outputs.code }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dorny/paths-filter@v4
+        id: filter
+        with:
+          # A file counts only if it matches every pattern, i.e. none of the exclusions.
+          predicate-quantifier: every
+          filters: |
+            code:
+              - '**'
+              - '!**/*.md'
+              - '!docs/**'
+              - '!.claude/**'
+              - '!factory/dashboard.*'
+              - '!factory/config.json'
+              - '!factory/LICENSE'
+              - '!.gitignore'
+              - '!.editorconfig'
+
+  # Holds EXPO_TOKEN and runs PR code, so it has no write permissions.
+  deploy:
+    needs: changes
+    if: >-
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      needs.changes.outputs.code == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: preview
+      url: ${{ steps.deploy.outputs.url }}
+    outputs:
+      url: ${{ steps.deploy.outputs.url }}
+    env:
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+      # Staging's public values: they are inlined into the bundle anyway.
+      # Previews use the staging Supabase project because CI's local Supabase is
+      # unreachable from a deployed preview. They see staging's schema, which may
+      # not have this PR's migrations yet.
+      EXPO_PUBLIC_SUPABASE_URL: ${{ vars.EXPO_PUBLIC_SUPABASE_URL }}
+      EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ vars.EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
+    defaults:
+      run:
+        working-directory: apps/app
+    steps:
+      - name: Check preview environment
+        run: |
+          for name in EXPO_TOKEN EXPO_PUBLIC_SUPABASE_URL EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY; do
+            if [ -z "${!name}" ]; then
+              echo "::error::$name is empty. Set it in the 'preview' GitHub Environment, see docs/ci-cd.md."
+              exit 1
+            fi
+          done
+
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Export web
+        run: pnpm exec expo export --platform web
+
+      # No alias and no prod flag: every run gets its own unique URL. The free tier
+      # has only 5 aliases, so previews can't have one each.
+      - name: Deploy to EAS Hosting
+        id: deploy
+        run: |
+          npx -y eas-cli@27.2.0 deploy --non-interactive --json > deploy.json
+          cat deploy.json
+          url=$(jq -er '.url' deploy.json)
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+
+  # Has write access but checks out nothing and gets no EXPO_TOKEN.
+  comment:
+    needs: deploy
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PREVIEW_URL: ${{ needs.deploy.outputs.url }}
+      HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+      REPO: ${{ github.repository }}
+    steps:
+      # One comment per PR: found by its hidden marker and updated on later runs.
+      - name: Post or update comment
+        run: |
+          marker='<!-- weven-preview -->'
+          body="$marker
+          **Web preview:** $PREVIEW_URL
+
+          Commit: \`$HEAD_SHA\`
+
+          This preview uses the staging Supabase project, so it sees staging's schema. A PR with new migrations previews against the old schema."
+          id=$(gh api --paginate "repos/$REPO/issues/$PR_NUMBER/comments" \
+            --jq ".[] | select(.body | startswith(\"$marker\")) | .id" | head -n 1)
+          if [ -n "$id" ]; then
+            gh api --method PATCH "repos/$REPO/issues/comments/$id" -f body="$body"
+          else
+            gh api --method POST "repos/$REPO/issues/$PR_NUMBER/comments" -f body="$body"
+          fi
