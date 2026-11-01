@@ -13,6 +13,8 @@ Newest first. One line per decision: date · decision · why.
 
 | Date | Decision | Why |
 | --- | --- | --- |
+| 2026-11-01 | Supabase region eu-north-1 (Stockholm) for staging, and for production later | Closest Supabase region to Denmark and Iceland; projects can't change region |
+| 2026-11-01 | Staging migrates and deploys Edge Functions from `main.yml` on merges touching `supabase/`; reference data lives in migrations, `seed.sql` is local-only | Staging matches `main` without manual steps; cloud projects never get dev seed data |
 | 2026-11-01 | `main` is protected: required `checks` job, branch up to date, admins included. CI skips `checks` for docs-only changes through a `changes` job, not `paths-ignore` | Green CI before every merge, also for the factory; no CI minutes spent on Markdown edits |
 | 2026-11-01 | Expo SDK 58; Expo Router screens in `apps/app/app/` (template default is `src/app/`) | Latest at scaffold; keeps the layout in architecture.md |
 | 2026-11-01 | pnpm 12 with `nodeLinker: hoisted` in `pnpm-workspace.yaml` | Expo's monorepo guide; flat node_modules avoids React Native resolution issues. pnpm 10+ reads settings from the workspace file, not `.npmrc` |

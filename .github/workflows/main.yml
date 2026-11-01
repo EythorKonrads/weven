@@ -1,0 +1,47 @@
+name: Deploy staging
+
+# Merges to main that touch supabase/ migrate the staging database and deploy Edge
+# Functions. Web deploy and EAS Update join this workflow when they are set up.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'supabase/**'
+      - '.github/workflows/main.yml'
+  workflow_dispatch:
+
+# Never run two deploys at once, and never cancel one halfway through a migration.
+concurrency:
+  group: deploy-staging
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  supabase:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: staging
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+      PROJECT_REF: ${{ vars.SUPABASE_PROJECT_REF }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: supabase/setup-cli@v3
+        with:
+          version: latest
+
+      - name: Link project
+        run: supabase link --project-ref "$PROJECT_REF"
+
+      # Applies migrations not yet on staging. Never seeds: seed.sql is local-only.
+      - name: Migrate database
+        run: supabase db push --linked --yes
+
+      # Bundled by the Supabase API, so no Docker needed. Per-function settings
+      # (verify_jwt etc.) come from supabase/config.toml.
+      - name: Deploy Edge Functions
+        run: supabase functions deploy --project-ref "$PROJECT_REF" --use-api

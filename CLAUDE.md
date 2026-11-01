@@ -24,6 +24,7 @@ docs/                Project documentation
 - `packages/core` must not import React, Expo or Supabase.
 - Every new table: RLS enabled, policies written, explicit grants, pgTAP test proving a non-member can't read it.
 - Never edit a merged migration. Add a new one. Migrations must be backwards compatible (expand, then contract).
+- `supabase/seed.sql` is local dev data only. Data every environment needs goes in a migration.
 - No secrets in the repo. No service role key in the app.
 - All user-facing text through i18n keys (da, en, is).
 

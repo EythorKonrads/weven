@@ -1,1 +1,3 @@
-insert into public.health_check (id, message) values (1, 'Hello from Postgres');
+-- Local development data only; `supabase db reset` runs this after migrations.
+-- Cloud projects (staging, production) never run it: put data every environment
+-- needs in a migration instead.
