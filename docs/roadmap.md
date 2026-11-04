@@ -27,7 +27,7 @@ Estimates as of 2026-11-01, USD, before Danish VAT. Check prices before signing 
 | Apple Developer Program | 99/year | TestFlight |
 | Google Play Console | 25 once | Play internal testing |
 | Domain (.com) | ~10–15/year | Web launch |
-| Web hosting | EAS Hosting free tier (100k requests/month, 1 GB, 5 aliases) for staging, PR previews and production. Netlify not used: its 1,000 credits/month are shared with another project and each production deploy costs 15 | Web launch |
+| Web hosting | Cloudflare Pages free plan for staging, PR previews and production, custom domain included. EAS Hosting not used for web: no custom domain on its free tier (Starter USD 19/month). Netlify not used: its 1,000 credits/month are shared with another project | Web launch |
 | Transactional email (magic links) | Free tier of e.g. Resend; Supabase's built-in SMTP is rate-limited and not for production | Beta |
 | Push notifications | Free (Expo Push) | Beta |
 | FX rates | Free (ECB-based API such as Frankfurter) | Multi-currency |
@@ -37,7 +37,7 @@ Estimates as of 2026-11-01, USD, before Danish VAT. Check prices before signing 
 
 At 1 USD ≈ 6.70 DKK (Wise mid-market, 2026-11-01). "Incl. moms" adds 25% Danish VAT.
 
-Plan: Supabase Free for staging and production, web on EAS Hosting free.
+Plan: Supabase Free for staging and production, web on Cloudflare Pages free.
 
 | Item | USD/year | DKK/year |
 | --- | --- | --- |

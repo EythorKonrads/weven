@@ -51,7 +51,9 @@ Fallback if React Native is too much of a detour: Ionic + Capacitor. Everything 
 
 ## Web hosting
 
-EAS Hosting free tier for staging, PR previews and production: 100,000 requests/month, 1 GB storage, 5 aliases, same vendor as builds and OTA updates. Starter (USD 19/month) only if traffic outgrows it.
+Cloudflare Pages free plan for staging, PR previews and production. The web export is static files (`web.output: single`), so any static host works. Free includes custom domains (100 per project), unlimited static requests and unlimited preview deployments, and allows commercial use. Domain `wevenapp.com` (Namecheap, DNS on Cloudflare).
+
+Not EAS Hosting: its free tier has no custom domains; Starter costs USD 19/month for one domain. EAS stays for builds, submissions and OTA updates. If the web app ever needs server code (Expo API routes), revisit: EAS Hosting runs it, or Cloudflare Workers.
 
 Not Netlify: Personal has 1,000 credits/month, already shared with another project. Each production deploy costs 15 credits, bandwidth 20/GB, requests 2 per 10k. Staging deploys on every merge from the factory (2–3 a day) would cost ~900–1,350 credits a month on their own.
 
