@@ -58,9 +58,11 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
+      # Pinned: `latest` pulled CLI 3.0.0, which changed deploy prompts. Upgrade
+      # on purpose, together with the local CLI and pr.yml.
       - uses: supabase/setup-cli@v3
         with:
-          version: latest
+          version: 2.122.0
 
       - name: Link project
         run: supabase link --project-ref "$PROJECT_REF"
@@ -72,7 +74,7 @@ jobs:
       # Bundled by the Supabase API, so no Docker needed. Per-function settings
       # (verify_jwt etc.) come from supabase/config.toml.
       - name: Deploy Edge Functions
-        run: supabase functions deploy --project-ref "$PROJECT_REF" --use-api
+        run: supabase functions deploy --project-ref "$PROJECT_REF" --use-api --yes
 
   web:
     needs: [changes, supabase]
