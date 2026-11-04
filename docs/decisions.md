@@ -13,6 +13,7 @@ Newest first. One line per decision: date · decision · why.
 
 | Date | Decision | Why |
 | --- | --- | --- |
+| 2026-11-04 | Web hosting (staging, PR previews, production) moves from EAS Hosting to Cloudflare Pages free; domain `wevenapp.com` with DNS on Cloudflare. Staging: Pages project `weven-staging` at https://staging.wevenapp.com; previews are its `pr-<n>` branches. Supersedes the 2026-11-01 EAS Hosting rows | EAS Hosting has no custom domain on the free tier (Starter USD 19/month); Pages includes custom domains and unlimited static requests for free. EAS stays for builds and OTA updates |
 | 2026-11-04 | Supabase CLI pinned to 2.122.0 in CI (`pr.yml`, `main.yml`), same as local; deploy commands pass `--yes` | `latest` pulled CLI 3.0.0 on its release day and the staging Functions deploy stopped at a confirmation prompt. Major upgrades happen on purpose |
 | 2026-11-04 | EAS project moved to the Expo organization `weveno` (`@weveno/weven`); CI deploys with robot-user tokens per GitHub environment | Robots exist only on organizations; a leaked preview token can then reach only this organization with the Developer role, not the personal account |
 | 2026-11-01 | App identifier `com.weven.app` on iOS and Android; EAS profiles `development` and `staging` (Android APK plus iOS Simulator, internal distribution, manual `eas build`); `fingerprint` runtime version policy | Identifiers are permanent once registered; no Apple Developer account yet; fingerprint catches native changes without manual version bumps |

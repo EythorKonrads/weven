@@ -6,7 +6,7 @@ An app for splitting bills with friends and family. Native iOS and Android plus 
 
 ## Status
 
-Phase 0 done: a hello-world Expo app (iOS, Android, web) that reads from a local Supabase Edge Function and Postgres, with CI running `factory/checks.sh`. No product features yet. Staging: https://weven--staging.expo.app See [docs/roadmap.md](docs/roadmap.md) for phases and [docs/decisions.md](docs/decisions.md) for what is still undecided.
+Phase 0 done: a hello-world Expo app (iOS, Android, web) that reads from a local Supabase Edge Function and Postgres, with CI running `factory/checks.sh`. No product features yet. Staging: https://staging.wevenapp.com See [docs/roadmap.md](docs/roadmap.md) for phases and [docs/decisions.md](docs/decisions.md) for what is still undecided.
 
 ## Run it locally
 
@@ -44,7 +44,7 @@ The home screen shows three rows (front end, back end, database); all green mean
 | Server state | TanStack Query + generated Supabase types |
 | Domain logic | `packages/core`, pure TypeScript |
 | CI | GitHub Actions |
-| Delivery | EAS Build/Submit/Update, EAS Hosting (free) for web, Supabase CLI migrations |
+| Delivery | EAS Build/Submit/Update, Cloudflare Pages (free) for web, Supabase CLI migrations |
 
 ## License
 

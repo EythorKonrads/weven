@@ -1,8 +1,8 @@
 name: Deploy staging
 
 # Merges to main deploy whatever changed to staging: Supabase (migrations + Edge
-# Functions) first, then the web app and an EAS Update to the `staging` channel,
-# so new app code never meets an old schema.
+# Functions) first, then the web app (Cloudflare Pages) and an EAS Update to the
+# `staging` channel, so new app code never meets an old schema.
 on:
   push:
     branches: [main]
@@ -86,9 +86,10 @@ jobs:
     timeout-minutes: 20
     environment:
       name: staging
-      url: https://weven--staging.expo.app
+      url: https://staging.wevenapp.com
     env:
-      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+      PAGES_PROJECT: weven-staging
       # Public values: they are inlined into the bundle anyway.
       EXPO_PUBLIC_SUPABASE_URL: ${{ vars.EXPO_PUBLIC_SUPABASE_URL }}
       EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ vars.EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
@@ -96,6 +97,17 @@ jobs:
       run:
         working-directory: apps/app
     steps:
+      # Creates the Pages project on first use; a no-op afterwards. Runs before
+      # checkout, so no repo code can see the token here.
+      - name: Ensure Pages project
+        working-directory: .
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          if ! npx -y wrangler@4.151.3 pages project list --json | grep -qF "\"Project Name\": \"$PAGES_PROJECT\""; then
+            npx -y wrangler@4.151.3 pages project create "$PAGES_PROJECT" --production-branch main
+          fi
+
       - uses: actions/checkout@v7
 
       - uses: pnpm/action-setup@v6
@@ -110,9 +122,12 @@ jobs:
       - name: Export web
         run: pnpm exec expo export --platform web
 
-      # Uploads dist/ to EAS Hosting and points the `staging` alias at it.
-      - name: Deploy to EAS Hosting
-        run: npx -y eas-cli@27.2.0 deploy --non-interactive --alias staging
+      # The `main` branch is the project's production branch, so this is what
+      # https://staging.wevenapp.com (the project's custom domain) serves.
+      - name: Deploy to Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: npx -y wrangler@4.151.3 pages deploy dist --project-name "$PAGES_PROJECT" --branch main --commit-hash "$GITHUB_SHA"
 
   app:
     needs: [changes, supabase]
