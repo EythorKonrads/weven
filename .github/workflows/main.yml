@@ -1,8 +1,8 @@
 name: Deploy staging
 
 # Merges to main deploy whatever changed to staging: Supabase (migrations + Edge
-# Functions) first, then the web app, so new app code never meets an old schema.
-# EAS Update to the staging channel joins this workflow when device builds exist.
+# Functions) first, then the web app and an EAS Update to the `staging` channel,
+# so new app code never meets an old schema.
 on:
   push:
     branches: [main]
@@ -111,3 +111,39 @@ jobs:
       # Uploads dist/ to EAS Hosting and points the `staging` alias at it.
       - name: Deploy to EAS Hosting
         run: npx -y eas-cli@27.2.0 deploy --non-interactive --alias staging
+
+  app:
+    needs: [changes, supabase]
+    # Same gate as web: app code changed, and Supabase deployed or was skipped.
+    if: >-
+      !cancelled() && needs.changes.outputs.web == 'true' &&
+      (needs.supabase.result == 'success' || needs.supabase.result == 'skipped')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: staging
+    env:
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+      # Public values: they are inlined into the bundle anyway.
+      EXPO_PUBLIC_SUPABASE_URL: ${{ vars.EXPO_PUBLIC_SUPABASE_URL }}
+      EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ vars.EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
+    defaults:
+      run:
+        working-directory: apps/app
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # Over-the-air JS update for staging builds. The fingerprint runtime
+      # version keeps it from reaching builds with different native code.
+      # --environment is required since SDK 55; no EAS-side variables are
+      # defined, so the values above are what the bundle gets.
+      - name: Publish EAS Update to staging
+        run: npx -y eas-cli@27.2.0 update --channel staging --auto --environment preview --non-interactive
