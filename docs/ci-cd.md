@@ -29,7 +29,7 @@ Notes:
 | --- | --- | --- | --- |
 | Local | `supabase start` (Docker) + `seed.sql` | `expo start --web` | Development build on simulator or phone |
 | PR preview | Local Supabase in CI (Supabase branching later) | EAS Hosting preview URL per PR | EAS Update, per-PR channel |
-| Staging | Supabase project `weven-staging` (ref `fgtrqsxmgqlzhprldags`, eu-north-1 Stockholm, Free plan). URL `https://fgtrqsxmgqlzhprldags.supabase.co`, publishable key `sb_publishable_82oyMTysNgEqy_ksZvwNmQ_tMg1fOJ1` (public, ships in the app) | EAS Hosting alias `staging`: https://weven--staging.expo.app (EAS project `@ekonrads/weven`) | Internal distribution build, `staging` channel |
+| Staging | Supabase project `weven-staging` (ref `fgtrqsxmgqlzhprldags`, eu-north-1 Stockholm, Free plan). URL `https://fgtrqsxmgqlzhprldags.supabase.co`, publishable key `sb_publishable_82oyMTysNgEqy_ksZvwNmQ_tMg1fOJ1` (public, ships in the app) | EAS Hosting alias `staging`: https://weven--staging.expo.app (EAS project `@weveno/weven`, organization `weveno`) | Internal distribution build, `staging` channel |
 | Production | Supabase project `weven-prod`, EU region | EAS Hosting, custom .com domain | App Store + Google Play, `production` channel |
 
 ## How a change ships
