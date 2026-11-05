@@ -25,6 +25,7 @@ Standards are enforced by tools in CI, not by memory. Anything a linter can chec
 | SQL | `snake_case`, plural table names; every table has RLS enabled and an explicit grant |
 | Migrations | One concern per file, never edited after merge |
 | Strings | All user-facing text through i18n keys |
+| Styling | Tailwind classes only, with colours and fonts from `packages/theme/theme.css`. ESLint rejects `StyleSheet` and `style` props in the app; a runtime-only value needs an `eslint-disable` comment with the reason. Prettier sorts classes. Third-party components that need `className` are wrapped with `withUniwind` |
 | Accessibility | Every touchable has an accessible label; text scales with OS font size |
 
 ## Git workflow

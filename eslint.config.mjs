@@ -64,6 +64,35 @@ export default defineConfig([
     },
   },
 
+  // All app styling is Tailwind classes (className, through Uniwind).
+  {
+    files: ['apps/app/**/*.{ts,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          paths: [
+            {
+              name: 'react-native',
+              importNames: ['StyleSheet'],
+              message: 'Style with Tailwind classes (className), not StyleSheet.',
+            },
+          ],
+        },
+      ],
+      'no-restricted-syntax': [
+        'error',
+        {
+          // StatusBar's `style` picks light or dark icons; it isn't CSS.
+          selector:
+            "JSXOpeningElement[name.name!='StatusBar'] > JSXAttribute[name.name=/^(style|contentContainerStyle)$/]",
+          message:
+            'Style with Tailwind classes (className). For a value only known at runtime, disable this rule on that line and say why.',
+        },
+      ],
+    },
+  },
+
   // Node-run config files.
   {
     files: ['**/*.config.{js,cjs,mjs,ts}', '**/jest.setup.{js,ts}'],

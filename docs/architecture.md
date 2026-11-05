@@ -24,7 +24,7 @@ weven/
     app/              Expo app (iOS, Android, web)
       app/            Expo Router screens: (auth)/, (tabs)/, group/[id]/...
       src/features/   groups, expenses, balances, settle-up, profile
-      src/ui/         design system components + tokens
+      src/ui/         design system components (theme: packages/theme)
       src/lib/        supabase client, query client, i18n
   packages/
     core/             pure TS: money, split, balances, settle-up, zod schemas

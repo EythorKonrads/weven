@@ -2,5 +2,14 @@
   "singleQuote": true,
   "printWidth": 100,
   "plugins": ["prettier-plugin-tailwindcss"],
-  "tailwindStylesheet": "./apps/landing/src/styles.css"
+  "tailwindStylesheet": "./apps/landing/src/styles.css",
+  "tailwindAttributes": ["contentContainerClassName"],
+  "overrides": [
+    {
+      "files": "apps/app/**",
+      "options": {
+        "tailwindStylesheet": "./apps/app/global.css"
+      }
+    }
+  ]
 }

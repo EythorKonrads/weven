@@ -30,6 +30,7 @@ design/              UI designs and spec (DESIGN.md): reference only, not shippe
 - `supabase/seed.sql` is local dev data only. Data every environment needs goes in a migration.
 - No secrets in the repo. No service role key in the app.
 - All user-facing text through i18n keys (da, en, is).
+- **All styling is Tailwind classes.** App: `className` through Uniwind. Landing page: `class`. Colours and fonts come from the shared theme, `packages/theme/theme.css`; add a token there rather than hard-coding a value. No `StyleSheet`, `style` props or hand-written CSS (lint and `factory/checks.sh` enforce this). A value only known at runtime may use `style`, with an `eslint-disable` comment saying why.
 
 ## Fresh checkout (also every factory worktree)
 

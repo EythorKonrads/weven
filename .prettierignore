@@ -9,4 +9,5 @@ supabase/.branches/
 **/dist/
 apps/landing/public/styles.css
 **/expo-env.d.ts
+apps/app/src/uniwind-types.d.ts
 **/*.md
