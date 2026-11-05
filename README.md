@@ -41,6 +41,7 @@ The home screen shows three rows (front end, back end, database); all green mean
 | Client | Expo (React Native) + Expo Router, web via React Native Web |
 | Language | TypeScript, strict |
 | Backend | Supabase: Postgres, Auth, RLS, Realtime, Storage, Edge Functions |
+| Styling | Tailwind CSS v4 (Uniwind in the app) |
 | Server state | TanStack Query + generated Supabase types |
 | Domain logic | `packages/core`, pure TypeScript |
 | CI | GitHub Actions |

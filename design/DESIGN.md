@@ -1,6 +1,6 @@
 # Weven — design spec
 
-Source of truth for the Weven UI. Every screen in `design/` is a design reference: build it as React Native components (Expo and Expo Router, in `apps/app`) using the tokens and component list below. Web runs through React Native Web, so one component serves iOS, Android and web. **Do not copy the HTML into the app.**
+Source of truth for the Weven UI. Every screen in `design/` is a design reference: build it as React Native components (Expo and Expo Router, in `apps/app`), styled with Tailwind classes through Uniwind, using the tokens and component list below. Web runs through React Native Web, so one component serves iOS, Android and web. **Do not copy the HTML into the app.**
 
 - Product: split bills with friends and family. Web + native mobile, same features on both, mobile first.
 - Domain: wevenapp.com
