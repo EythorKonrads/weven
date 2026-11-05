@@ -13,6 +13,7 @@ Newest first. One line per decision: date · decision · why.
 
 | Date | Decision | Why |
 | --- | --- | --- |
+| 2026-11-05 | Landing page sends a strict same-origin CSP and other security headers through `apps/landing/public/_headers`; HSTS starts at one day with no `includeSubDomains` or `preload` | The page loads nothing cross-origin, so a tight policy costs nothing; a short HSTS is easy to back out until every subdomain is known to serve HTTPS |
 | 2026-11-05 | All styling is Tailwind v4 with one theme (`packages/theme/theme.css`); the app uses Uniwind 1.x, not NativeWind or `StyleSheet`; lint enforces it. The theme has light values only until dark mode is built | One styling language across app and web, tied to the design tokens. Uniwind is stable on Tailwind v4; NativeWind's stable release is on Tailwind v3 and its v5 is a release candidate |
 | 2026-11-05 | Coming-soon page at wevenapp.com is static HTML with Tailwind in `apps/landing`, its own Pages project `weven-landing`, self-hosted fonts, no analytics yet (#18); no email form or log in yet (#15, #16) | No framework or JavaScript to maintain, stays separate from the app, needs no cookie banner for now, and no visitor data goes to Google |
 | 2026-11-05 | `design/` is committed to the public repo; the spec targets React Native, not Vue | The project is also a public portfolio piece; factory agents need the designs in their worktrees |
