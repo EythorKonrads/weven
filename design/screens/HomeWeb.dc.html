@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Weven Home, web</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}a:hover{opacity:.8}
+.bs{--bg:#F6F6F4;--surface:#FFFFFF;--surface2:#EFEFEC;--line:#E3E3DF;--text:#161616;--muted:#5C5C59;--ink:#161616;--onink:#FFFFFF;--lime:#C6F24E;--onlime:#161616;--owed:#0E7A6E;--owe:#C2410C;--heroOwed:#6FD8C8;--heroOwe:#FF9A62;--v1:#ECE6FF;--v1i:#5B3FD6;--v2:#DDF4E7;--v2i:#11744A;--v3:#FFE6D5;--v3i:#A8440C;--v4:#DDEEFF;--v4i:#155FA8}
+.bs.dark{--bg:#0E0E0F;--surface:#18181A;--surface2:#232326;--line:#2D2D31;--text:#F2F2EF;--muted:#A6A6A2;--ink:#1F1F22;--onink:#F2F2EF;--owed:#5FD3C4;--owe:#FF9A62;--v1:#2A2342;--v1i:#C2B2FF;--v2:#17332A;--v2i:#7FDDAE;--v3:#3A2418;--v3i:#FFB283;--v4:#172A40;--v4i:#8CC4FF}
+.bs{--heroAcc:#FFFFFF;--onlime:#FFFFFF}
+.bs.acc-plum{--lime:#5E4B8B;--ink:#2A2140;--heroBtn:#E4DCF7;--heroBtnText:#2A2140}
+.bs.acc-forest{--lime:#2F6B57;--ink:#1D3B32;--heroBtn:#D5EBDF;--heroBtnText:#1D3B32}
+.bs.acc-navy{--lime:#3C5A99;--ink:#1C2742;--heroBtn:#DCE5F7;--heroBtnText:#1C2742}
+.bs.acc-clay{--lime:#A0583E;--ink:#3A2620;--heroBtn:#F3DED3;--heroBtnText:#3A2620}
+.ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.num{font-variant-numeric:tabular-nums}
+</style>
+</helmet>
+<div class="bs {{themeClass}} {{accentClass}}" style="min-height: 1060px; background: var(--bg); color: var(--text); font-family: Inter, system-ui, sans-serif; font-size: 14px; display: flex; flex-wrap: wrap; align-items: stretch">
+
+  <aside style="flex: 1 1 240px; max-width: 100%; box-sizing: border-box; background: var(--surface); border-right: 1px solid var(--line); padding: 20px 14px; display: flex; flex-direction: column; gap: 24px">
+    <div style="display: flex; align-items: center; gap: 10px; padding: 0 8px">
+      <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="12" r="6.5" fill="#8FA9E0"></circle><circle cx="15" cy="12" r="6.5" fill="var(--lime)"></circle><path d="M12 6.23A6.5 6.5 0 0 1 12 17.77A6.5 6.5 0 0 1 12 6.23Z" fill="var(--ink)"></path></svg>
+      <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.035em">weven</span>
+    </div>
+    <nav aria-label="Main" style="display: flex; flex-direction: column; gap: 2px">
+      <a href="#" aria-current="page" style="display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 10px; border-radius: 10px; background: var(--surface2); font-weight: 600"><svg class="ic" viewBox="0 0 24 24" style="width: 18px; height: 18px"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"></path></svg>Home</a>
+      <a href="#" style="display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 10px; border-radius: 10px; color: var(--muted); font-weight: 500"><svg class="ic" viewBox="0 0 24 24" style="width: 18px; height: 18px"><circle cx="9" cy="8" r="3.5"></circle><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path><path d="M21 20c0-2.5-1.5-4.6-3.5-5.5"></path></svg>Groups</a>
+      <a href="#" style="display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 10px; border-radius: 10px; color: var(--muted); font-weight: 500"><svg class="ic" viewBox="0 0 24 24" style="width: 18px; height: 18px"><circle cx="10" cy="8" r="4"></circle><path d="M3 20c0-3.9 3.1-7 7-7"></path><path d="M19 8v6M16 11h6"></path></svg>Friends</a>
+      <a href="#" style="display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 10px; border-radius: 10px; color: var(--muted); font-weight: 500"><svg class="ic" viewBox="0 0 24 24" style="width: 18px; height: 18px"><path d="M4 6h16M4 12h10M4 18h7"></path></svg>Activity</a>
+      <a href="#" style="display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 10px; border-radius: 10px; color: var(--muted); font-weight: 500"><svg class="ic" viewBox="0 0 24 24" style="width: 18px; height: 18px"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg>Statistics</a>
+    </nav>
+    <div style="display: flex; flex-direction: column; gap: 4px">
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 0 10px 6px">
+        <span style="font-size: 12px; font-weight: 600; color: var(--muted)">Your groups</span>
+        <button aria-label="New group" style="width: 28px; height: 28px; border: 0; border-radius: 8px; background: transparent; color: var(--muted); display: grid; place-items: center"><svg class="ic" viewBox="0 0 24 24" style="width: 16px; height: 16px"><path d="M12 5v14M5 12h14"></path></svg></button>
+      </div>
+      <a href="#" style="display: flex; align-items: center; gap: 10px; height: 36px; padding: 0 10px; border-radius: 10px; font-weight: 500"><span style="width: 22px; height: 22px; border-radius: 7px; background: var(--v4); color: var(--v4i); display: grid; place-items: center"><svg class="ic" viewBox="0 0 24 24" style="width: 13px; height: 13px"><path d="M22 2 11 13"></path><path d="M22 2l-7 20-4-9-9-4z"></path></svg></span>Lisbon trip</a>
+      <a href="#" style="display: flex; align-items: center; gap: 10px; height: 36px; padding: 0 10px; border-radius: 10px; font-weight: 500"><span style="width: 22px; height: 22px; border-radius: 7px; background: var(--v2); color: var(--v2i); display: grid; place-items: center"><svg class="ic" viewBox="0 0 24 24" style="width: 13px; height: 13px"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"></path></svg></span>Apartment Nørrebro</a>
+      <a href="#" style="display: flex; align-items: center; gap: 10px; height: 36px; padding: 0 10px; border-radius: 10px; font-weight: 500"><span style="width: 22px; height: 22px; border-radius: 7px; background: var(--v3); color: var(--v3i); display: grid; place-items: center"><svg class="ic" viewBox="0 0 24 24" style="width: 13px; height: 13px"><path d="M7 3v18"></path><path d="M4 3v5a3 3 0 0 0 6 0V3"></path><path d="M17 21V3c-2 0-3 2-3 6s1 5 3 5"></path></svg></span>Thursday dinner club</a>
+      <a href="#" style="display: flex; align-items: center; gap: 10px; height: 36px; padding: 0 10px; border-radius: 10px; font-weight: 500"><span style="width: 22px; height: 22px; border-radius: 7px; background: var(--v1); color: var(--v1i); display: grid; place-items: center"><svg class="ic" viewBox="0 0 24 24" style="width: 13px; height: 13px"><path d="M12 20s-7-4.4-9.3-9A5 5 0 0 1 12 6a5 5 0 0 1 9.3 5C19 15.6 12 20 12 20z"></path></svg></span>Family</a>
+    </div>
+    <div style="margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 10px; border-radius: 12px; border: 1px solid var(--line)">
+      <span style="width: 34px; height: 34px; border-radius: 50%; background: var(--v1); color: var(--v1i); display: grid; place-items: center; font-weight: 600; font-size: 13px">EY</span>
+      <span style="flex: 1; min-width: 0; display: flex; flex-direction: column"><span style="font-weight: 600">Eythor</span><span style="font-size: 12px; color: var(--muted)">Settings &amp; payment info</span></span>
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px; color: var(--muted)"><path d="M9 6l6 6-6 6"></path></svg>
+    </div>
+  </aside>
+
+  <main style="flex: 999 1 560px; min-width: 0; box-sizing: border-box; padding: 24px clamp(16px, 3vw, 40px) 40px; display: flex; flex-direction: column; gap: 28px">
+    <header style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+      <div style="flex: 1 1 240px; display: flex; flex-direction: column; gap: 2px">
+        <p style="margin: 0; color: var(--muted); font-size: 13px">Saturday, 31 October</p>
+        <h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 30px; letter-spacing: -0.025em">Hi Eythor</h1>
+      </div>
+      <label style="flex: 0 1 300px; height: 40px; display: flex; align-items: center; gap: 8px; padding: 0 12px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); color: var(--muted)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Search</span><input type="search" placeholder="Search expenses, groups, friends" style="flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--text); font: 400 14px Inter, sans-serif"></label>
+      <button aria-label="Notifications" style="width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--text); display: grid; place-items: center"><svg class="ic" viewBox="0 0 24 24" style="width: 18px; height: 18px"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg></button>
+      <button style="height: 40px; padding: 0 16px 0 12px; border-radius: 10px; border: 0; background: var(--text); color: var(--bg); font: 600 14px Inter, sans-serif; display: flex; align-items: center; gap: 6px"><svg class="ic" viewBox="0 0 24 24" style="width: 18px; height: 18px; color: var(--lime)"><path d="M12 5v14M5 12h14"></path></svg>Add expense</button>
+    </header>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px">
+      <section aria-label="Your balance" style="background: var(--ink); color: var(--onink); border: 1px solid var(--line); border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 16px">
+        <div style="display: flex; align-items: center; justify-content: space-between">
+          <span style="font-size: 13px; font-weight: 500; opacity: 0.75">Total balance</span>
+          <button style="height: 28px; padding: 0 8px 0 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.08); color: inherit; font: 600 12px Inter, sans-serif; display: flex; align-items: center; gap: 4px">DKK<svg class="ic" viewBox="0 0 24 24" style="width: 14px; height: 14px"><path d="M6 9l6 6 6-6"></path></svg></button>
+        </div>
+        <div class="num" style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 48px; letter-spacing: -0.035em; line-height: 1; color: var(--heroAcc)">+1,240.50</div>
+        <div style="display: flex; gap: 3px; height: 6px"><span style="flex: 75; border-radius: 3px; background: var(--heroOwed)"></span><span style="flex: 25; border-radius: 3px; background: var(--heroOwe)"></span></div>
+        <div style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 24px">
+          <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; opacity: 0.75; display: flex; align-items: center; gap: 6px"><span style="width: 8px; height: 8px; border-radius: 2px; background: var(--heroOwed)"></span>You're owed</span><span class="num" style="font-weight: 600; font-size: 17px">1,850.00</span></div>
+          <div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; opacity: 0.75; display: flex; align-items: center; gap: 6px"><span style="width: 8px; height: 8px; border-radius: 2px; background: var(--heroOwe)"></span>You owe</span><span class="num" style="font-weight: 600; font-size: 17px">609.50</span></div>
+          <button style="margin-left: auto; height: 42px; padding: 0 18px; border-radius: 12px; border: 0; background: var(--heroBtn); color: var(--heroBtnText); font: 600 14px Inter, sans-serif; display: flex; align-items: center; gap: 8px"><svg class="ic" viewBox="0 0 24 24" style="width: 18px; height: 18px"><path d="M7 7h12l-3-3"></path><path d="M17 17H5l3 3"></path></svg>Settle up</button>
+        </div>
+      </section>
+
+      <nav aria-label="Quick actions" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+        <a href="#" style="display: flex; flex-direction: column; justify-content: space-between; gap: 16px; padding: 16px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line)"><span style="width: 40px; height: 40px; border-radius: 12px; background: var(--surface2); display: grid; place-items: center"><svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></span><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600">Add expense</span><span style="font-size: 12px; color: var(--muted)">Split with a friend or group</span></span></a>
+        <a href="#" style="display: flex; flex-direction: column; justify-content: space-between; gap: 16px; padding: 16px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); position: relative"><span style="width: 40px; height: 40px; border-radius: 12px; background: var(--surface2); display: grid; place-items: center"><svg class="ic" viewBox="0 0 24 24"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"></path><path d="M8 12h8"></path></svg></span><span style="position: absolute; top: 16px; right: 16px; font-size: 10px; font-weight: 700; padding: 3px 7px; border-radius: 999px; background: var(--lime); color: var(--onlime)">Soon</span><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600">Scan bill</span><span style="font-size: 12px; color: var(--muted)">Photo becomes an expense</span></span></a>
+        <a href="#" style="display: flex; flex-direction: column; justify-content: space-between; gap: 16px; padding: 16px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line)"><span style="width: 40px; height: 40px; border-radius: 12px; background: var(--surface2); display: grid; place-items: center"><svg class="ic" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"></circle><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path><path d="M21 20c0-2.5-1.5-4.6-3.5-5.5"></path></svg></span><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600">New group</span><span style="font-size: 12px; color: var(--muted)">Trips, homes, clubs</span></span></a>
+        <a href="#" style="display: flex; flex-direction: column; justify-content: space-between; gap: 16px; padding: 16px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line)"><span style="width: 40px; height: 40px; border-radius: 12px; background: var(--surface2); display: grid; place-items: center"><svg class="ic" viewBox="0 0 24 24"><circle cx="10" cy="8" r="4"></circle><path d="M3 20c0-3.9 3.1-7 7-7"></path><path d="M19 8v6M16 11h6"></path></svg></span><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600">Invite friend</span><span style="font-size: 12px; color: var(--muted)">Share a link to join</span></span></a>
+      </nav>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; align-items: start">
+      <section style="background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 8px 0">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; padding: 12px 20px 8px">
+          <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 19px; letter-spacing: -0.02em">Groups</h2>
+          <a href="#" style="font-size: 13px; font-weight: 600; color: var(--muted)">See all</a>
+        </div>
+        <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 12px 20px; border-top: 1px solid var(--line)"><span style="width: 40px; height: 40px; border-radius: 12px; background: var(--v4); color: var(--v4i); display: grid; place-items: center"><svg class="ic" viewBox="0 0 24 24"><path d="M22 2 11 13"></path><path d="M22 2l-7 20-4-9-9-4z"></path></svg></span><span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600">Lisbon trip</span><span style="font-size: 12px; color: var(--muted)">5 people · EUR</span></span><span style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px"><span style="font-size: 12px; color: var(--muted)">you're owed</span><span class="num" style="font-weight: 600; color: var(--owed)">€84.20</span></span></a>
+        <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 12px 20px; border-top: 1px solid var(--line)"><span style="width: 40px; height: 40px; border-radius: 12px; background: var(--v2); color: var(--v2i); display: grid; place-items: center"><svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"></path></svg></span><span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600">Apartment Nørrebro</span><span style="font-size: 12px; color: var(--muted)">3 people · DKK</span></span><span style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px"><span style="font-size: 12px; color: var(--muted)">you owe</span><span class="num" style="font-weight: 600; color: var(--owe)">312.00 kr</span></span></a>
+        <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 12px 20px; border-top: 1px solid var(--line)"><span style="width: 40px; height: 40px; border-radius: 12px; background: var(--v3); color: var(--v3i); display: grid; place-items: center"><svg class="ic" viewBox="0 0 24 24"><path d="M7 3v18"></path><path d="M4 3v5a3 3 0 0 0 6 0V3"></path><path d="M17 21V3c-2 0-3 2-3 6s1 5 3 5"></path></svg></span><span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600">Thursday dinner club</span><span style="font-size: 12px; color: var(--muted)">4 people · DKK</span></span><span style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px"><span style="font-size: 12px; color: var(--muted)">you're owed</span><span class="num" style="font-weight: 600; color: var(--owed)">455.00 kr</span></span></a>
+        <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 12px 20px; border-top: 1px solid var(--line)"><span style="width: 40px; height: 40px; border-radius: 12px; background: var(--v1); color: var(--v1i); display: grid; place-items: center"><svg class="ic" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-9.3-9A5 5 0 0 1 12 6a5 5 0 0 1 9.3 5C19 15.6 12 20 12 20z"></path></svg></span><span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600; display: flex; align-items: center; gap: 6px">Family<svg class="ic" viewBox="0 0 24 24" role="img" aria-label="Locked group" style="width: 14px; height: 14px; color: var(--muted)"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg></span><span style="font-size: 12px; color: var(--muted)">6 people · DKK</span></span><span style="font-size: 12px; font-weight: 500; color: var(--muted); padding: 4px 10px; border-radius: 999px; background: var(--surface2)">Settled</span></a>
+      </section>
+
+      <section style="background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 8px 0">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; padding: 12px 20px 8px">
+          <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 19px; letter-spacing: -0.02em">Recent activity</h2>
+          <a href="#" style="font-size: 13px; font-weight: 600; color: var(--muted)">See all</a>
+        </div>
+        <a href="#" style="display: flex; align-items: flex-start; gap: 12px; padding: 12px 20px; border-top: 1px solid var(--line)"><span style="width: 36px; height: 36px; border-radius: 50%; background: var(--v3); color: var(--v3i); display: grid; place-items: center; font-weight: 600; font-size: 12px; flex-shrink: 0">SO</span><span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px"><span style="line-height: 1.35"><b style="font-weight: 600">Sofie</b> added <b style="font-weight: 600">Groceries, Netto</b></span><span style="font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 8px">Apartment Nørrebro · Today<span style="display: inline-flex; align-items: center; gap: 3px"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width: 13px; height: 13px"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.4A8 8 0 1 1 21 12z"></path></svg>2</span><svg class="ic" viewBox="0 0 24 24" role="img" aria-label="Receipt attached" style="width: 13px; height: 13px"><path d="M21 11.5l-8.5 8.5a5 5 0 0 1-7-7l9-9a3.5 3.5 0 0 1 5 5l-9 9a2 2 0 0 1-3-3l8-8"></path></svg></span></span><span style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px"><span style="font-size: 12px; color: var(--muted)">you owe</span><span class="num" style="font-weight: 600; color: var(--owe)">98.40 kr</span></span></a>
+        <a href="#" style="display: flex; align-items: flex-start; gap: 12px; padding: 12px 20px; border-top: 1px solid var(--line)"><span style="width: 36px; height: 36px; border-radius: 50%; background: var(--v1); color: var(--v1i); display: grid; place-items: center; font-weight: 600; font-size: 12px; flex-shrink: 0">EY</span><span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px"><span style="line-height: 1.35"><b style="font-weight: 600">You</b> paid <b style="font-weight: 600">Tram 28 tickets</b></span><span style="font-size: 12px; color: var(--muted)">Lisbon trip · Yesterday</span></span><span style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px"><span style="font-size: 12px; color: var(--muted)">you lent</span><span class="num" style="font-weight: 600; color: var(--owed)">€19.20</span></span></a>
+        <a href="#" style="display: flex; align-items: flex-start; gap: 12px; padding: 12px 20px; border-top: 1px solid var(--line)"><span style="width: 36px; height: 36px; border-radius: 50%; background: var(--v4); color: var(--v4i); display: grid; place-items: center; font-weight: 600; font-size: 12px; flex-shrink: 0">JO</span><span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px"><span style="line-height: 1.35"><b style="font-weight: 600">Jonas</b> settled up with you</span><span style="font-size: 12px; color: var(--muted)">via MobilePay · 28 Oct</span></span><span class="num" style="font-weight: 600; color: var(--muted)">150.00 kr</span></a>
+        <a href="#" style="display: flex; align-items: flex-start; gap: 12px; padding: 12px 20px; border-top: 1px solid var(--line)"><span style="width: 36px; height: 36px; border-radius: 50%; background: var(--v2); color: var(--v2i); display: grid; place-items: center; font-weight: 600; font-size: 12px; flex-shrink: 0">MK</span><span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px"><span style="line-height: 1.35"><b style="font-weight: 600">Mikkel</b> added <b style="font-weight: 600">Dinner at Taberna</b></span><span style="font-size: 12px; color: var(--muted)">Lisbon trip · 27 Oct</span></span><span style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px"><span style="font-size: 12px; color: var(--muted)">you owe</span><span class="num" style="font-weight: 600; color: var(--owe)">€31.50</span></span></a>
+      </section>
+    </div>
+
+    <section style="display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; align-items: baseline; justify-content: space-between">
+        <h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 19px; letter-spacing: -0.02em">Friends</h2>
+        <a href="#" style="font-size: 13px; font-weight: 600; color: var(--muted)">See all</a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px">
+        <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 14px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line)"><span style="width: 40px; height: 40px; border-radius: 50%; background: var(--v2); color: var(--v2i); display: grid; place-items: center; font-weight: 600; font-size: 13px">MK</span><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600">Mikkel</span><span class="num" style="font-size: 12px; font-weight: 600; color: var(--owed)">owes you 220.00 kr</span></span></a>
+        <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 14px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line)"><span style="width: 40px; height: 40px; border-radius: 50%; background: var(--v3); color: var(--v3i); display: grid; place-items: center; font-weight: 600; font-size: 13px">SO</span><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600">Sofie</span><span class="num" style="font-size: 12px; font-weight: 600; color: var(--owe)">you owe 145.50 kr</span></span></a>
+        <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 14px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line)"><span style="width: 40px; height: 40px; border-radius: 50%; background: var(--v4); color: var(--v4i); display: grid; place-items: center; font-weight: 600; font-size: 13px">JO</span><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 600">Jonas</span><span class="num" style="font-size: 12px; font-weight: 600; color: var(--owed)">owes you 96.00 kr</span></span></a>
+        <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 14px; border-radius: 16px; border: 1px dashed var(--line); color: var(--muted)"><span style="width: 40px; height: 40px; border-radius: 50%; background: var(--surface2); display: grid; place-items: center"><svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></span><span style="font-weight: 600">Add a friend</span></a>
+      </div>
+    </section>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"dark":{"editor":"boolean","default":false},"accent":{"editor":"enum","options":["plum","forest","navy","clay"],"default":"navy"},"$preview":{"width":1440,"height":1060}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { themeClass: (this.props.dark ?? false) ? 'dark' : 'light', accentClass: 'acc-' + (this.props.accent ?? 'navy') };
+  }
+}
+</script>
+</body>
+</html>

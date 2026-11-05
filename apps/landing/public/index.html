@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Weven, coming soon</title>
+    <meta
+      name="description"
+      content="Somebody owes somebody. Not for long. Weven is coming soon."
+    />
+    <meta name="theme-color" content="#121A2E" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="/fonts/bricolage-grotesque-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="bg-night">
+    <div
+      class="relative flex min-h-svh flex-col overflow-hidden bg-[radial-gradient(120%_90%_at_50%_0%,var(--color-dusk)_0%,var(--color-night)_60%)] font-sans text-cloud md:min-h-[max(100svh,860px)]"
+    >
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <span
+          class="absolute top-[18%] left-[8%] size-1 rounded-full bg-mist motion-safe:animate-twinkle"
+        ></span>
+        <span
+          class="absolute top-[62%] left-[22%] size-[3px] rounded-full bg-mist [animation-delay:1s] motion-safe:animate-twinkle"
+        ></span>
+        <span
+          class="absolute top-[14%] left-[74%] size-[5px] rounded-full bg-mist [animation-delay:0.5s] motion-safe:animate-twinkle"
+        ></span>
+        <span
+          class="absolute top-[48%] left-[88%] size-[3px] rounded-full bg-mist [animation-delay:2s] motion-safe:animate-twinkle"
+        ></span>
+        <span
+          class="absolute top-[8%] left-[56%] size-[3px] rounded-full bg-mist [animation-delay:1.4s] motion-safe:animate-twinkle"
+        ></span>
+        <span
+          class="absolute top-[30%] left-[38%] size-0.5 rounded-full bg-mist [animation-delay:0.8s] motion-safe:animate-twinkle"
+        ></span>
+      </div>
+
+      <!-- Phones: the receipt, pie and euro coin would sit on the text, so they are hidden. -->
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div
+          class="absolute top-[34%] left-[6%] hidden w-[120px] -rotate-12 rounded-lg bg-paper px-3 py-3.5 font-receipt text-[11px]/[1.6] font-semibold text-paper-ink shadow-[0_20px_40px_rgba(0,0,0,.35)] motion-safe:animate-float md:block"
+        >
+          <div class="text-center font-bold">RECEIPT</div>
+          <div class="flex justify-between"><span>Pizza</span><span>???</span></div>
+          <div class="flex justify-between"><span>Wine</span><span>???</span></div>
+          <div class="flex justify-between"><span>Who?</span><span>???</span></div>
+          <div class="mt-1 flex justify-between border-t border-dashed border-paper-line pt-1">
+            <span>TOTAL</span><span>?.??</span>
+          </div>
+        </div>
+        <svg
+          class="absolute top-[22%] right-[8%] hidden size-[110px] rotate-10 [animation-delay:-2s] motion-safe:animate-float md:block"
+          viewBox="0 0 48 48"
+        >
+          <path class="fill-accent" d="M24 24L43.32 18.82A20 20 0 1 1 34 6.68Z" />
+          <path class="fill-periwinkle" d="M26.4 22.2L45.72 17.02A20 20 0 0 0 36.4 4.88Z" />
+        </svg>
+        <div
+          class="absolute top-24 right-[5%] grid size-12 -rotate-6 place-items-center rounded-full bg-sun font-display text-[22px] font-extrabold text-sun-ink shadow-[inset_0_-5px_0_rgba(0,0,0,.15)] [animation-delay:-4s] motion-safe:animate-float md:top-[60%] md:right-[16%] md:size-16 md:text-3xl"
+        >
+          ?
+        </div>
+        <div
+          class="absolute top-[90px] left-[6%] grid size-11 rotate-8 place-items-center rounded-full bg-mint font-display text-xl font-extrabold text-mint-ink shadow-[inset_0_-5px_0_rgba(0,0,0,.15)] [animation-delay:-1s] motion-safe:animate-float md:top-[14%] md:left-[18%]"
+        >
+          kr
+        </div>
+        <div
+          class="absolute top-[74%] left-[13%] hidden size-13 rotate-4 place-items-center rounded-full bg-peach font-display text-2xl font-extrabold text-peach-ink shadow-[inset_0_-5px_0_rgba(0,0,0,.15)] [animation-delay:-3s] motion-safe:animate-float md:grid"
+        >
+          €
+        </div>
+      </div>
+
+      <header class="relative mx-auto w-full max-w-[1200px] px-6 py-7">
+        <span
+          class="inline-flex items-center gap-2.5 font-display text-[26px] font-extrabold tracking-[-0.04em]"
+        >
+          <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true">
+            <circle class="fill-periwinkle" cx="9" cy="12" r="6.5" />
+            <circle class="fill-white" cx="15" cy="12" r="6.5" />
+            <path class="fill-accent" d="M12 6.23A6.5 6.5 0 0 1 12 17.77A6.5 6.5 0 0 1 12 6.23Z" />
+          </svg>
+          weven
+        </span>
+      </header>
+
+      <main
+        class="relative mx-auto flex w-full max-w-[860px] flex-1 flex-col items-center gap-5 px-5 pb-7 text-center md:gap-7 md:px-6 md:pt-5 md:pb-[170px]"
+      >
+        <div class="relative size-[110px] md:size-[150px]">
+          <svg
+            class="size-full motion-safe:animate-spin-slow"
+            viewBox="0 0 150 150"
+            role="img"
+            aria-label="Coming soon"
+          >
+            <defs>
+              <path id="ring" d="M75 75m-58 0a58 58 0 1 1 116 0a58 58 0 1 1-116 0" />
+            </defs>
+            <text class="fill-periwinkle font-sans text-[13px] font-bold">
+              <textPath href="#ring" textLength="360">
+                COMING SOON · COMING SOON · COMING SOON ·
+              </textPath>
+            </text>
+          </svg>
+          <span
+            class="absolute inset-[30px] grid -rotate-8 place-items-center rounded-full bg-sun font-display text-[25px] font-extrabold text-sun-deep md:inset-[42px] md:text-[34px]"
+            aria-hidden="true"
+            >shh</span
+          >
+        </div>
+
+        <h1
+          class="font-display text-[clamp(44px,7vw,92px)] leading-[0.98] font-extrabold tracking-[-0.045em]"
+        >
+          Somebody owes somebody.<br /><span class="text-periwinkle">Not for long.</span>
+        </h1>
+        <p class="max-w-[620px] text-[clamp(17px,2vw,21px)] leading-normal text-haze">
+          Something is cooking that makes every group dinner, trip and shared flat come out… well,
+          we can't say yet. But you'll like the ending.
+        </p>
+
+        <!-- The blurred text is placeholder copy, so the page source keeps the secret. -->
+        <div class="mt-2 flex flex-wrap justify-center gap-3">
+          <span
+            class="relative rounded-full border border-dashed border-white/25 bg-white/8 px-4 py-2.5 text-sm font-semibold"
+          >
+            <span class="blur-[4px]" aria-hidden="true">Nothing to see here</span>
+            <span class="sr-only">Secret feature</span>
+            <span
+              class="absolute inset-0 grid place-items-center font-display text-lg font-extrabold text-sun"
+              aria-hidden="true"
+              >?</span
+            >
+          </span>
+          <span
+            class="relative -rotate-2 rounded-full border border-dashed border-white/25 bg-white/8 px-4 py-2.5 text-sm font-semibold"
+          >
+            <span class="blur-[4px]" aria-hidden="true">Nice try, detective</span>
+            <span class="sr-only">Secret feature</span>
+            <span
+              class="absolute inset-0 grid place-items-center font-display text-lg font-extrabold text-sun"
+              aria-hidden="true"
+              >?</span
+            >
+          </span>
+          <span
+            class="relative rotate-2 rounded-full border border-dashed border-white/25 bg-white/8 px-4 py-2.5 text-sm font-semibold"
+          >
+            <span class="blur-[4px]" aria-hidden="true">Patience, friend</span>
+            <span class="sr-only">Secret feature</span>
+            <span
+              class="absolute inset-0 grid place-items-center font-display text-lg font-extrabold text-sun"
+              aria-hidden="true"
+              >?</span
+            >
+          </span>
+        </div>
+      </main>
+
+      <div
+        class="relative h-[126px] flex-none self-center overflow-hidden md:absolute md:bottom-[-70px] md:left-1/2 md:h-auto md:-translate-x-1/2 md:overflow-visible"
+        aria-hidden="true"
+      >
+        <div class="motion-safe:animate-peek">
+          <svg class="h-auto w-[280px] md:w-[420px]" viewBox="0 0 420 230">
+            <circle class="fill-periwinkle" cx="150" cy="150" r="120" />
+            <circle class="fill-white" cx="270" cy="150" r="120" />
+            <path class="fill-accent" d="M210 46A120 120 0 0 1 210 254A120 120 0 0 1 210 46Z" />
+            <ellipse
+              class="origin-center fill-ink [transform-box:fill-box] motion-safe:animate-blink"
+              cx="118"
+              cy="104"
+              rx="9"
+              ry="13"
+            />
+            <ellipse
+              class="origin-center fill-ink [transform-box:fill-box] motion-safe:animate-blink"
+              cx="160"
+              cy="104"
+              rx="9"
+              ry="13"
+            />
+            <ellipse
+              class="origin-center fill-ink [transform-box:fill-box] motion-safe:animate-blink"
+              cx="262"
+              cy="104"
+              rx="9"
+              ry="13"
+            />
+            <ellipse
+              class="origin-center fill-ink [transform-box:fill-box] motion-safe:animate-blink"
+              cx="304"
+              cy="104"
+              rx="9"
+              ry="13"
+            />
+            <path
+              class="fill-none stroke-ink stroke-5 [stroke-linecap:round]"
+              d="M126 138Q139 148 152 138"
+            />
+            <path
+              class="fill-none stroke-ink stroke-5 [stroke-linecap:round]"
+              d="M270 138Q283 148 296 138"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <footer
+        class="relative flex w-full flex-wrap items-center justify-between gap-2 bg-night px-5 pt-3.5 pb-[18px] text-[13px] text-dim md:absolute md:inset-x-0 md:bottom-[18px] md:mx-auto md:max-w-[1200px] md:bg-transparent md:px-6 md:py-0"
+      >
+        <span>© 2026 Weven</span>
+        <a
+          class="inline-flex items-center gap-1.5 hover:text-white hover:underline focus-visible:text-white focus-visible:underline"
+          href="https://norduo.com"
+          target="_blank"
+          rel="noopener"
+        >
+          Powered by
+          <img src="/norduo-logo.svg" alt="" width="20" height="19" />
+          Norduo
+        </a>
+      </footer>
+    </div>
+  </body>
+</html>

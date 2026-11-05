@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Groups</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./bs.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="bs scr {{themeClass}}" style="width: 390px; height: 844px">
+  <div class="body" style="padding-top: 20px">
+    <header style="display: flex; align-items: center; justify-content: space-between">
+      <h1 class="disp h1">Groups</h1>
+      <div style="display: flex; gap: 8px">
+        <button class="ib boxed" aria-label="Search groups"><svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></button>
+        <a href="CreateGroup.dc.html" class="ib boxed" aria-label="New group"><svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></a>
+      </div>
+    </header>
+
+    <div style="display: flex; gap: 8px">
+      <button class="pill on" aria-pressed="true">All · 4</button>
+      <button class="pill" aria-pressed="false">You owe</button>
+      <button class="pill" aria-pressed="false">Owed to you</button>
+      <button class="pill" aria-pressed="false">Settled</button>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <a href="GroupDetail.dc.html" class="card cardpad" style="display: flex; flex-direction: column; gap: 14px">
+        <div style="display: flex; align-items: center; gap: 12px">
+          <span class="tile c4"><svg class="ic" viewBox="0 0 24 24"><path d="M22 2 11 13"></path><path d="M22 2l-7 20-4-9-9-4z"></path></svg></span>
+          <span class="grow"><span class="t">Lisbon trip</span><span class="sub">12 expenses · EUR</span></span>
+          <span class="end"><span class="xs">you're owed</span><span class="amt owed">€84.20</span></span>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between">
+          <span class="stack"><span class="av sm c1">EY</span><span class="av sm c2">MK</span><span class="av sm c3">SO</span><span class="av sm c4">JO</span><span class="av sm c0">+1</span></span>
+          <span class="xs">Updated today</span>
+        </div>
+      </a>
+      <a href="#" class="card cardpad" style="display: flex; flex-direction: column; gap: 14px">
+        <div style="display: flex; align-items: center; gap: 12px">
+          <span class="tile c2"><svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"></path></svg></span>
+          <span class="grow"><span class="t">Apartment Nørrebro</span><span class="sub">48 expenses · DKK</span></span>
+          <span class="end"><span class="xs">you owe</span><span class="amt owe">312.00 kr</span></span>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between">
+          <span class="stack"><span class="av sm c1">EY</span><span class="av sm c3">SO</span><span class="av sm c4">FR</span></span>
+          <span class="xs">Updated today</span>
+        </div>
+      </a>
+      <a href="#" class="card cardpad" style="display: flex; flex-direction: column; gap: 14px">
+        <div style="display: flex; align-items: center; gap: 12px">
+          <span class="tile c3"><svg class="ic" viewBox="0 0 24 24"><path d="M7 3v18"></path><path d="M4 3v5a3 3 0 0 0 6 0V3"></path><path d="M17 21V3c-2 0-3 2-3 6s1 5 3 5"></path></svg></span>
+          <span class="grow"><span class="t">Thursday dinner club</span><span class="sub">9 expenses · DKK</span></span>
+          <span class="end"><span class="xs">you're owed</span><span class="amt owed">455.00 kr</span></span>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between">
+          <span class="stack"><span class="av sm c1">EY</span><span class="av sm c2">MK</span><span class="av sm c4">JO</span><span class="av sm c3">AN</span></span>
+          <span class="xs">Updated 3 days ago</span>
+        </div>
+      </a>
+      <a href="#" class="card cardpad" style="display: flex; flex-direction: column; gap: 14px">
+        <div style="display: flex; align-items: center; gap: 12px">
+          <span class="tile c1"><svg class="ic" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-9.3-9A5 5 0 0 1 12 6a5 5 0 0 1 9.3 5C19 15.6 12 20 12 20z"></path></svg></span>
+          <span class="grow"><span class="t" style="display: flex; align-items: center; gap: 6px">Family<svg class="ic xs mut" viewBox="0 0 24 24" role="img" aria-label="Locked"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg></span><span class="sub">21 expenses · DKK</span></span>
+          <span class="pill">Settled</span>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between">
+          <span class="stack"><span class="av sm c1">EY</span><span class="av sm c2">MO</span><span class="av sm c3">DA</span><span class="av sm c0">+3</span></span>
+          <span class="xs">Updated 2 weeks ago</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <nav class="tabbar" aria-label="Main">
+    <a href="Main.dc.html"><svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"></path></svg>Home</a>
+    <a href="Groups.dc.html" aria-current="page"><svg class="ic" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"></circle><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path><path d="M21 20c0-2.5-1.5-4.6-3.5-5.5"></path></svg>Groups</a>
+    <div><a href="AddExpense.dc.html" class="fab" aria-label="Add expense" style="display: grid; color: var(--onacc)"><svg class="ic l" viewBox="0 0 24 24" style="stroke-width: 2.25"><path d="M12 5v14M5 12h14"></path></svg></a></div>
+    <a href="Activity.dc.html"><svg class="ic" viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h7"></path></svg>Activity</a>
+    <a href="Account.dc.html"><svg class="ic" viewBox="0 0 24 24"><path d="M21 21v-1a5 5 0 0 0-5-5H8a5 5 0 0 0-5 5v1"></path><circle cx="12" cy="7" r="4"></circle></svg>Account</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"dark":{"editor":"boolean","default":false},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return { themeClass: (this.props.dark ?? false) ? 'dark' : 'light' }; }
+}
+</script>
+</body>
+</html>

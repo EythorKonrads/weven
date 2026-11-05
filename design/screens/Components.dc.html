@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Weven components</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./bs.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="bs scr {{themeClass}}" style="width: 1800px; height: 3300px; padding: 64px 72px; display: flex; flex-direction: column; gap: 56px">
+
+  <header style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px">
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <span style="display: flex; align-items: center; gap: 12px"><svg width="40" height="40" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="12" r="6.5" fill="#8FA9E0"></circle><circle cx="15" cy="12" r="6.5" fill="var(--acc)"></circle><path d="M12 6.23A6.5 6.5 0 0 1 12 17.77A6.5 6.5 0 0 1 12 6.23Z" fill="var(--ink)"></path></svg><span class="disp" style="font-size: 48px">Weven components</span></span>
+      <span class="sub" style="font-size: 16px">Atomic design: tokens → atoms → molecules → organisms → templates. Names match the planned Vue components.</span>
+    </div>
+    <span class="pill acc" style="height: 32px; font-size: 13px">Toggle Dark in Tweaks</span>
+  </header>
+
+  <!-- ===================== TOKENS ===================== -->
+  <section style="display: flex; flex-direction: column; gap: 20px">
+    <div style="display: flex; align-items: baseline; gap: 14px"><span class="tag" style="font-size: 12px">00</span><h2 class="disp" style="font-size: 32px">Tokens</h2><span class="sub">Defined once in bs.css, swapped for dark mode</span></div>
+    <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 14px">
+      <div style="display: flex; flex-direction: column; gap: 8px"><span style="height: 72px; border-radius: 14px; background: var(--bg); border: 1px solid var(--line)"></span><span class="t" style="font-size: 13px">bg</span><span class="xs">Page</span></div>
+      <div style="display: flex; flex-direction: column; gap: 8px"><span style="height: 72px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line)"></span><span class="t" style="font-size: 13px">surface</span><span class="xs">Cards</span></div>
+      <div style="display: flex; flex-direction: column; gap: 8px"><span style="height: 72px; border-radius: 14px; background: var(--surface2)"></span><span class="t" style="font-size: 13px">surface2</span><span class="xs">Fills</span></div>
+      <div style="display: flex; flex-direction: column; gap: 8px"><span style="height: 72px; border-radius: 14px; background: var(--line)"></span><span class="t" style="font-size: 13px">line</span><span class="xs">Borders</span></div>
+      <div style="display: flex; flex-direction: column; gap: 8px"><span style="height: 72px; border-radius: 14px; background: var(--text)"></span><span class="t" style="font-size: 13px">text</span><span class="xs">Primary text</span></div>
+      <div style="display: flex; flex-direction: column; gap: 8px"><span style="height: 72px; border-radius: 14px; background: var(--muted)"></span><span class="t" style="font-size: 13px">muted</span><span class="xs">Secondary</span></div>
+      <div style="display: flex; flex-direction: column; gap: 8px"><span style="height: 72px; border-radius: 14px; background: var(--acc)"></span><span class="t" style="font-size: 13px">acc</span><span class="xs">Navy accent</span></div>
+      <div style="display: flex; flex-direction: column; gap: 8px"><span style="height: 72px; border-radius: 14px; background: var(--accSoft)"></span><span class="t" style="font-size: 13px">accSoft</span><span class="xs">Selected</span></div>
+      <div style="display: flex; flex-direction: column; gap: 8px"><span style="height: 72px; border-radius: 14px; background: var(--ink)"></span><span class="t" style="font-size: 13px">ink</span><span class="xs">Balance card</span></div>
+      <div style="display: flex; flex-direction: column; gap: 8px"><span style="height: 72px; border-radius: 14px; background: var(--owed)"></span><span class="t" style="font-size: 13px">owed</span><span class="xs">You're owed</span></div>
+      <div style="display: flex; flex-direction: column; gap: 8px"><span style="height: 72px; border-radius: 14px; background: var(--owe)"></span><span class="t" style="font-size: 13px">owe</span><span class="xs">You owe</span></div>
+      <div style="display: flex; flex-direction: column; gap: 8px"><span style="height: 72px; border-radius: 14px; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden"><span style="background: var(--v1)"></span><span style="background: var(--v2)"></span><span style="background: var(--v3)"></span><span style="background: var(--v4)"></span></span><span class="t" style="font-size: 13px">v1–v4</span><span class="xs">Avatars, tiles</span></div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px">
+      <div class="card cardpad" style="display: flex; flex-direction: column; gap: 6px"><span class="xs">Display · Bricolage 700</span><span class="disp h1">Hi Eythor</span><span class="disp h2">Groups</span><span class="disp h3">Who owes who</span></div>
+      <div class="card cardpad" style="display: flex; flex-direction: column; gap: 6px"><span class="xs">Body · Inter</span><span class="t">Title 15 / 600</span><span>Body 15 / 400</span><span class="sub">Sub 13 / muted</span><span class="xs">Caption 12 / muted</span></div>
+      <div class="card cardpad" style="display: flex; flex-direction: column; gap: 6px"><span class="xs">Amounts · tabular numbers</span><span class="big" style="font-size: 40px">€84.20</span><span class="amt owed">+220.00 kr</span><span class="amt owe">−145.50 kr</span></div>
+      <div class="card cardpad" style="display: flex; flex-direction: column; gap: 10px"><span class="xs">Radius · spacing</span><span style="display: flex; gap: 10px; align-items: flex-end"><span style="width: 40px; height: 40px; border: 2px solid var(--acc); border-radius: 9px"></span><span style="width: 40px; height: 40px; border: 2px solid var(--acc); border-radius: 14px"></span><span style="width: 40px; height: 40px; border: 2px solid var(--acc); border-radius: 20px"></span><span style="width: 40px; height: 40px; border: 2px solid var(--acc); border-radius: 50%"></span></span><span class="xs">9 · 14 · 20 · full — spacing 4 / 8 / 12 / 16 / 20 / 24</span></div>
+    </div>
+  </section>
+
+  <!-- ===================== ATOMS ===================== -->
+  <section style="display: flex; flex-direction: column; gap: 20px">
+    <div style="display: flex; align-items: baseline; gap: 14px"><span class="tag" style="font-size: 12px">01</span><h2 class="disp" style="font-size: 32px">Atoms</h2><span class="sub">Smallest pieces, no layout of their own</span></div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+
+      <div class="card cardpad" style="display: flex; flex-direction: column; gap: 14px">
+        <span style="font: 500 12px 'JetBrains Mono', monospace; color: var(--muted)">&lt;WButton variant size&gt;</span>
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <button class="btn btn-p">Primary</button>
+          <button class="btn btn-s">Secondary</button>
+          <button class="btn btn-soft">Soft</button>
+          <div style="display: flex; gap: 8px"><button class="btn btn-p btn-sm">Small</button><button class="btn btn-s btn-sm">Remind</button><button class="btn btn-p btn-sm" disabled style="opacity: 0.4">Disabled</button></div>
+        </div>
+      </div>
+
+      <div class="card cardpad" style="display: flex; flex-direction: column; gap: 14px">
+        <span style="font: 500 12px 'JetBrains Mono', monospace; color: var(--muted)">&lt;WAvatar size color&gt; · &lt;WTile&gt;</span>
+        <div style="display: flex; align-items: center; gap: 10px"><span class="av sm c1">EY</span><span class="av c2">MK</span><span class="av c3" style="width: 52px; height: 52px; font-size: 16px">SO</span><span class="av c4" style="width: 64px; height: 64px; font-size: 20px">JO</span><span class="av c0"><svg class="ic s" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></span></div>
+        <div style="display: flex; align-items: center; gap: 10px">
+          <span class="tile c4"><svg class="ic" viewBox="0 0 24 24"><path d="M22 2 11 13"></path><path d="M22 2l-7 20-4-9-9-4z"></path></svg></span>
+          <span class="tile c2"><svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"></path></svg></span>
+          <span class="tile c3"><svg class="ic" viewBox="0 0 24 24"><path d="M7 3v18"></path><path d="M4 3v5a3 3 0 0 0 6 0V3"></path><path d="M17 21V3c-2 0-3 2-3 6s1 5 3 5"></path></svg></span>
+          <span class="tile c1"><svg class="ic" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-9.3-9A5 5 0 0 1 12 6a5 5 0 0 1 9.3 5C19 15.6 12 20 12 20z"></path></svg></span>
+          <span class="tile c0"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"></rect><circle cx="9" cy="9" r="2"></circle><path d="M21 15l-5-5L5 21"></path></svg></span>
+        </div>
+        <span class="xs">Avatar: 28 / 40 / 52 / 64 / 88 · Tile: 40 / 44 / 72</span>
+      </div>
+
+      <div class="card cardpad" style="display: flex; flex-direction: column; gap: 14px">
+        <span style="font: 500 12px 'JetBrains Mono', monospace; color: var(--muted)">&lt;WPill&gt; · &lt;WTag&gt;</span>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center"><span class="pill">Settled</span><span class="pill acc">EUR</span><span class="pill on">All · 4</span><span class="pill">You owe</span><span class="tag">V2</span><span class="tag">Preferred</span></div>
+        <span style="font: 500 12px 'JetBrains Mono', monospace; color: var(--muted); margin-top: 6px">&lt;WSwitch&gt; · &lt;WCheckbox&gt; · &lt;WRadio&gt;</span>
+        <div style="display: flex; align-items: center; gap: 18px"><button class="sw" role="switch" aria-checked="true" aria-label="On"></button><button class="sw" role="switch" aria-checked="false" aria-label="Off"></button><span class="check on"><svg class="ic xs" viewBox="0 0 24 24" style="stroke-width: 3"><path d="M5 12l5 5 9-10"></path></svg></span><span class="check"></span><span class="radio on"></span><span class="radio"></span></div>
+      </div>
+
+      <div class="card cardpad" style="display: flex; flex-direction: column; gap: 14px">
+        <span style="font: 500 12px 'JetBrains Mono', monospace; color: var(--muted)">&lt;WInput&gt;</span>
+        <label class="inp"><span class="sr">Name</span><input placeholder="Placeholder"></label>
+        <label class="inp" style="border-color: var(--acc); box-shadow: 0 0 0 3px var(--accSoft)"><span class="sr">Focused</span><input value="Focused"></label>
+        <label class="inp"><span class="pill">+45</span><span class="sr">Phone</span><input value="40 12 34 56"></label>
+      </div>
+
+      <div class="card cardpad" style="display: flex; flex-direction: column; gap: 14px; grid-column: span 2">
+        <span style="font: 500 12px 'JetBrains Mono', monospace; color: var(--muted)">&lt;WIcon name&gt; · 1.75 stroke, 24 grid · 13 / 16 / 20 / 24</span>
+        <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 10px">
+          <span style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span class="ib boxed"><svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"></path></svg></span><span class="xs">home</span></span>
+          <span style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span class="ib boxed"><svg class="ic" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"></circle><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path><path d="M21 20c0-2.5-1.5-4.6-3.5-5.5"></path></svg></span><span class="xs">group</span></span>
+          <span style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span class="ib boxed"><svg class="ic" viewBox="0 0 24 24"><circle cx="10" cy="8" r="4"></circle><path d="M3 20c0-3.9 3.1-7 7-7"></path><path d="M19 8v6M16 11h6"></path></svg></span><span class="xs">invite</span></span>
+          <span style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span class="ib boxed"><svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></span><span class="xs">plus</span></span>
+          <span style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span class="ib boxed"><svg class="ic" viewBox="0 0 24 24"><path d="M7 7h12l-3-3"></path><path d="M17 17H5l3 3"></path></svg></span><span class="xs">settle</span></span>
+          <span style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span class="ib boxed"><svg class="ic" viewBox="0 0 24 24"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"></path><path d="M8 12h8"></path></svg></span><span class="xs">scan</span></span>
+          <span style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span class="ib boxed"><svg class="ic" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h2l2-2h6l2 2h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><circle cx="12" cy="13" r="3.5"></circle></svg></span><span class="xs">camera</span></span>
+          <span style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span class="ib boxed"><svg class="ic" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.4A8 8 0 1 1 21 12z"></path></svg></span><span class="xs">comment</span></span>
+          <span style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span class="ib boxed"><svg class="ic" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg></span><span class="xs">lock</span></span>
+          <span style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span class="ib boxed"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg></span><span class="xs">currency</span></span>
+          <span style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span class="ib boxed"><svg class="ic" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg></span><span class="xs">bell</span></span>
+          <span style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span class="ib boxed"><svg class="ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"></path></svg></span><span class="xs">back</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MOLECULES ===================== -->
+  <section style="display: flex; flex-direction: column; gap: 20px">
+    <div style="display: flex; align-items: baseline; gap: 14px"><span class="tag" style="font-size: 12px">02</span><h2 class="disp" style="font-size: 32px">Molecules</h2><span class="sub">Atoms combined into one small job</span></div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+
+      <div class="card cardpad" style="display: flex; flex-direction: column; gap: 12px; grid-column: span 2">
+        <span style="font: 500 12px 'JetBrains Mono', monospace; color: var(--muted)">&lt;WListRow leading title sub trailing&gt; — one row, four variants</span>
+        <div class="card list" style="background: var(--bg)">
+          <div class="row"><span class="tile c4"><svg class="ic" viewBox="0 0 24 24"><path d="M22 2 11 13"></path><path d="M22 2l-7 20-4-9-9-4z"></path></svg></span><span class="grow"><span class="t">Lisbon trip</span><span class="sub">5 people · EUR</span></span><span class="end"><span class="xs">you're owed</span><span class="amt owed">€84.20</span></span><span class="xs" style="width: 120px; text-align: right; font-family: 'JetBrains Mono', monospace">tile + balance</span></div>
+          <div class="row"><span class="av c3">SO</span><span class="grow"><span class="t">Sofie Lund</span><span class="sub">2 shared groups</span></span><span class="end"><span class="xs">you owe</span><span class="amt owe">145.50 kr</span></span><span class="xs" style="width: 120px; text-align: right; font-family: 'JetBrains Mono', monospace">avatar + balance</span></div>
+          <div class="row"><span class="av sm c2">MK</span><svg class="ic s mut" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg><span class="av sm c1">EY</span><span class="grow"><span class="t" style="font-size: 14px">Mikkel pays you</span><span class="amt owed" style="font-size: 14px">€52.70</span></span><button class="btn btn-soft btn-sm">Settle</button><span class="xs" style="width: 120px; text-align: right; font-family: 'JetBrains Mono', monospace">payment + action</span></div>
+          <div class="row"><span class="grow"><span class="t">Lock group</span><span class="sub">Nobody can add new members</span></span><button class="sw" role="switch" aria-checked="false" aria-label="Lock group"></button><span class="xs" style="width: 120px; text-align: right; font-family: 'JetBrains Mono', monospace">setting + switch</span></div>
+        </div>
+      </div>
+
+      <div class="card cardpad" style="display: flex; flex-direction: column; gap: 14px">
+        <span style="font: 500 12px 'JetBrains Mono', monospace; color: var(--muted)">&lt;WField label hint&gt;</span>
+        <label class="field"><span class="lbl">Group name</span><span class="inp"><input value="Lisbon trip"></span><span class="xs">Shown to everyone in the group</span></label>
+        <span style="font: 500 12px 'JetBrains Mono', monospace; color: var(--muted); margin-top: 4px">&lt;WSegmented&gt;</span>
+        <div class="seg"><button aria-pressed="true">Equal</button><button aria-pressed="false">Exact</button><button aria-pressed="false">%</button><button aria-pressed="false">Shares</button></div>
+      </div>
+
+      <div class="card cardpad" style="display: flex; flex-direction: column; gap: 14px">
+        <span style="font: 500 12px 'JetBrains Mono', monospace; color: var(--muted)">&lt;WSectionHeader&gt;</span>
+        <div class="sechead"><h3 class="disp h2">Groups</h3><a href="#" class="link">See all</a></div>
+        <span style="font: 500 12px 'JetBrains Mono', monospace; color: var(--muted); margin-top: 4px">&lt;WAvatarStack max&gt;</span>
+        <span class="stack"><span class="av sm c1">EY</span><span class="av sm c2">MK</span><span class="av sm c3">SO</span><span class="av sm c4">JO</span><span class="av sm c0">+1</span></span>
+        <span style="font: 500 12px 'JetBrains Mono', monospace; color: var(--muted); margin-top: 4px">&lt;WBalanceLabel&gt;</span>
+        <div style="display: flex; gap: 24px"><span class="end" style="align-items: flex-start"><span class="xs">you're owed</span><span class="amt owed">€84.20</span></span><span class="end" style="align-items: flex-start"><span class="xs">you owe</span><span class="amt owe">312.00 kr</span></span><span class="pill">Settled</span></div>
+      </div>
+
+      <div class="card cardpad" style="display: flex; flex-direction: column; gap: 14px">
+        <span style="font: 500 12px 'JetBrains Mono', monospace; color: var(--muted)">&lt;WStepper&gt; · &lt;WQuickAction&gt;</span>
+        <span style="display: flex; align-items: center; gap: 6px"><button class="ib boxed" aria-label="Less" style="width: 36px; height: 36px"><svg class="ic s" viewBox="0 0 24 24"><path d="M5 12h14"></path></svg></button><span class="amt" style="width: 22px; text-align: center">2</span><button class="ib boxed" aria-label="More" style="width: 36px; height: 36px"><svg class="ic s" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></button></span>
+        <div style="display: flex; gap: 16px">
+          <a href="#" style="display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 12px; font-weight: 500"><span style="width: 56px; height: 56px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); display: grid; place-items: center"><svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></span>Add expense</a>
+          <a href="#" style="display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 12px; font-weight: 500"><span style="width: 56px; height: 56px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); display: grid; place-items: center"><svg class="ic" viewBox="0 0 24 24"><circle cx="10" cy="8" r="4"></circle><path d="M3 20c0-3.9 3.1-7 7-7"></path><path d="M19 8v6M16 11h6"></path></svg></span>Invite</a>
+        </div>
+      </div>
+
+      <div class="card cardpad" style="display: flex; flex-direction: column; gap: 14px">
+        <span style="font: 500 12px 'JetBrains Mono', monospace; color: var(--muted)">&lt;WComment mine&gt;</span>
+        <div style="display: flex; gap: 10px"><span class="av sm c3">SO</span><div style="display: flex; flex-direction: column; gap: 4px"><span class="xs"><b style="font-weight: 600; color: var(--text)">Sofie</b> · 21:14</span><div class="bubble">Should Anna pay less?</div></div></div>
+        <div style="display: flex; gap: 10px; flex-direction: row-reverse"><span class="av sm c1">EY</span><div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-end"><span class="xs">You · 21:31</span><div class="bubble me">Fine by me</div></div></div>
+      </div>
+
+      <div class="card cardpad" style="display: flex; flex-direction: column; gap: 14px">
+        <span style="font: 500 12px 'JetBrains Mono', monospace; color: var(--muted)">&lt;WCurrencyNote&gt; · &lt;WTotalCheck&gt;</span>
+        <div class="pill acc" style="height: auto; padding: 6px 12px; font-weight: 500; white-space: normal; gap: 6px"><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h12l-3-3"></path><path d="M17 17H5l3 3"></path></svg><span><b style="font-weight: 600">≈ €42.88</b> · 1 EUR = 7.4625 DKK, live</span></div>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; border-radius: 14px; background: var(--surface2)"><span class="sub">5 shares</span><span class="amt owed" style="display: flex; align-items: center; gap: 4px; font-size: 14px"><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>320.00 kr</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ORGANISMS ===================== -->
+  <section style="display: flex; flex-direction: column; gap: 20px">
+    <div style="display: flex; align-items: baseline; gap: 14px"><span class="tag" style="font-size: 12px">03</span><h2 class="disp" style="font-size: 32px">Organisms</h2><span class="sub">Self-contained sections of a screen</span></div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: start">
+
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <span style="font: 500 12px 'JetBrains Mono', monospace; color: var(--muted)">&lt;WBalanceCard&gt;</span>
+        <section class="hero">
+          <div style="display: flex; align-items: center; justify-content: space-between"><span class="dim">Total balance</span><span class="pill" style="background: rgba(255,255,255,0.12); color: inherit">DKK</span></div>
+          <div class="big" style="font-size: 44px">+1,240.50</div>
+          <div class="bar"><span style="flex: 75; background: var(--heroOwed)"></span><span style="flex: 25; background: var(--heroOwe)"></span></div>
+          <div style="display: flex; gap: 10px"><button class="btn hbtn" style="height: 44px; flex: 1">Settle up</button><button class="btn" style="height: 44px; flex: 1; background: transparent; color: inherit; border: 1px solid rgba(255,255,255,0.22)">Breakdown</button></div>
+        </section>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <span style="font: 500 12px 'JetBrains Mono', monospace; color: var(--muted)">&lt;WGroupCard&gt;</span>
+        <a href="#" class="card cardpad" style="display: flex; flex-direction: column; gap: 14px">
+          <div style="display: flex; align-items: center; gap: 12px"><span class="tile c4"><svg class="ic" viewBox="0 0 24 24"><path d="M22 2 11 13"></path><path d="M22 2l-7 20-4-9-9-4z"></path></svg></span><span class="grow"><span class="t">Lisbon trip</span><span class="sub">12 expenses · EUR</span></span><span class="end"><span class="xs">you're owed</span><span class="amt owed">€84.20</span></span></div>
+          <div style="display: flex; align-items: center; justify-content: space-between"><span class="stack"><span class="av sm c1">EY</span><span class="av sm c2">MK</span><span class="av sm c3">SO</span><span class="av sm c0">+2</span></span><span class="xs">Updated today</span></div>
+        </a>
+        <span style="font: 500 12px 'JetBrains Mono', monospace; color: var(--muted); margin-top: 10px">&lt;WAppBar title back actions&gt;</span>
+        <div class="card" style="padding: 0 4px"><div class="appbar" style="margin: 0"><button class="ib" aria-label="Back"><svg class="ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"></path></svg></button><span class="ttl">Group settings</span><button class="ib" aria-label="More"><svg class="ic" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"></circle><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle></svg></button></div></div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <span style="font: 500 12px 'JetBrains Mono', monospace; color: var(--muted)">&lt;WBottomSheet title&gt;</span>
+        <div class="card" style="overflow: hidden; background: var(--scrim); padding-top: 40px; border: 0">
+          <section class="sheet" style="position: relative; padding-bottom: 24px">
+            <div class="grab"></div>
+            <div class="sechead" style="align-items: center"><h3 class="disp h2">Currency</h3><button class="txtbtn">Done</button></div>
+            <div class="list">
+              <div class="row" style="padding: 10px 0"><span class="pill acc" style="width: 48px; justify-content: center">DKK</span><span class="grow"><span class="t">Danish krone</span></span><span class="radio on"></span></div>
+              <div class="row" style="padding: 10px 0"><span class="pill" style="width: 48px; justify-content: center">EUR</span><span class="grow"><span class="t">Euro</span></span><span class="radio"></span></div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px; grid-column: span 2">
+        <span style="font: 500 12px 'JetBrains Mono', monospace; color: var(--muted)">&lt;WTabBar active&gt; · &lt;WFooterAction&gt;</span>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+          <div class="card" style="position: relative; height: 110px; overflow: hidden; background: var(--bg)">
+            <nav class="tabbar" aria-label="Example tab bar">
+              <a href="#" aria-current="page"><svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"></path></svg>Home</a>
+              <a href="#"><svg class="ic" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"></circle><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path><path d="M21 20c0-2.5-1.5-4.6-3.5-5.5"></path></svg>Groups</a>
+              <div><a href="#" class="fab" aria-label="Add expense" style="display: grid; color: var(--onacc)"><svg class="ic l" viewBox="0 0 24 24" style="stroke-width: 2.25"><path d="M12 5v14M5 12h14"></path></svg></a></div>
+              <a href="#"><svg class="ic" viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h7"></path></svg>Activity</a>
+              <a href="#"><svg class="ic" viewBox="0 0 24 24"><path d="M21 21v-1a5 5 0 0 0-5-5H8a5 5 0 0 0-5 5v1"></path><circle cx="12" cy="7" r="4"></circle></svg>Account</a>
+            </nav>
+          </div>
+          <div class="card" style="position: relative; height: 110px; overflow: hidden; background: var(--bg)">
+            <div class="footer"><button class="btn btn-s" style="flex: 1">Next: Mikkel</button><button class="btn btn-p" style="flex: 1">See totals</button></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <span style="font: 500 12px 'JetBrains Mono', monospace; color: var(--muted)">&lt;WActivityItem&gt;</span>
+        <div class="card list">
+          <div class="row top"><span class="av c4">JO</span><span class="grow"><span style="font-size: 14px"><b style="font-weight: 600">Jonas</b> marked a payment as paid</span><span class="xs">via MobilePay · Wed</span><span style="display: flex; gap: 8px; margin-top: 8px"><button class="btn btn-p btn-sm">Confirm</button><button class="btn btn-s btn-sm">Not received</button></span></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TEMPLATES ===================== -->
+  <section style="display: flex; flex-direction: column; gap: 20px">
+    <div style="display: flex; align-items: baseline; gap: 14px"><span class="tag" style="font-size: 12px">04</span><h2 class="disp" style="font-size: 32px">Templates</h2><span class="sub">Page skeletons every screen is built from</span></div>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px">
+      <div style="display: flex; flex-direction: column; gap: 10px"><div class="card" style="height: 300px; padding: 16px; display: flex; flex-direction: column; gap: 10px; position: relative; overflow: hidden"><span style="height: 22px; width: 50%; border-radius: 6px; background: var(--surface2)"></span><span style="height: 80px; border-radius: 14px; background: var(--ink)"></span><span style="height: 36px; border-radius: 10px; background: var(--surface2)"></span><span style="height: 36px; border-radius: 10px; background: var(--surface2)"></span><span style="position: absolute; left: 0; right: 0; bottom: 0; height: 44px; border-top: 1px solid var(--line); background: var(--surface)"></span></div><span class="t" style="font-size: 14px">TabScreen</span><span class="xs">Title, content, tab bar. Home, Groups, Activity, Account</span></div>
+      <div style="display: flex; flex-direction: column; gap: 10px"><div class="card" style="height: 300px; padding: 16px; display: flex; flex-direction: column; gap: 10px"><span style="height: 22px; border-radius: 6px; background: var(--surface2); display: flex; justify-content: space-between"></span><span style="height: 56px; width: 56px; border-radius: 16px; background: var(--surface2)"></span><span style="height: 70px; border-radius: 14px; background: var(--ink)"></span><span style="height: 36px; border-radius: 10px; background: var(--surface2)"></span><span style="height: 36px; border-radius: 10px; background: var(--surface2)"></span></div><span class="t" style="font-size: 14px">DetailScreen</span><span class="xs">App bar with back, header, content. Group, Friend, Expense</span></div>
+      <div style="display: flex; flex-direction: column; gap: 10px"><div class="card" style="height: 300px; padding: 16px; display: flex; flex-direction: column; gap: 10px; position: relative; overflow: hidden"><span style="height: 22px; border-radius: 6px; background: var(--surface2)"></span><span style="height: 40px; border-radius: 10px; border: 1px solid var(--line)"></span><span style="height: 40px; border-radius: 10px; border: 1px solid var(--line)"></span><span style="height: 40px; border-radius: 10px; border: 1px solid var(--line)"></span><span style="position: absolute; left: 16px; right: 16px; bottom: 16px; height: 36px; border-radius: 10px; background: var(--acc)"></span></div><span class="t" style="font-size: 14px">FormScreen</span><span class="xs">Close, fields, sticky footer action. Add expense, Create group, Settle</span></div>
+      <div style="display: flex; flex-direction: column; gap: 10px"><div class="card" style="height: 300px; position: relative; overflow: hidden; background: var(--scrim)"><span style="position: absolute; left: 0; right: 0; bottom: 0; height: 170px; border-radius: 20px 20px 0 0; background: var(--surface); padding: 12px 16px; display: flex; flex-direction: column; gap: 10px"><span style="height: 4px; width: 32px; border-radius: 2px; background: var(--line); align-self: center"></span><span style="height: 18px; width: 50%; border-radius: 6px; background: var(--surface2)"></span><span style="height: 30px; border-radius: 8px; background: var(--surface2)"></span><span style="height: 30px; border-radius: 8px; background: var(--surface2)"></span></span></div><span class="t" style="font-size: 14px">SheetOverlay</span><span class="xs">Scrim and bottom sheet. Split options, Currency, Share item</span></div>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"dark":{"editor":"boolean","default":false},"$preview":{"width":1800,"height":3300}}'>
+class Component extends DCLogic {
+  renderVals() { return { themeClass: (this.props.dark ?? false) ? 'dark' : 'light' }; }
+}
+</script>
+</body>
+</html>

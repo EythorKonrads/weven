@@ -1,0 +1,13 @@
+{
+  "name": "landing",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "tailwindcss -i src/styles.css -o public/styles.css --minify",
+    "dev": "pnpm build && npx -y serve public"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.3.3",
+    "tailwindcss": "4.3.3"
+  }
+}

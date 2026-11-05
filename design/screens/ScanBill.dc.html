@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scan bill</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./bs.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="bs scr dark" style="width: 390px; height: 844px; background: #0B0B0C; color: #F2F2EF">
+  <div class="appbar">
+    <a href="AddExpense.dc.html" class="ib" aria-label="Close" style="color: #F2F2EF"><svg class="ic" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"></path></svg></a>
+    <span class="ttl" style="display: flex; align-items: center; justify-content: center; gap: 8px">Scan bill<span class="tag">V2</span></span>
+    <button class="ib" aria-label="Flash" style="color: #F2F2EF"><svg class="ic" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"></path></svg></button>
+  </div>
+
+  <div style="position: absolute; left: 50px; right: 50px; top: 110px; height: 470px; background: #ECEAE4; border-radius: 6px; transform: rotate(-1.5deg); padding: 28px 22px; display: flex; flex-direction: column; gap: 10px; color: #3A3A38; font: 500 12px/1.3 'Courier New', monospace" aria-hidden="true">
+    <span style="text-align: center; font-weight: 700; font-size: 14px">TABERNA</span>
+    <span style="text-align: center">Rua da Rosa · Lisboa</span>
+    <span style="border-top: 1px dashed #9A9A96; margin: 6px 0"></span>
+    <span style="display: flex; justify-content: space-between"><span>2× Bacalhau</span><span>38.00</span></span>
+    <span style="display: flex; justify-content: space-between"><span>2× Polvo</span><span>42.00</span></span>
+    <span style="display: flex; justify-content: space-between"><span>1× Bitoque</span><span>16.50</span></span>
+    <span style="display: flex; justify-content: space-between"><span>1× Vinho tinto</span><span>28.00</span></span>
+    <span style="display: flex; justify-content: space-between"><span>5× Pastel</span><span>9.00</span></span>
+    <span style="display: flex; justify-content: space-between"><span>Couvert</span><span>9.68</span></span>
+    <span style="border-top: 1px dashed #9A9A96; margin: 6px 0"></span>
+    <span style="display: flex; justify-content: space-between; font-weight: 700; background: rgba(95,211,196,0.35); padding: 2px 4px; margin: 0 -4px"><span>TOTAL EUR</span><span>143.18</span></span>
+    <span style="display: flex; justify-content: space-between"><span>Gorjeta 10%</span><span>14.32</span></span>
+  </div>
+  <div style="position: absolute; left: 34px; right: 34px; top: 94px; height: 502px" aria-hidden="true">
+    <span style="position: absolute; left: 0; top: 0; width: 34px; height: 34px; border-left: 4px solid #8FA9E0; border-top: 4px solid #8FA9E0; border-radius: 14px 0 0 0"></span>
+    <span style="position: absolute; right: 0; top: 0; width: 34px; height: 34px; border-right: 4px solid #8FA9E0; border-top: 4px solid #8FA9E0; border-radius: 0 14px 0 0"></span>
+    <span style="position: absolute; left: 0; bottom: 0; width: 34px; height: 34px; border-left: 4px solid #8FA9E0; border-bottom: 4px solid #8FA9E0; border-radius: 0 0 0 14px"></span>
+    <span style="position: absolute; right: 0; bottom: 0; width: 34px; height: 34px; border-right: 4px solid #8FA9E0; border-bottom: 4px solid #8FA9E0; border-radius: 0 0 14px 0"></span>
+  </div>
+
+  <div style="position: absolute; left: 20px; right: 20px; top: 618px; display: flex; justify-content: center">
+    <div style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 14px; background: rgba(255,255,255,0.1); font-size: 13px"><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true" style="color: #5FD3C4"><path d="M5 12l5 5 9-10"></path></svg>Found <b style="font-weight: 600">Taberna</b> · €157.50 incl. tip · 6 lines</div>
+  </div>
+
+  <div style="position: absolute; left: 0; right: 0; bottom: 40px; display: flex; align-items: center; justify-content: space-around">
+    <button class="ib" aria-label="Choose from photos" style="width: 52px; height: 52px; border-radius: 14px; background: rgba(255,255,255,0.12); color: #F2F2EF"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"></rect><circle cx="9" cy="9" r="2"></circle><path d="M21 15l-5-5L5 21"></path></svg></button>
+    <button aria-label="Take photo" style="width: 78px; height: 78px; border-radius: 50%; border: 4px solid #F2F2EF; background: transparent; padding: 5px"><span style="display: block; width: 100%; height: 100%; border-radius: 50%; background: #F2F2EF"></span></button>
+    <a href="ScanReview.dc.html" class="ib" aria-label="Use result" style="width: 52px; height: 52px; border-radius: 14px; background: #4A68AD; color: #fff"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
