@@ -16,6 +16,10 @@ pnpm --filter landing dev
 
 Fonts: Bricolage Grotesque and Inter (SIL Open Font License 1.1), latin subset, from Fontsource 5.3.0. They are hosted here so visitors' browsers don't contact Google.
 
+## Link preview
+
+`public/og-image.png` is the 1200x630 Open Graph/Twitter image used by the tags in `index.html`. It copies the page's headline and logo, so it must be re-made when either one changes.
+
 ## Security headers
 
 - The headers live in `public/_headers`, which Cloudflare Pages applies on deploy.
