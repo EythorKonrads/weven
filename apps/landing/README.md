@@ -15,3 +15,11 @@ pnpm --filter landing dev
 ```
 
 Fonts: Bricolage Grotesque and Inter (SIL Open Font License 1.1), latin subset, from Fontsource 5.3.0. They are hosted here so visitors' browsers don't contact Google.
+
+## Security headers
+
+- The headers live in `public/_headers`, which Cloudflare Pages applies on deploy.
+- The CSP allows only same-origin styles, fonts and images. #15 (email form) and #18 (tracking) will need to loosen it for their services.
+- HSTS starts at `max-age=86400` with no `includeSubDomains` or `preload`. Raising it is a later follow-up, once every subdomain is known to serve HTTPS.
+- Fonts are cached as immutable for a year, so a changed font file must get a new file name.
+- SVGs in `public/` must not use inline `<style>` or `style` attributes, because the CSP blocks them.
