@@ -10,8 +10,9 @@ Weven splits bills between friends and family. One TypeScript codebase: an Expo 
 
 ```
 apps/app/            Expo app (Expo Router screens in app/, features in src/features/)
-apps/landing/        Coming-soon page for wevenapp.com: static HTML, no build, not i18n'd yet
+apps/landing/        Coming-soon page for wevenapp.com: static HTML + Tailwind, not i18n'd yet
 packages/core/       Pure TS: money, split, balances, settle-up, zod schemas
+packages/theme/      Shared Tailwind theme: colours and fonts from design/DESIGN.md
 supabase/migrations/ SQL migrations — the only way the schema changes
 supabase/functions/  Edge Functions (Deno)
 supabase/tests/      pgTAP tests

@@ -7,4 +7,6 @@ supabase/.temp/
 supabase/.branches/
 **/.expo/
 **/dist/
+apps/landing/public/styles.css
+**/expo-env.d.ts
 **/*.md

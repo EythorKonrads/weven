@@ -1,0 +1,30 @@
+/* Weven's Tailwind theme, shared by apps/app and apps/landing. Values come from
+   design/DESIGN.md. Only these colours exist: Tailwind's default palette is off,
+   so a colour that isn't a design token doesn't compile into a class. */
+@theme {
+  --color-*: initial;
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-transparent: transparent;
+
+  --color-background: #f6f6f4;
+  --color-surface: #ffffff;
+  --color-surface-2: #efefec;
+  --color-line: #e3e3df;
+  --color-foreground: #161616;
+  --color-muted: #5c5c59;
+  --color-accent: #3c5a99;
+  --color-on-accent: #ffffff;
+  --color-accent-soft: #e3e9f6;
+  --color-accent-text: #2f4a85;
+  --color-ink: #1c2742;
+  --color-owed: #0e7a6e;
+  --color-owe: #c2410c;
+  --color-success: #1e7f4f;
+  --color-danger: #b42318;
+  --color-pending: #8a94a6;
+
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-sans: Inter, system-ui, sans-serif;
+}

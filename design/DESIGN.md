@@ -12,7 +12,7 @@ Source of truth for the Weven UI. Every screen in `design/` is a design referenc
 
 | Folder | What it is |
 |---|---|
-| `design/bs.css` | **Tokens + component styles.** Light theme on `.bs`, dark theme on `.bs.dark`. Port these to `apps/app/src/ui/tokens.ts`. |
+| `design/bs.css` | **Tokens + component styles.** Light theme on `.bs`, dark theme on `.bs.dark`. Port these to the Tailwind theme, `packages/theme/theme.css`. |
 | `design/screens/*.dc.html` | One file per mobile screen (390 px wide). `Main.dc.html` = Home (mobile, light). `HomeDark.dc.html` = same in dark. `HomeWeb.dc.html` = desktop/web layout. `Components.dc.html` = the component sheet. |
 | `design/landing/*.dc.html` | Marketing site: `ComingSoon.dc.html` (pre-launch) and `Landing.dc.html` (live). Fluid pages, 1440 px reference width. These are plain web pages, not part of the Expo app: `ComingSoon` is built in `apps/landing`. |
 | `design/brand/*.dc.html` | Logo explorations (Weven is the current choice). |
@@ -23,7 +23,7 @@ Format notes (the files come from a design canvas):
 - `<x-dc>` wraps the markup. `<helmet>` holds fonts + page-level CSS. `<script type="text/x-dc">` holds demo logic only.
 - `{{ name }}` = a value from demo logic (e.g. `{{themeClass}}` is `light` / `dark`). `<sc-for>` = a loop, `<sc-if>` = a conditional.
 - `./bs.css` and `./support.js` links: `bs.css` lives at `design/bs.css`; `support.js` is the design tool's runtime and is not included.
-- Inline `style=""` values are the exact intended values (spacing, sizes). Prefer mapping them to tokens.
+- Inline `style=""` values are the exact intended values (spacing, sizes). Map them to Tailwind classes and theme tokens.
 - All amounts, names and rates are **example data**.
 - `ScanAssign.dc.html` contains working demo logic for the "who had what" interaction; it is a good behaviour reference.
 

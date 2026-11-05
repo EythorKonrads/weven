@@ -31,6 +31,13 @@ WEB_OUT="$(mktemp -d)"
 trap 'rm -rf "$WEB_OUT"' EXIT
 pnpm --filter app exec expo export --platform web --output-dir "$WEB_OUT"
 
+# Landing page: Tailwind builds, and all styling stays in Tailwind classes.
+pnpm --filter landing build
+if grep -nE '<style|[[:space:]]style=' apps/landing/public/index.html; then
+  echo "apps/landing/public/index.html has inline CSS: use Tailwind classes." >&2
+  exit 1
+fi
+
 # Database: migrations apply cleanly, pgTAP passes, generated types are current.
 "$FACTORY_DIR/bin/db-lock" bash -euo pipefail -c '
   supabase status >/dev/null 2>&1 || supabase start

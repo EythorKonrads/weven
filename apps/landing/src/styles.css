@@ -1,0 +1,87 @@
+@import 'tailwindcss';
+@import '../../../packages/theme/theme.css';
+
+@source '../public/index.html';
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('/fonts/bricolage-grotesque-latin-wght-normal.woff2') format('woff2');
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Inter;
+  src: url('/fonts/inter-latin-wght-normal.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+/* The coming-soon page's dark marketing palette, from
+   design/landing/ComingSoon.dc.html, and its animations. */
+@theme {
+  --color-night: #121a2e;
+  --color-dusk: #22305a;
+  --color-cloud: #f2f2ef;
+  --color-mist: #dce5f7;
+  --color-haze: #c9d2e8;
+  --color-dim: #9aa6c4;
+  --color-periwinkle: #8fa9e0;
+  --color-paper: #eceae4;
+  --color-paper-ink: #3a3a38;
+  --color-paper-line: #9a9a96;
+  --color-sun: #ffce6b;
+  --color-sun-ink: #6b4a00;
+  --color-sun-deep: #3a2a00;
+  --color-mint: #5fd3c4;
+  --color-mint-ink: #0b3b35;
+  --color-peach: #ff9a62;
+  --color-peach-ink: #5a2208;
+
+  --font-receipt: 'Courier New', monospace;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-spin-slow: spin 18s linear infinite;
+  --animate-peek: peek 5s ease-in-out infinite;
+  --animate-blink: blink 4.5s infinite;
+  --animate-twinkle: twinkle 3s ease-in-out infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-16px);
+    }
+  }
+  @keyframes peek {
+    0%,
+    100% {
+      transform: translateY(18px);
+    }
+    45%,
+    60% {
+      transform: translateY(0);
+    }
+  }
+  @keyframes blink {
+    0%,
+    92%,
+    100% {
+      transform: scaleY(1);
+    }
+    95% {
+      transform: scaleY(0.1);
+    }
+  }
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0.25;
+    }
+    50% {
+      opacity: 0.9;
+    }
+  }
+}
