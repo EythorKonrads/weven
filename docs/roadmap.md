@@ -9,7 +9,7 @@ Building and beta-testing costs close to nothing; fixed costs arrive with the st
 | 0 · Foundations | Repo, CI, Supabase projects, auth + schema v1, `packages/core` tested | CI green on `main` |
 | 1 · MVP | Groups + members, equal + exact splits, balances, settle-up | We use it at home |
 | 2 · Private beta | Invite links, push, receipts, currencies, store test tracks | Beta groups keep using it |
-| 3 · Public launch | Store listings, privacy + account deletion, Sentry, Supabase Pro | Live in both stores |
+| 3 · Public launch | Store listings, privacy + account deletion, Sentry, Supabase Pro, [launch checklist](#before-public-launch) | Live in both stores |
 
 Phase 1 is the one that matters: once your own household settles up in it, the rest is polish and distribution.
 
@@ -56,6 +56,17 @@ Plan: Supabase Free for staging and production, web on Cloudflare Pages free.
 Upgrade Supabase production to Pro when any of these happens: people outside family and friends depend on it, the database nears 400 MB, egress nears 5 GB/month, or you want point-in-time restores instead of nightly dumps.
 
 Cost risks: Supabase compute add-ons and branching sit outside the spend cap; EAS usage beyond the free tier; Claude usage credits if the factory runs past Pro limits.
+
+## Before public launch
+
+Added to Phase 3's scope. Do the name check first, since it can change everything else.
+
+- [ ] **Name check:** search trademarks (EUIPO, the Danish and Icelandic registers) and the App Store and Google Play for "Weven" before spending on branding or store listings
+- [ ] **Terms of service and a support contact:** published on the site and linked from the store listings
+- [ ] **Data processing agreements** with every vendor handling user data: Supabase, Cloudflare, Expo and Sentry
+- [ ] **Tested restore:** restore the nightly database backup into a scratch project at least once, and write down the steps
+- [ ] **Uptime alert:** a free monitor on the web app and the backend that alerts us before users notice
+- [ ] **Danish and Icelandic landing page:** the page is English only today, while the app ships in da, en and is
 
 ## Next steps
 
