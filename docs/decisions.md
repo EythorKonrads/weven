@@ -41,3 +41,4 @@ Newest first. One line per decision: date · decision · why.
 | 2026-11-01 | Navy accent colour for the design | Chosen during design work |
 | 2026-11-01 | Mobile-first, same features on web and native | Product scope |
 | 2026-11-01 | PR previews use the staging Supabase project and unaliased EAS Hosting deployments | CI's local Supabase is unreachable from a deployed preview, and the EAS free tier has only 5 aliases |
+| 2026-11-05 | Landing PR previews are `pr-<n>` branches of `weven-landing`, deployed by a separate `landing-preview.yml` | `.github/workflows/*` is protected, so a new workflow reuses `preview.yml`'s token-scoping pattern and the `preview` environment |
