@@ -2,7 +2,8 @@ name: Deploy staging
 
 # Merges to main deploy whatever changed to staging: Supabase (migrations + Edge
 # Functions) first, then the web app (Cloudflare Pages) and an EAS Update to the
-# `staging` channel, so new app code never meets an old schema.
+# `staging` channel, so new app code never meets an old schema. The coming-soon
+# page at wevenapp.com is separate from all of that and deploys on its own.
 on:
   push:
     branches: [main]
@@ -28,6 +29,7 @@ jobs:
     outputs:
       supabase: ${{ inputs.all || steps.filter.outputs.supabase }}
       web: ${{ inputs.all || steps.filter.outputs.web }}
+      landing: ${{ inputs.all || steps.filter.outputs.landing }}
     steps:
       - uses: actions/checkout@v7
       - uses: dorny/paths-filter@v4
@@ -43,6 +45,9 @@ jobs:
               - 'package.json'
               - 'pnpm-lock.yaml'
               - 'pnpm-workspace.yaml'
+              - '.github/workflows/main.yml'
+            landing:
+              - 'apps/landing/**'
               - '.github/workflows/main.yml'
 
   supabase:
@@ -128,6 +133,35 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: npx -y wrangler@4.151.3 pages deploy dist --project-name "$PAGES_PROJECT" --branch main --commit-hash "$GITHUB_SHA"
+
+  # Static files with no build step. Uses the staging environment's Cloudflare
+  # token, and only ever publishes the landing project's `main` branch.
+  landing:
+    needs: changes
+    if: needs.changes.outputs.landing == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: staging
+    env:
+      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      PAGES_PROJECT: weven-landing
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      # Creates the Pages project on first use; a no-op afterwards.
+      - name: Ensure Pages project
+        run: |
+          if ! npx -y wrangler@4.151.3 pages project list --json | grep -qF "\"Project Name\": \"$PAGES_PROJECT\""; then
+            npx -y wrangler@4.151.3 pages project create "$PAGES_PROJECT" --production-branch main
+          fi
+
+      - name: Deploy to Cloudflare Pages
+        run: npx -y wrangler@4.151.3 pages deploy apps/landing/public --project-name "$PAGES_PROJECT" --branch main --commit-hash "$GITHUB_SHA"
 
   app:
     needs: [changes, supabase]

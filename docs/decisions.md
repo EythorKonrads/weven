@@ -13,6 +13,8 @@ Newest first. One line per decision: date · decision · why.
 
 | Date | Decision | Why |
 | --- | --- | --- |
+| 2026-11-05 | Coming-soon page at wevenapp.com is plain static HTML in `apps/landing`, its own Pages project `weven-landing`, self-hosted fonts, no analytics; no email form or log in yet (#15, #16) | Needs no build, stays separate from the app, needs no cookie banner, and no visitor data goes to Google |
+| 2026-11-05 | `design/` is committed to the public repo; the spec targets React Native, not Vue | The project is also a public portfolio piece; factory agents need the designs in their worktrees |
 | 2026-11-04 | Web hosting (staging, PR previews, production) moves from EAS Hosting to Cloudflare Pages free; domain `wevenapp.com` with DNS on Cloudflare. Staging: Pages project `weven-staging` at https://staging.wevenapp.com; previews are its `pr-<n>` branches. Supersedes the 2026-11-01 EAS Hosting rows | EAS Hosting has no custom domain on the free tier (Starter USD 19/month); Pages includes custom domains and unlimited static requests for free. EAS stays for builds and OTA updates |
 | 2026-11-04 | Supabase CLI pinned to 2.122.0 in CI (`pr.yml`, `main.yml`), same as local; deploy commands pass `--yes` | `latest` pulled CLI 3.0.0 on its release day and the staging Functions deploy stopped at a confirmation prompt. Major upgrades happen on purpose |
 | 2026-11-04 | EAS project moved to the Expo organization `weveno` (`@weveno/weven`); CI deploys with robot-user tokens per GitHub environment | Robots exist only on organizations; a leaked preview token can then reach only this organization with the Developer role, not the personal account |

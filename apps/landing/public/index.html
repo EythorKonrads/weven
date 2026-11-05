@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Weven, coming soon</title>
+    <meta
+      name="description"
+      content="Somebody owes somebody. Not for long. Weven is coming soon."
+    />
+    <meta name="theme-color" content="#121A2E" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="/fonts/bricolage-grotesque-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <style>
+      @font-face {
+        font-family: 'Bricolage Grotesque';
+        src: url('/fonts/bricolage-grotesque-latin-wght-normal.woff2') format('woff2');
+        font-weight: 200 800;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: Inter;
+        src: url('/fonts/inter-latin-wght-normal.woff2') format('woff2');
+        font-weight: 100 900;
+        font-display: swap;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #121a2e;
+      }
+
+      .page {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        min-height: 100svh;
+        overflow: hidden;
+        background: radial-gradient(120% 90% at 50% 0%, #22305a 0%, #121a2e 60%);
+        color: #f2f2ef;
+        font-family: Inter, system-ui, sans-serif;
+      }
+      .layer {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+      .display {
+        font-family: 'Bricolage Grotesque', sans-serif;
+        font-weight: 800;
+      }
+      .sr {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+      }
+
+      /* Stars */
+      .star {
+        position: absolute;
+        border-radius: 50%;
+        background: #dce5f7;
+        animation: twinkle 3s ease-in-out infinite;
+      }
+
+      /* Floating objects */
+      .float {
+        position: absolute;
+        animation: float 6s ease-in-out infinite;
+      }
+      .coin {
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        box-shadow: inset 0 -5px 0 rgba(0, 0, 0, 0.15);
+      }
+      .receipt {
+        left: 6%;
+        top: 34%;
+        --r: -12deg;
+        width: 120px;
+        padding: 14px 12px;
+        border-radius: 8px;
+        background: #eceae4;
+        color: #3a3a38;
+        font:
+          600 11px/1.6 'Courier New',
+          monospace;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      }
+      .receipt div {
+        display: flex;
+        justify-content: space-between;
+      }
+      .receipt .head {
+        justify-content: center;
+        font-weight: 700;
+      }
+      .receipt .total {
+        margin-top: 4px;
+        padding-top: 4px;
+        border-top: 1px dashed #9a9a96;
+      }
+      .pie {
+        right: 8%;
+        top: 22%;
+        --r: 10deg;
+        animation-delay: -2s;
+        width: 110px;
+        height: 110px;
+      }
+      .coin-q {
+        right: 16%;
+        top: 60%;
+        --r: -6deg;
+        animation-delay: -4s;
+        width: 64px;
+        height: 64px;
+        background: #ffce6b;
+        color: #6b4a00;
+        font-size: 30px;
+      }
+      .coin-kr {
+        left: 18%;
+        top: 14%;
+        --r: 8deg;
+        animation-delay: -1s;
+        width: 44px;
+        height: 44px;
+        background: #5fd3c4;
+        color: #0b3b35;
+        font-size: 20px;
+      }
+      .coin-eur {
+        left: 13%;
+        top: 74%;
+        --r: 4deg;
+        animation-delay: -3s;
+        width: 52px;
+        height: 52px;
+        background: #ff9a62;
+        color: #5a2208;
+        font-size: 24px;
+      }
+
+      /* Header */
+      header {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 28px 24px;
+      }
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 26px;
+        letter-spacing: -0.04em;
+      }
+
+      /* Hero */
+      main {
+        position: relative;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+        width: 100%;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 20px 24px 170px;
+        text-align: center;
+      }
+      .badge {
+        position: relative;
+        width: 150px;
+        height: 150px;
+      }
+      .badge svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        animation: spin 18s linear infinite;
+        transform-origin: 50% 50%;
+      }
+      .badge text {
+        fill: #8fa9e0;
+        font:
+          700 13px Inter,
+          sans-serif;
+      }
+      .badge span {
+        position: absolute;
+        inset: 42px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #ffce6b;
+        color: #3a2a00;
+        font-size: 34px;
+        transform: rotate(-8deg);
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(44px, 7vw, 92px);
+        line-height: 0.98;
+        letter-spacing: -0.045em;
+      }
+      h1 span {
+        color: #8fa9e0;
+      }
+      .lede {
+        margin: 0;
+        max-width: 620px;
+        color: #c9d2e8;
+        font-size: clamp(17px, 2vw, 21px);
+        line-height: 1.5;
+      }
+
+      /* Blurred teasers: the hidden text is placeholder, so the source keeps the secret. */
+      .teasers {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 8px;
+      }
+      .teaser {
+        position: relative;
+        padding: 10px 16px;
+        border: 1px dashed rgba(255, 255, 255, 0.25);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .teaser:nth-child(2) {
+        transform: rotate(-2deg);
+      }
+      .teaser:nth-child(3) {
+        transform: rotate(2deg);
+      }
+      .teaser .blur {
+        filter: blur(4px);
+      }
+      .teaser .mark {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        color: #ffce6b;
+        font-size: 18px;
+      }
+
+      /* Peeking characters */
+      .peek {
+        position: absolute;
+        left: 50%;
+        bottom: -70px;
+        transform: translateX(-50%);
+      }
+      .peek > div {
+        animation: peek 5s ease-in-out infinite;
+      }
+      .peek svg {
+        display: block;
+      }
+      .eye {
+        animation: blink 4.5s infinite;
+        transform-box: fill-box;
+        transform-origin: center;
+      }
+
+      footer {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 18px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 8px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+        color: #9aa6c4;
+        font-size: 13px;
+      }
+
+      /* Phones: the receipt and big pie would sit on the text, so they go. The
+         characters shrink and the footer moves under them, onto the background. */
+      @media (max-width: 760px) {
+        .receipt,
+        .pie {
+          display: none;
+        }
+        .coin-kr {
+          left: 6%;
+          top: 90px;
+        }
+        .coin-q {
+          right: 5%;
+          top: 96px;
+          width: 48px;
+          height: 48px;
+          font-size: 22px;
+        }
+        .coin-eur {
+          display: none;
+        }
+        main {
+          padding: 0 20px 28px;
+          gap: 20px;
+        }
+        .badge {
+          width: 110px;
+          height: 110px;
+        }
+        .badge span {
+          inset: 30px;
+          font-size: 25px;
+        }
+        .peek {
+          position: relative;
+          left: auto;
+          bottom: auto;
+          transform: none;
+          align-self: center;
+          height: 126px;
+          overflow: hidden;
+          flex: none;
+        }
+        .peek svg {
+          width: 280px;
+          height: auto;
+        }
+        footer {
+          position: relative;
+          bottom: auto;
+          width: 100%;
+          padding: 14px 20px 18px;
+          background: #121a2e;
+        }
+      }
+
+      /* Desktop: the page never collapses onto the characters on short screens. */
+      @media (min-width: 761px) {
+        .page {
+          min-height: max(100svh, 860px);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(var(--r, 0deg));
+        }
+        50% {
+          transform: translateY(-16px) rotate(var(--r, 0deg));
+        }
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes peek {
+        0%,
+        100% {
+          transform: translateY(18px);
+        }
+        45%,
+        60% {
+          transform: translateY(0);
+        }
+      }
+      @keyframes blink {
+        0%,
+        92%,
+        100% {
+          transform: scaleY(1);
+        }
+        95% {
+          transform: scaleY(0.1);
+        }
+      }
+      @keyframes twinkle {
+        0%,
+        100% {
+          opacity: 0.25;
+        }
+        50% {
+          opacity: 0.9;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .star,
+        .float,
+        .badge svg,
+        .peek > div,
+        .eye {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="layer" aria-hidden="true">
+        <span class="star" style="left: 8%; top: 18%; width: 4px; height: 4px"></span>
+        <span
+          class="star"
+          style="left: 22%; top: 62%; width: 3px; height: 3px; animation-delay: 1s"
+        ></span>
+        <span
+          class="star"
+          style="left: 74%; top: 14%; width: 5px; height: 5px; animation-delay: 0.5s"
+        ></span>
+        <span
+          class="star"
+          style="left: 88%; top: 48%; width: 3px; height: 3px; animation-delay: 2s"
+        ></span>
+        <span
+          class="star"
+          style="left: 56%; top: 8%; width: 3px; height: 3px; animation-delay: 1.4s"
+        ></span>
+        <span
+          class="star"
+          style="left: 38%; top: 30%; width: 2px; height: 2px; animation-delay: 0.8s"
+        ></span>
+      </div>
+
+      <div class="layer" aria-hidden="true">
+        <div class="float receipt">
+          <div class="head">RECEIPT</div>
+          <div><span>Pizza</span><span>???</span></div>
+          <div><span>Wine</span><span>???</span></div>
+          <div><span>Who?</span><span>???</span></div>
+          <div class="total"><span>TOTAL</span><span>?.??</span></div>
+        </div>
+        <svg class="float pie" viewBox="0 0 48 48">
+          <path d="M24 24L43.32 18.82A20 20 0 1 1 34 6.68Z" fill="#3C5A99" />
+          <path d="M26.4 22.2L45.72 17.02A20 20 0 0 0 36.4 4.88Z" fill="#8FA9E0" />
+        </svg>
+        <div class="float coin coin-q display">?</div>
+        <div class="float coin coin-kr display">kr</div>
+        <div class="float coin coin-eur display">€</div>
+      </div>
+
+      <header>
+        <span class="logo display">
+          <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="9" cy="12" r="6.5" fill="#8FA9E0" />
+            <circle cx="15" cy="12" r="6.5" fill="#FFFFFF" />
+            <path d="M12 6.23A6.5 6.5 0 0 1 12 17.77A6.5 6.5 0 0 1 12 6.23Z" fill="#3C5A99" />
+          </svg>
+          weven
+        </span>
+      </header>
+
+      <main>
+        <div class="badge">
+          <svg width="150" height="150" viewBox="0 0 150 150" role="img" aria-label="Coming soon">
+            <defs>
+              <path id="ring" d="M75 75m-58 0a58 58 0 1 1 116 0a58 58 0 1 1-116 0" />
+            </defs>
+            <text>
+              <textPath href="#ring" textLength="360">
+                COMING SOON · COMING SOON · COMING SOON ·
+              </textPath>
+            </text>
+          </svg>
+          <span class="display" aria-hidden="true">shh</span>
+        </div>
+
+        <h1 class="display">Somebody owes somebody.<br /><span>Not for long.</span></h1>
+        <p class="lede">
+          Something is cooking that makes every group dinner, trip and shared flat come out… well,
+          we can't say yet. But you'll like the ending.
+        </p>
+
+        <div class="teasers">
+          <span class="teaser">
+            <span class="blur" aria-hidden="true">Nothing to see here</span>
+            <span class="sr">Secret feature</span>
+            <span class="mark display" aria-hidden="true">?</span>
+          </span>
+          <span class="teaser">
+            <span class="blur" aria-hidden="true">Nice try, detective</span>
+            <span class="sr">Secret feature</span>
+            <span class="mark display" aria-hidden="true">?</span>
+          </span>
+          <span class="teaser">
+            <span class="blur" aria-hidden="true">Patience, friend</span>
+            <span class="sr">Secret feature</span>
+            <span class="mark display" aria-hidden="true">?</span>
+          </span>
+        </div>
+      </main>
+
+      <div class="peek" aria-hidden="true">
+        <div>
+          <svg width="420" height="230" viewBox="0 0 420 230">
+            <circle cx="150" cy="150" r="120" fill="#8FA9E0" />
+            <circle cx="270" cy="150" r="120" fill="#FFFFFF" />
+            <path d="M210 46A120 120 0 0 1 210 254A120 120 0 0 1 210 46Z" fill="#3C5A99" />
+            <ellipse class="eye" cx="118" cy="104" rx="9" ry="13" fill="#1C2742" />
+            <ellipse class="eye" cx="160" cy="104" rx="9" ry="13" fill="#1C2742" />
+            <ellipse class="eye" cx="262" cy="104" rx="9" ry="13" fill="#1C2742" />
+            <ellipse class="eye" cx="304" cy="104" rx="9" ry="13" fill="#1C2742" />
+            <path
+              d="M126 138Q139 148 152 138"
+              fill="none"
+              stroke="#1C2742"
+              stroke-width="5"
+              stroke-linecap="round"
+            />
+            <path
+              d="M270 138Q283 148 296 138"
+              fill="none"
+              stroke="#1C2742"
+              stroke-width="5"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <footer>
+        <span>wevenapp.com</span>
+        <span>Made in Copenhagen</span>
+      </footer>
+    </div>
+  </body>
+</html>
