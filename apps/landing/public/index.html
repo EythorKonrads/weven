@@ -294,12 +294,26 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        align-items: center;
         gap: 8px;
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 24px;
         color: #9aa6c4;
         font-size: 13px;
+      }
+
+      .credit {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: inherit;
+        text-decoration: none;
+      }
+      .credit:hover,
+      .credit:focus-visible {
+        color: #ffffff;
+        text-decoration: underline;
       }
 
       /* Phones: the receipt and big pie would sit on the text, so they go. The
@@ -542,8 +556,12 @@
       </div>
 
       <footer>
-        <span>wevenapp.com</span>
-        <span>Made in Copenhagen</span>
+        <span>© 2026 Weven</span>
+        <a class="credit" href="https://norduo.com">
+          Powered by
+          <img src="/norduo-logo.svg" alt="" width="20" height="19" />
+          Norduo
+        </a>
       </footer>
     </div>
   </body>
