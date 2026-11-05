@@ -7,7 +7,8 @@ One TypeScript codebase on Expo (iOS, Android and web from the same code) with S
 - **Expo, current SDK.** SDK 56 shipped May 2026 with React Native 0.85 and React 19.2; SDK 57 is expected autumn 2026. Start on whatever is latest at `create-expo-app`. Phase 0 started on **SDK 58** (React Native 0.88, React 19.3). ([Expo SDK 56](https://expo.dev/sdk/56))
 - **Expo Router**: file-based routing (similar to Nuxt pages). Gives deep links for invite links on all platforms.
 - **Web** via React Native Web from the same screens. Web is first-class: invitees often open a link on a laptop.
-- **Styling**: NativeWind (Tailwind for RN) or a small token-based StyleSheet layer. Navy accent and spacing live in one tokens file.
+- **Styling**: Tailwind CSS v4 everywhere. The app uses it through Uniwind (`className` on React Native components, iOS, Android and web); the landing page uses it directly. Colours and fonts live in one theme, `packages/theme/theme.css`.
+  - Not NativeWind: its stable v4 stays on Tailwind v3 and documents support up to Expo SDK 57; v5 (Tailwind v4) was still a release candidate on 2026-11-05.
 - **Forms**: React Hook Form + Zod. Zod schemas are shared with the backend.
 - **State**: TanStack Query for server data (replaces a Pinia store full of fetch calls); Zustand only for small local UI state.
 - **i18n**: i18next with Danish, English and Icelandic; numbers and currency via `Intl`.

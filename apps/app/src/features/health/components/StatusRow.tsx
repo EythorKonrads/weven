@@ -1,14 +1,18 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
-
-import { colors, radii, spacing, typeScale } from '@/ui/tokens';
 
 export type Status = 'loading' | 'ok' | 'error';
 
-const stateColor: Record<Status, string> = {
-  loading: colors.pending,
-  ok: colors.success,
-  error: colors.danger,
+const dotClass: Record<Status, string> = {
+  loading: 'bg-pending',
+  ok: 'bg-success',
+  error: 'bg-danger',
+};
+
+const stateClass: Record<Status, string> = {
+  loading: 'text-pending',
+  ok: 'text-success',
+  error: 'text-danger',
 };
 
 type Props = {
@@ -24,34 +28,16 @@ export function StatusRow({ name, status, detail, testID }: Props) {
   return (
     <View
       testID={testID}
-      style={styles.row}
+      className="flex-row items-center gap-3 rounded-xl border border-line bg-surface p-4"
       accessible
       accessibilityLabel={t('status.rowLabel', { name, state, detail: detail ?? '' })}
     >
-      <View style={[styles.dot, { backgroundColor: stateColor[status] }]} />
-      <View style={styles.text}>
-        <Text style={styles.name}>{name}</Text>
-        {detail ? <Text style={styles.detail}>{detail}</Text> : null}
+      <View className={`size-3 rounded-full ${dotClass[status]}`} />
+      <View className="flex-1 gap-1">
+        <Text className="text-base font-semibold text-foreground">{name}</Text>
+        {detail ? <Text className="text-[13px] text-muted">{detail}</Text> : null}
       </View>
-      <Text style={[styles.state, { color: stateColor[status] }]}>{state}</Text>
+      <Text className={`text-[13px] font-semibold ${stateClass[status]}`}>{state}</Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.md,
-    padding: spacing.lg,
-    backgroundColor: colors.surface,
-    borderColor: colors.border,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderRadius: radii.md,
-  },
-  dot: { width: 12, height: 12, borderRadius: radii.pill },
-  text: { flex: 1, gap: spacing.xs },
-  name: { ...typeScale.body, fontWeight: '600', color: colors.text },
-  detail: { ...typeScale.caption, color: colors.textMuted },
-  state: { ...typeScale.caption, fontWeight: '600' },
-});

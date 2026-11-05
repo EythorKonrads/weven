@@ -1,8 +1,7 @@
-import { Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Platform, ScrollView, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { SafeAreaView } from 'react-native-safe-area-context';
-
-import { colors, spacing, typeScale } from '@/ui/tokens';
+import { SafeAreaView as RNSafeAreaView } from 'react-native-safe-area-context';
+import { withUniwind } from 'uniwind';
 
 import { useDatabaseHealth } from '../hooks/use-database-health';
 import { useEdgeHello } from '../hooks/use-edge-hello';
@@ -12,6 +11,8 @@ function toStatus(query: { isPending: boolean; isError: boolean }): Status {
   if (query.isPending) return 'loading';
   return query.isError ? 'error' : 'ok';
 }
+
+const SafeAreaView = withUniwind(RNSafeAreaView);
 
 const platformKeys = { web: 'web', ios: 'ios', android: 'android' } as const;
 
@@ -23,15 +24,15 @@ export function HealthScreen() {
     Platform.OS in platformKeys ? platformKeys[Platform.OS as keyof typeof platformKeys] : 'other';
 
   return (
-    <SafeAreaView style={styles.safe}>
-      <ScrollView contentContainerStyle={styles.content}>
-        <View style={styles.header}>
-          <Text style={styles.title} accessibilityRole="header">
+    <SafeAreaView className="flex-1 bg-background">
+      <ScrollView contentContainerClassName="w-full max-w-[560px] grow gap-6 self-center p-6">
+        <View className="gap-1">
+          <Text className="text-[34px] font-bold text-ink" accessibilityRole="header">
             {t('home.title')}
           </Text>
-          <Text style={styles.subtitle}>{t('home.subtitle')}</Text>
+          <Text className="text-base text-muted">{t('home.subtitle')}</Text>
         </View>
-        <View style={styles.rows}>
+        <View className="gap-3">
           <StatusRow
             testID="status-frontend"
             name={t('status.frontend')}
@@ -55,19 +56,3 @@ export function HealthScreen() {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: colors.background },
-  content: {
-    flexGrow: 1,
-    width: '100%',
-    maxWidth: 560,
-    alignSelf: 'center',
-    padding: spacing.xl,
-    gap: spacing.xl,
-  },
-  header: { gap: spacing.xs },
-  title: { ...typeScale.display, color: colors.accent },
-  subtitle: { ...typeScale.body, color: colors.textMuted },
-  rows: { gap: spacing.md },
-});
