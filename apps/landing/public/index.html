@@ -17,6 +17,7 @@
       type="font/woff2"
       crossorigin
     />
+    <link rel="stylesheet" href="/vendor/cookieconsent/cookieconsent.css" />
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body class="bg-night">
@@ -221,6 +222,20 @@
         class="relative flex w-full flex-wrap items-center justify-between gap-2 bg-night px-5 pt-3.5 pb-[18px] text-[13px] text-dim md:absolute md:inset-x-0 md:bottom-[18px] md:mx-auto md:max-w-[1200px] md:bg-transparent md:px-6 md:py-0"
       >
         <span>© 2026 Weven</span>
+        <span class="inline-flex items-center gap-4">
+          <a
+            class="hover:text-white hover:underline focus-visible:text-white focus-visible:underline"
+            href="/privacy"
+            >Privacy</a
+          >
+          <button
+            class="cursor-pointer hover:text-white hover:underline focus-visible:text-white focus-visible:underline"
+            type="button"
+            data-cc="show-preferencesModal"
+          >
+            Cookie settings
+          </button>
+        </span>
         <a
           class="inline-flex items-center gap-1.5 hover:text-white hover:underline focus-visible:text-white focus-visible:underline"
           href="https://norduo.com"
@@ -233,5 +248,7 @@
         </a>
       </footer>
     </div>
+    <script src="/vendor/cookieconsent/cookieconsent.umd.js"></script>
+    <script src="/consent.js"></script>
   </body>
 </html>

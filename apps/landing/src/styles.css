@@ -2,6 +2,7 @@
 @import '../../../packages/theme/theme.css';
 
 @source '../public/index.html';
+@source '../public/privacy.html';
 
 @font-face {
   font-family: 'Bricolage Grotesque';
@@ -84,4 +85,51 @@
       opacity: 0.9;
     }
   }
+}
+
+/* CookieConsent (vendored) takes its colours from --cc-* variables. */
+#cc-main {
+  --cc-font-family: var(--font-sans);
+  --cc-bg: var(--color-night);
+  --cc-primary-color: var(--color-cloud);
+  --cc-secondary-color: var(--color-haze);
+  --cc-link-color: var(--color-periwinkle);
+  --cc-overlay-bg: var(--color-night);
+  --cc-separator-border-color: var(--color-dusk);
+
+  --cc-btn-primary-bg: var(--color-periwinkle);
+  --cc-btn-primary-color: var(--color-night);
+  --cc-btn-primary-border-color: var(--color-periwinkle);
+  --cc-btn-primary-hover-bg: var(--color-mist);
+  --cc-btn-primary-hover-color: var(--color-night);
+  --cc-btn-primary-hover-border-color: var(--color-mist);
+  --cc-btn-secondary-bg: var(--color-periwinkle);
+  --cc-btn-secondary-color: var(--color-night);
+  --cc-btn-secondary-border-color: var(--color-periwinkle);
+  --cc-btn-secondary-hover-bg: var(--color-mist);
+  --cc-btn-secondary-hover-color: var(--color-night);
+  --cc-btn-secondary-hover-border-color: var(--color-mist);
+
+  --cc-toggle-on-bg: var(--color-periwinkle);
+  --cc-toggle-off-bg: var(--color-dim);
+  --cc-toggle-on-knob-bg: var(--color-night);
+  --cc-toggle-off-knob-bg: var(--color-night);
+  --cc-toggle-readonly-bg: var(--color-dusk);
+  --cc-toggle-readonly-knob-bg: var(--color-dim);
+  --cc-toggle-enabled-icon-color: var(--color-periwinkle);
+  --cc-toggle-disabled-icon-color: var(--color-dim);
+  --cc-toggle-readonly-knob-icon-color: var(--color-night);
+
+  --cc-cookie-category-block-bg: var(--color-dusk);
+  --cc-cookie-category-block-border: var(--color-dusk);
+  --cc-cookie-category-block-hover-bg: var(--color-dusk);
+  --cc-cookie-category-block-hover-border: var(--color-periwinkle);
+  --cc-cookie-category-expanded-block-bg: var(--color-dusk);
+  --cc-cookie-category-expanded-block-hover-bg: var(--color-dusk);
+  --cc-section-category-border: var(--color-dusk);
+  --cc-footer-bg: var(--color-dusk);
+  --cc-footer-color: var(--color-haze);
+  --cc-footer-border-color: var(--color-dusk);
+  --cc-webkit-scrollbar-bg: var(--color-dusk);
+  --cc-webkit-scrollbar-hover-bg: var(--color-periwinkle);
 }

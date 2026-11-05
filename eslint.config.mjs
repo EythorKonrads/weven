@@ -29,6 +29,7 @@ export default defineConfig([
     'packages/core/src/database.types.ts',
     'supabase/functions/', // Deno; linted by `deno lint` when Edge Functions grow
     'factory/',
+    'apps/landing/public/vendor/',
     '.claude/',
   ]),
 
@@ -97,6 +98,12 @@ export default defineConfig([
   {
     files: ['**/*.config.{js,cjs,mjs,ts}', '**/jest.setup.{js,ts}'],
     languageOptions: { globals: globals.node },
+  },
+
+  // Landing page script runs in the browser.
+  {
+    files: ['apps/landing/public/*.js'],
+    languageOptions: { globals: globals.browser },
   },
 
   // Formatting belongs to Prettier.
