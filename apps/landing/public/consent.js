@@ -34,7 +34,6 @@ function loadAnalytics() {
 
 window.CookieConsent.run({
   cookie: { expiresAfterDays: 182 },
-  autoClearCookies: true,
   guiOptions: {
     consentModal: { layout: 'box inline', position: 'bottom right' },
     preferencesModal: { layout: 'box' },

@@ -18,3 +18,11 @@ pnpm --filter landing dev
 ```
 
 Fonts: Bricolage Grotesque and Inter (SIL Open Font License 1.1), latin subset, from Fontsource 5.3.0. They are hosted here, so fonts need no request to Google. Only Google Analytics contacts Google, and only after consent.
+
+## Security headers
+
+- The headers live in `public/_headers`, which Cloudflare Pages applies on deploy.
+- The CSP allows same-origin scripts, styles, fonts and images. For Google Analytics (#18) it also allows scripts from `www.googletagmanager.com`, and connections and images to the Google Analytics and Tag Manager hosts. #15 (email form) will need to loosen it for its service.
+- HSTS starts at `max-age=86400` with no `includeSubDomains` or `preload`. Raising it is a later follow-up, once every subdomain is known to serve HTTPS.
+- Fonts are cached as immutable for a year, so a changed font file must get a new file name.
+- SVGs in `public/` must not use inline `<style>` or `style` attributes, because the CSP blocks them.
