@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Account</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./bs.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="bs scr {{themeClass}}" style="width: 390px; height: 1060px">
+  <div class="body" style="padding-top: 20px; gap: 22px">
+    <h1 class="disp h1">Account</h1>
+
+    <div style="display: flex; align-items: center; gap: 16px">
+      <button aria-label="Change profile picture" style="position: relative; border: 0; padding: 0; background: transparent">
+        <span class="av lg c1" style="width: 76px; height: 76px; font-size: 24px">EY</span>
+        <span style="position: absolute; right: -4px; bottom: -4px; width: 30px; height: 30px; border-radius: 50%; background: var(--acc); color: var(--onacc); border: 3px solid var(--bg); display: grid; place-items: center"><svg class="ic xs" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h2l2-2h6l2 2h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><circle cx="12" cy="13" r="3.5"></circle></svg></span>
+      </button>
+      <div style="display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0">
+        <span class="disp h3" style="font-size: 20px">Eythor</span>
+        <span class="sub">eythor@mail.com</span>
+        <span class="xs" style="display: flex; align-items: center; gap: 4px; margin-top: 2px"><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Signed in with Google</span>
+      </div>
+      <button class="ib boxed" aria-label="Edit profile"><svg class="ic s" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"></path></svg></button>
+    </div>
+
+    <a href="PaymentDetails.dc.html" class="hero" style="gap: 14px">
+      <div class="sechead" style="align-items: center"><span class="t">How friends pay you</span><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></div>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px">
+        <span class="pill" style="background: rgba(255,255,255,0.12); color: inherit"><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>MobilePay</span>
+        <span class="pill" style="background: rgba(255,255,255,0.12); color: inherit"><svg class="ic xs" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Bank account</span>
+        <span class="pill" style="background: transparent; color: inherit; border: 1px dashed rgba(255,255,255,0.4)">+ Revolut</span>
+      </div>
+      <span class="dim">Shown to people who owe you when they settle up.</span>
+    </a>
+
+    <div class="card list">
+      <a href="Friends.dc.html" class="row"><svg class="ic" viewBox="0 0 24 24"><circle cx="10" cy="8" r="4"></circle><path d="M3 20c0-3.9 3.1-7 7-7"></path><path d="M19 8v6M16 11h6"></path></svg><span class="grow"><span class="t">Friends</span></span><span class="sub">6</span><svg class="ic chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"></path></svg></a>
+      <a href="Friends.dc.html" class="row"><svg class="ic" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"></path><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"></path></svg><span class="grow"><span class="t">Invite to Weven</span></span><svg class="ic chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"></path></svg></a>
+    </div>
+
+    <div class="card list">
+      <a href="Settings.dc.html" class="row"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg><span class="grow"><span class="t">Appearance</span></span><span class="sub">System</span><svg class="ic chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"></path></svg></a>
+      <a href="Settings.dc.html" class="row"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg><span class="grow"><span class="t">Default currency</span></span><span class="sub">DKK</span><svg class="ic chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"></path></svg></a>
+      <a href="Settings.dc.html" class="row"><svg class="ic" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg><span class="grow"><span class="t">Notifications</span></span><svg class="ic chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"></path></svg></a>
+      <a href="#" class="row"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17h.01"></path></svg><span class="grow"><span class="t">Help &amp; feedback</span></span><svg class="ic chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"></path></svg></a>
+    </div>
+
+    <button class="btn btn-s" style="color: var(--owe)"><svg class="ic" viewBox="0 0 24 24"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 17l5-5-5-5M15 12H3"></path></svg>Log out</button>
+  </div>
+
+  <nav class="tabbar" aria-label="Main">
+    <a href="Main.dc.html"><svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"></path></svg>Home</a>
+    <a href="Groups.dc.html"><svg class="ic" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"></circle><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path><path d="M21 20c0-2.5-1.5-4.6-3.5-5.5"></path></svg>Groups</a>
+    <div><a href="AddExpense.dc.html" class="fab" aria-label="Add expense" style="display: grid; color: var(--onacc)"><svg class="ic l" viewBox="0 0 24 24" style="stroke-width: 2.25"><path d="M12 5v14M5 12h14"></path></svg></a></div>
+    <a href="Activity.dc.html"><svg class="ic" viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h7"></path></svg>Activity</a>
+    <a href="Account.dc.html" aria-current="page"><svg class="ic" viewBox="0 0 24 24"><path d="M21 21v-1a5 5 0 0 0-5-5H8a5 5 0 0 0-5 5v1"></path><circle cx="12" cy="7" r="4"></circle></svg>Account</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"dark":{"editor":"boolean","default":false},"$preview":{"width":390,"height":1060}}'>
+class Component extends DCLogic {
+  renderVals() { return { themeClass: (this.props.dark ?? false) ? 'dark' : 'light' }; }
+}
+</script>
+</body>
+</html>

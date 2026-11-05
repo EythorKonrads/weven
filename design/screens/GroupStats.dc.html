@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Group statistics</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./bs.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="bs scr {{themeClass}}" style="width: 390px; height: 1060px">
+  <div class="appbar">
+    <a href="GroupDetail.dc.html" class="ib" aria-label="Back"><svg class="ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"></path></svg></a>
+    <span class="ttl">Lisbon trip</span>
+    <span style="width: 44px"></span>
+  </div>
+  <div class="body" style="gap: 20px">
+    <nav class="seg" aria-label="Group sections">
+      <a href="GroupDetail.dc.html" style="display: grid; place-items: center; font-weight: 600; font-size: 13px; color: var(--muted)">Expenses</a>
+      <a href="GroupBalances.dc.html" style="display: grid; place-items: center; font-weight: 600; font-size: 13px; color: var(--muted)">Balances</a>
+      <button aria-pressed="true">Statistics</button>
+    </nav>
+
+    <div style="display: flex; gap: 8px">
+      <button class="pill on" aria-pressed="true">Whole group</button>
+      <button class="pill" aria-pressed="false">This month</button>
+      <button class="pill" aria-pressed="false">Custom</button>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+      <div class="card cardpad" style="display: flex; flex-direction: column; gap: 6px"><span class="xs">Group total</span><span class="big" style="font-size: 26px">€2,140.80</span><span class="xs">27 expenses</span></div>
+      <div class="card cardpad" style="display: flex; flex-direction: column; gap: 6px"><span class="xs">Your share</span><span class="big" style="font-size: 26px">€428.16</span><span class="xs">20% of total</span></div>
+    </div>
+
+    <section class="card cardpad" style="display: flex; flex-direction: column; gap: 14px">
+      <h2 class="disp h3">By category</h2>
+      <div class="bar" style="height: 14px" role="img" aria-label="Accommodation 39%, food and drink 29%, transport 13%, activities 12%, groceries 7%">
+        <span style="flex: 39; background: var(--acc)"></span><span style="flex: 29; background: var(--owed)"></span><span style="flex: 13; background: var(--v3i)"></span><span style="flex: 12; background: var(--v1i)"></span><span style="flex: 7; background: var(--muted)"></span>
+      </div>
+      <div class="list" style="gap: 0">
+        <div style="display: flex; align-items: center; gap: 10px; padding: 8px 0"><span style="width: 10px; height: 10px; border-radius: 3px; background: var(--acc)"></span><span style="flex: 1">Accommodation</span><span class="xs">39%</span><span class="amt" style="width: 76px; text-align: right">€840.00</span></div>
+        <div style="display: flex; align-items: center; gap: 10px; padding: 8px 0"><span style="width: 10px; height: 10px; border-radius: 3px; background: var(--owed)"></span><span style="flex: 1">Food &amp; drink</span><span class="xs">29%</span><span class="amt" style="width: 76px; text-align: right">€612.00</span></div>
+        <div style="display: flex; align-items: center; gap: 10px; padding: 8px 0"><span style="width: 10px; height: 10px; border-radius: 3px; background: var(--v3i)"></span><span style="flex: 1">Transport</span><span class="xs">13%</span><span class="amt" style="width: 76px; text-align: right">€286.00</span></div>
+        <div style="display: flex; align-items: center; gap: 10px; padding: 8px 0"><span style="width: 10px; height: 10px; border-radius: 3px; background: var(--v1i)"></span><span style="flex: 1">Activities</span><span class="xs">12%</span><span class="amt" style="width: 76px; text-align: right">€248.00</span></div>
+        <div style="display: flex; align-items: center; gap: 10px; padding: 8px 0"><span style="width: 10px; height: 10px; border-radius: 3px; background: var(--muted)"></span><span style="flex: 1">Groceries</span><span class="xs">7%</span><span class="amt" style="width: 76px; text-align: right">€154.80</span></div>
+      </div>
+    </section>
+
+    <section class="card cardpad" style="display: flex; flex-direction: column; gap: 14px">
+      <div class="sechead"><h2 class="disp h3">Spending per day</h2><span class="xs">Peak €1,120</span></div>
+      <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; align-items: end; height: 120px" role="img" aria-label="26 Oct €380, 27 Oct €1,120, 28 Oct €310, 29 Oct €214, 30 Oct €116.80">
+        <span style="height: 34%; background: var(--accSoft); border-radius: 6px"></span>
+        <span style="height: 100%; background: var(--acc); border-radius: 6px"></span>
+        <span style="height: 28%; background: var(--accSoft); border-radius: 6px"></span>
+        <span style="height: 19%; background: var(--accSoft); border-radius: 6px"></span>
+        <span style="height: 10%; background: var(--accSoft); border-radius: 6px"></span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; text-align: center" class="xs"><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span></div>
+    </section>
+
+    <section class="card cardpad" style="display: flex; flex-direction: column; gap: 12px">
+      <h2 class="disp h3">Who paid</h2>
+      <div style="display: flex; align-items: center; gap: 10px"><span class="av sm c3">SO</span><span style="flex: 1" class="track"><span style="width: 100%"></span></span><span class="amt" style="width: 74px; text-align: right; font-size: 14px">€980.00</span></div>
+      <div style="display: flex; align-items: center; gap: 10px"><span class="av sm c1">EY</span><span style="flex: 1" class="track"><span style="width: 52%"></span></span><span class="amt" style="width: 74px; text-align: right; font-size: 14px">€512.00</span></div>
+      <div style="display: flex; align-items: center; gap: 10px"><span class="av sm c2">MK</span><span style="flex: 1" class="track"><span style="width: 40%"></span></span><span class="amt" style="width: 74px; text-align: right; font-size: 14px">€388.00</span></div>
+      <div style="display: flex; align-items: center; gap: 10px"><span class="av sm c4">JO</span><span style="flex: 1" class="track"><span style="width: 16%"></span></span><span class="amt" style="width: 74px; text-align: right; font-size: 14px">€160.80</span></div>
+      <div style="display: flex; align-items: center; gap: 10px"><span class="av sm c2">AN</span><span style="flex: 1" class="track"><span style="width: 10%"></span></span><span class="amt" style="width: 74px; text-align: right; font-size: 14px">€100.00</span></div>
+    </section>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"dark":{"editor":"boolean","default":false},"$preview":{"width":390,"height":1060}}'>
+class Component extends DCLogic {
+  renderVals() { return { themeClass: (this.props.dark ?? false) ? 'dark' : 'light' }; }
+}
+</script>
+</body>
+</html>

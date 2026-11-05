@@ -1,6 +1,7 @@
 pnpm-lock.yaml
 packages/core/src/database.types.ts
 factory/
+design/
 .claude/
 supabase/.temp/
 supabase/.branches/

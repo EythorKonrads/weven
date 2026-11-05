@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Payment details</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./bs.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="bs scr {{themeClass}}" style="width: 390px; height: 900px">
+  <div class="appbar">
+    <a href="Account.dc.html" class="ib" aria-label="Back"><svg class="ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"></path></svg></a>
+    <span class="ttl">How friends pay you</span>
+    <span style="width: 44px"></span>
+  </div>
+  <div class="body" style="gap: 20px">
+    <p class="sub" style="margin: 0; display: flex; gap: 8px"><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true" style="margin-top: 1px"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>Only shown to people in your groups, when they're settling up with you.</p>
+
+    <section class="card cardpad" style="display: flex; flex-direction: column; gap: 14px">
+      <div style="display: flex; align-items: center; gap: 12px"><span class="tile c4" style="width: 36px; height: 36px; border-radius: 10px"><svg class="ic s" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"></rect><path d="M11 18h2"></path></svg></span><span class="t" style="flex: 1">MobilePay</span><button class="pill acc" aria-pressed="true"><span class="radio on" style="width: 14px; height: 14px; border-width: 2px"></span>Preferred</button></div>
+      <label class="field"><span class="lbl">Phone number</span><span class="inp"><span class="pill">+45</span><input value="40 12 34 56" inputmode="tel"></span></label>
+    </section>
+
+    <section class="card cardpad" style="display: flex; flex-direction: column; gap: 14px">
+      <div style="display: flex; align-items: center; gap: 12px"><span class="tile c2" style="width: 36px; height: 36px; border-radius: 10px"><svg class="ic s" viewBox="0 0 24 24"><path d="M3 10h18M5 10v8M9 10v8M15 10v8M19 10v8M3 20h18M12 3l9 5H3z"></path></svg></span><span class="t" style="flex: 1">Bank account</span><button class="pill" aria-pressed="false"><span class="radio" style="width: 14px; height: 14px; border-width: 2px"></span>Preferred</button></div>
+      <label class="field"><span class="lbl">Name on account</span><span class="inp"><input value="Eythor"></span></label>
+      <div style="display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 10px">
+        <label class="field"><span class="lbl">Reg. no.</span><span class="inp"><input value="1234" inputmode="numeric"></span></label>
+        <label class="field"><span class="lbl">Account no.</span><span class="inp"><input value="0012345678" inputmode="numeric"></span></label>
+      </div>
+      <label class="field"><span class="lbl">IBAN (for friends abroad)</span><span class="inp"><input placeholder="DK00 0000 0000 0000 00"></span></label>
+    </section>
+
+    <section class="card cardpad" style="display: flex; flex-direction: column; gap: 14px">
+      <div style="display: flex; align-items: center; gap: 12px"><span class="tile c1" style="width: 36px; height: 36px; border-radius: 10px"><svg class="ic s" viewBox="0 0 24 24"><path d="M7 21V4h6a4.5 4.5 0 0 1 0 9H7M12 13l5 8"></path></svg></span><span class="t" style="flex: 1">Revolut</span><span class="xs">Not added</span></div>
+      <label class="field"><span class="lbl">Revtag</span><span class="inp"><span class="mut">@</span><input placeholder="yourtag"></span></label>
+    </section>
+  </div>
+  <div class="footer"><a href="Account.dc.html" class="btn btn-p">Save</a></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"dark":{"editor":"boolean","default":false},"$preview":{"width":390,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() { return { themeClass: (this.props.dark ?? false) ? 'dark' : 'light' }; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Who had what</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./bs.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="bs scr {{themeClass}}" style="width: 390px; height: 1180px">
+  <div class="appbar">
+    <a href="ScanReview.dc.html" class="ib" aria-label="Back"><svg class="ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"></path></svg></a>
+    <span class="ttl">Who had what?</span>
+    <span style="width: 44px"></span>
+  </div>
+  <div class="body" style="gap: 18px">
+    <p class="sub" style="margin: 0">Pick a person, then tap everything they had. Tap an item for several people and it's shared evenly.</p>
+
+    <div role="group" aria-label="Choose person" style="display: flex; gap: 8px; overflow-x: auto">
+      <sc-for list="{{people}}" as="p" hint-placeholder-count="5">
+        <button onClick="{{p.pick}}" aria-pressed="{{p.activeStr}}" style="flex-shrink: 0; width: 64px; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 2px; border-radius: 16px; border: 2px solid {{p.border}}; background: {{p.bg}}; font: inherit; color: var(--text)">
+          <span class="av {{p.cls}}">{{p.ini}}</span>
+          <span style="font-size: 12px; font-weight: 600">{{p.name}}</span>
+          <span class="amt" style="font-size: 11px; color: var(--muted)">{{p.totalTxt}}</span>
+        </button>
+      </sc-for>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <div class="sechead"><span class="t" style="font-size: 14px">Tapping for {{activeName}}</span><span class="xs">{{doneCount}} of {{itemCount}} assigned</span></div>
+      <div class="track"><span style="width: {{pct}}%"></span></div>
+    </div>
+
+    <div class="card" style="overflow: hidden">
+      <sc-for list="{{items}}" as="it" hint-placeholder-count="11">
+        <button class="row" onClick="{{it.toggle}}" aria-pressed="{{it.onStr}}" style="width: 100%; min-height: 54px; padding: 10px 14px; border: 0; border-top: {{it.bt}}; background: {{it.bg}}; font: inherit; color: var(--text); text-align: left">
+          <span class="{{it.checkCls}}"><sc-if value="{{it.on}}" hint-placeholder-val="{{false}}"><svg class="ic xs" viewBox="0 0 24 24" style="stroke-width: 3"><path d="M5 12l5 5 9-10"></path></svg></sc-if></span>
+          <span class="grow"><span class="t" style="font-size: 14px">{{it.name}}</span><span class="xs" style="color: {{it.subColor}}">{{it.sub}}</span></span>
+          <span class="stack"><sc-for list="{{it.who}}" as="w" hint-placeholder-count="1"><span class="av sm {{w.cls}}">{{w.ini}}</span></sc-for></span>
+          <span class="amt" style="width: 56px; text-align: right; font-size: 14px">{{it.priceTxt}}</span>
+        </button>
+      </sc-for>
+    </div>
+
+    <div class="card list">
+      <div class="row" style="min-height: 48px; padding: 10px 14px"><svg class="ic s mut" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path></svg><span class="grow"><span class="t" style="font-size: 14px">Couvert</span><span class="xs">Shared by everyone</span></span><span class="amt" style="font-size: 14px">€9.68</span></div>
+      <div class="row" style="min-height: 48px; padding: 10px 14px"><svg class="ic s mut" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5 5 19"></path><circle cx="7" cy="7" r="2.5"></circle><circle cx="17" cy="17" r="2.5"></circle></svg><span class="grow"><span class="t" style="font-size: 14px">Tip 10%</span><span class="xs">Follows what each person had</span></span><span class="amt" style="font-size: 14px">€14.32</span></div>
+    </div>
+    <a href="ScanShareSheet.dc.html" class="link" style="text-align: center; text-decoration: underline; font-size: 13px">Shared something unevenly? Set custom portions</a>
+  </div>
+  <div class="footer">
+    <button class="btn btn-s" onClick="{{next}}" style="flex: 1">Next: {{nextName}}</button>
+    <a href="ScanSummary.dc.html" class="btn btn-p" style="flex: 1">See totals</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"dark":{"editor":"boolean","default":false},"$preview":{"width":390,"height":1180}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const PEOPLE = [
+      { id: 'ey', ini: 'EY', name: 'You', cls: 'c1' },
+      { id: 'mk', ini: 'MK', name: 'Mikkel', cls: 'c2' },
+      { id: 'so', ini: 'SO', name: 'Sofie', cls: 'c3' },
+      { id: 'jo', ini: 'JO', name: 'Jonas', cls: 'c4' },
+      { id: 'an', ini: 'AN', name: 'Anna', cls: 'c2' }
+    ];
+    const ITEMS = [
+      { id: 'b1', name: 'Bacalhau', note: '1 of 2', price: 19 },
+      { id: 'b2', name: 'Bacalhau', note: '2 of 2', price: 19 },
+      { id: 'p1', name: 'Polvo', note: '1 of 2', price: 21 },
+      { id: 'p2', name: 'Polvo', note: '2 of 2', price: 21 },
+      { id: 'bt', name: 'Bitoque', note: 'Main', price: 16.5 },
+      { id: 'vt', name: 'Vinho tinto', note: 'Bottle', price: 28 },
+      { id: 'd1', name: 'Pastel de nata', note: '1 of 5', price: 1.8 },
+      { id: 'd2', name: 'Pastel de nata', note: '2 of 5', price: 1.8 },
+      { id: 'd3', name: 'Pastel de nata', note: '3 of 5', price: 1.8 },
+      { id: 'd4', name: 'Pastel de nata', note: '4 of 5', price: 1.8 },
+      { id: 'd5', name: 'Pastel de nata', note: '5 of 5', price: 1.8 }
+    ];
+    const DEF = { b1: ['ey'], b2: ['so'], p1: ['mk'], p2: [], bt: [], vt: ['ey', 'mk', 'so'], d1: ['ey'], d2: [], d3: [], d4: [], d5: [] };
+    const s = this.state || {};
+    const active = s.active || 'ey';
+    const assign = s.assign || DEF;
+    const byId = {};
+    PEOPLE.forEach((p) => { byId[p.id] = p; });
+    const totals = {};
+    PEOPLE.forEach((p) => { totals[p.id] = 0; });
+    ITEMS.forEach((it) => {
+      const ids = assign[it.id] || [];
+      ids.forEach((id) => { totals[id] += it.price / ids.length; });
+    });
+    const fmt = (n) => '€' + n.toFixed(2);
+    const setAssign = (id, ids) => {
+      const next = Object.assign({}, assign);
+      next[id] = ids;
+      this.setState({ active: active, assign: next });
+    };
+    const items = ITEMS.map((it, i) => {
+      const ids = assign[it.id] || [];
+      const on = ids.indexOf(active) !== -1;
+      return {
+        name: it.name,
+        priceTxt: fmt(it.price),
+        who: ids.map((id) => byId[id]),
+        on: on,
+        onStr: String(on),
+        checkCls: on ? 'check on' : 'check',
+        bg: on ? 'var(--accSoft)' : 'transparent',
+        bt: i ? '1px solid var(--line)' : '0',
+        sub: ids.length === 0 ? 'Nobody yet' : (ids.length > 1 ? fmt(it.price / ids.length) + ' each · ' + ids.length + ' sharing' : it.note),
+        subColor: ids.length === 0 ? 'var(--owe)' : 'var(--muted)',
+        toggle: () => setAssign(it.id, on ? ids.filter((x) => x !== active) : ids.concat([active]))
+      };
+    });
+    const people = PEOPLE.map((p) => ({
+      ini: p.ini, name: p.name, cls: p.cls,
+      totalTxt: fmt(totals[p.id]),
+      bg: p.id === active ? 'var(--accSoft)' : 'var(--surface)',
+      border: p.id === active ? 'var(--acc)' : 'var(--line)',
+      activeStr: String(p.id === active),
+      pick: () => this.setState({ active: p.id, assign: assign })
+    }));
+    const done = ITEMS.filter((it) => (assign[it.id] || []).length > 0).length;
+    const idx = PEOPLE.findIndex((p) => p.id === active);
+    const nextP = PEOPLE[(idx + 1) % PEOPLE.length];
+    return {
+      themeClass: (this.props.dark ?? false) ? 'dark' : 'light',
+      people: people,
+      items: items,
+      doneCount: done,
+      itemCount: ITEMS.length,
+      pct: Math.round((done / ITEMS.length) * 100),
+      activeName: active === 'ey' ? 'you' : byId[active].name,
+      nextName: nextP.name,
+      next: () => this.setState({ active: nextP.id, assign: assign })
+    };
+  }
+}
+</script>
+</body>
+</html>

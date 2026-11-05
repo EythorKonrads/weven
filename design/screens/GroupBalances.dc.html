@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Who owes who</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./bs.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="bs scr {{themeClass}}" style="width: 390px; height: 900px">
+  <div class="appbar">
+    <a href="GroupDetail.dc.html" class="ib" aria-label="Back"><svg class="ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"></path></svg></a>
+    <span class="ttl">Lisbon trip</span>
+    <span style="width: 44px"></span>
+  </div>
+  <div class="body" style="gap: 20px">
+    <nav class="seg" aria-label="Group sections">
+      <a href="GroupDetail.dc.html" style="display: grid; place-items: center; font-weight: 600; font-size: 13px; color: var(--muted)">Expenses</a>
+      <button aria-pressed="true">Balances</button>
+      <a href="GroupStats.dc.html" style="display: grid; place-items: center; font-weight: 600; font-size: 13px; color: var(--muted)">Statistics</a>
+    </nav>
+
+    <div class="card row">
+      <span class="grow"><span class="t">Simplify debts</span><span class="sub">Fewest payments to settle everyone. Totals stay the same.</span></span>
+      <button class="sw" role="switch" aria-checked="true" aria-label="Simplify debts"></button>
+    </div>
+
+    <section class="sec">
+      <div class="sechead"><h2 class="disp h3">Suggested payments</h2><span class="xs">4 payments</span></div>
+      <div class="card list">
+        <div class="row">
+          <span class="av sm c2">MK</span><svg class="ic s mut" viewBox="0 0 24 24" aria-label="pays" role="img"><path d="M5 12h14M13 6l6 6-6 6"></path></svg><span class="av sm c1">EY</span>
+          <span class="grow" style="margin-left: 4px"><span class="t" style="font-size: 14px">Mikkel pays you</span><span class="amt owed" style="font-size: 14px">€52.70</span></span>
+          <a href="SettleUp.dc.html" class="btn btn-soft btn-sm">Settle</a>
+        </div>
+        <div class="row">
+          <span class="av sm c4">JO</span><svg class="ic s mut" viewBox="0 0 24 24" aria-label="pays" role="img"><path d="M5 12h14M13 6l6 6-6 6"></path></svg><span class="av sm c1">EY</span>
+          <span class="grow" style="margin-left: 4px"><span class="t" style="font-size: 14px">Jonas pays you</span><span class="amt owed" style="font-size: 14px">€31.50</span></span>
+          <a href="SettleUp.dc.html" class="btn btn-soft btn-sm">Settle</a>
+        </div>
+        <div class="row">
+          <span class="av sm c4">JO</span><svg class="ic s mut" viewBox="0 0 24 24" aria-label="pays" role="img"><path d="M5 12h14M13 6l6 6-6 6"></path></svg><span class="av sm c3">SO</span>
+          <span class="grow" style="margin-left: 4px"><span class="t" style="font-size: 14px">Jonas pays Sofie</span><span class="amt" style="font-size: 14px">€96.40</span></span>
+          <button class="btn btn-s btn-sm">Remind</button>
+        </div>
+        <div class="row">
+          <span class="av sm c2">AN</span><svg class="ic s mut" viewBox="0 0 24 24" aria-label="pays" role="img"><path d="M5 12h14M13 6l6 6-6 6"></path></svg><span class="av sm c3">SO</span>
+          <span class="grow" style="margin-left: 4px"><span class="t" style="font-size: 14px">Anna pays Sofie</span><span class="amt" style="font-size: 14px">€120.00</span></span>
+          <button class="btn btn-s btn-sm">Remind</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2 class="disp h3">Everyone's balance</h2>
+      <div class="card cardpad" style="display: flex; flex-direction: column; gap: 14px">
+        <div style="display: grid; grid-template-columns: 64px minmax(0, 1fr) minmax(0, 1fr) 76px; align-items: center; gap: 8px"><span class="t" style="font-size: 14px">Sofie</span><span></span><span style="height: 10px; border-radius: 0 5px 5px 0; background: var(--owed); width: 100%"></span><span class="amt owed" style="font-size: 13px; text-align: right">+€216.40</span></div>
+        <div style="display: grid; grid-template-columns: 64px minmax(0, 1fr) minmax(0, 1fr) 76px; align-items: center; gap: 8px"><span class="t" style="font-size: 14px">You</span><span></span><span style="height: 10px; border-radius: 0 5px 5px 0; background: var(--owed); width: 39%"></span><span class="amt owed" style="font-size: 13px; text-align: right">+€84.20</span></div>
+        <div style="display: grid; grid-template-columns: 64px minmax(0, 1fr) minmax(0, 1fr) 76px; align-items: center; gap: 8px"><span class="t" style="font-size: 14px">Mikkel</span><span style="height: 10px; border-radius: 5px 0 0 5px; background: var(--owe); width: 24%; justify-self: end"></span><span></span><span class="amt owe" style="font-size: 13px; text-align: right">−€52.70</span></div>
+        <div style="display: grid; grid-template-columns: 64px minmax(0, 1fr) minmax(0, 1fr) 76px; align-items: center; gap: 8px"><span class="t" style="font-size: 14px">Anna</span><span style="height: 10px; border-radius: 5px 0 0 5px; background: var(--owe); width: 55%; justify-self: end"></span><span></span><span class="amt owe" style="font-size: 13px; text-align: right">−€120.00</span></div>
+        <div style="display: grid; grid-template-columns: 64px minmax(0, 1fr) minmax(0, 1fr) 76px; align-items: center; gap: 8px"><span class="t" style="font-size: 14px">Jonas</span><span style="height: 10px; border-radius: 5px 0 0 5px; background: var(--owe); width: 59%; justify-self: end"></span><span></span><span class="amt owe" style="font-size: 13px; text-align: right">−€127.90</span></div>
+      </div>
+    </section>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"dark":{"editor":"boolean","default":false},"$preview":{"width":390,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() { return { themeClass: (this.props.dark ?? false) ? 'dark' : 'light' }; }
+}
+</script>
+</body>
+</html>
