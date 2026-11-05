@@ -41,6 +41,7 @@ jobs:
               - '**'
               - '!**/*.md'
               - '!docs/**'
+              - '!design/**'
               - '!.claude/**'
               - '!factory/dashboard.*'
               - '!factory/config.json'

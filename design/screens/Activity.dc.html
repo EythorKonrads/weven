@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Activity</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./bs.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="bs scr {{themeClass}}" style="width: 390px; height: 960px">
+  <div class="body" style="padding-top: 20px; gap: 20px">
+    <header style="display: flex; align-items: center; justify-content: space-between">
+      <h1 class="disp h1">Activity</h1>
+      <button class="ib boxed" aria-label="Filter"><svg class="ic" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"></path></svg></button>
+    </header>
+    <div style="display: flex; gap: 8px">
+      <button class="pill on" aria-pressed="true">All</button>
+      <button class="pill" aria-pressed="false">Expenses</button>
+      <button class="pill" aria-pressed="false">Payments</button>
+      <button class="pill" aria-pressed="false">Comments</button>
+    </div>
+
+    <section class="sec" style="gap: 8px">
+      <span class="lbl">Today</span>
+      <div class="card list">
+        <a href="ExpenseDetail.dc.html" class="row top"><span class="av c3">SO</span><span class="grow"><span style="font-size: 14px"><b style="font-weight: 600">Sofie</b> commented on <b style="font-weight: 600">Dinner at Taberna</b></span><span class="sub" style="font-style: italic">"Anna left before dessert…"</span><span class="xs">Lisbon trip · 21:14</span></span></a>
+        <a href="#" class="row top"><span class="av c3">SO</span><span class="grow"><span style="font-size: 14px"><b style="font-weight: 600">Sofie</b> added <b style="font-weight: 600">Groceries, Netto</b></span><span class="xs">Apartment Nørrebro · 17:02</span></span><span class="end"><span class="xs">you owe</span><span class="amt owe" style="font-size: 14px">98.40 kr</span></span></a>
+        <a href="#" class="row top"><span class="av c1">EY</span><span class="grow"><span style="font-size: 14px"><b style="font-weight: 600">You</b> paid <b style="font-weight: 600">Tram 28 tickets</b></span><span class="xs">Lisbon trip · 11:40</span></span><span class="end"><span class="xs">you lent</span><span class="amt owed" style="font-size: 14px">€19.20</span></span></a>
+      </div>
+    </section>
+
+    <section class="sec" style="gap: 8px">
+      <span class="lbl">This week</span>
+      <div class="card list">
+        <div class="row top"><span class="av c4">JO</span><span class="grow"><span style="font-size: 14px"><b style="font-weight: 600">Jonas</b> marked a payment to you as paid</span><span class="xs">via MobilePay · Wed</span>
+          <span style="display: flex; gap: 8px; margin-top: 8px"><button class="btn btn-p btn-sm">Confirm 150.00 kr</button><button class="btn btn-s btn-sm">Not received</button></span></span></div>
+        <div class="row top"><span class="tile c0" style="width: 40px; height: 40px; border-radius: 50%"><svg class="ic s" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg></span><span class="grow"><span style="font-size: 14px"><b style="font-weight: 600">Mom</b> locked <b style="font-weight: 600">Family</b></span><span class="xs">No new members can join · Tue</span></span></div>
+        <div class="row top"><span class="tile c0" style="width: 40px; height: 40px; border-radius: 50%"><svg class="ic s" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"></path></svg></span><span class="grow"><span style="font-size: 14px"><b style="font-weight: 600">Sofie</b> made you a manager of <b style="font-weight: 600">Lisbon trip</b></span><span class="xs">Mon</span></span></div>
+        <div class="row top"><span class="av c2">AN</span><span class="grow"><span style="font-size: 14px"><b style="font-weight: 600">Anna</b> joined <b style="font-weight: 600">Lisbon trip</b></span><span class="xs">Sun</span></span></div>
+      </div>
+    </section>
+  </div>
+
+  <nav class="tabbar" aria-label="Main">
+    <a href="Main.dc.html"><svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"></path></svg>Home</a>
+    <a href="Groups.dc.html"><svg class="ic" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"></circle><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path><path d="M21 20c0-2.5-1.5-4.6-3.5-5.5"></path></svg>Groups</a>
+    <div><a href="AddExpense.dc.html" class="fab" aria-label="Add expense" style="display: grid; color: var(--onacc)"><svg class="ic l" viewBox="0 0 24 24" style="stroke-width: 2.25"><path d="M12 5v14M5 12h14"></path></svg></a></div>
+    <a href="Activity.dc.html" aria-current="page"><svg class="ic" viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h7"></path></svg>Activity</a>
+    <a href="Account.dc.html"><svg class="ic" viewBox="0 0 24 24"><path d="M21 21v-1a5 5 0 0 0-5-5H8a5 5 0 0 0-5 5v1"></path><circle cx="12" cy="7" r="4"></circle></svg>Account</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"dark":{"editor":"boolean","default":false},"$preview":{"width":390,"height":960}}'>
+class Component extends DCLogic {
+  renderVals() { return { themeClass: (this.props.dark ?? false) ? 'dark' : 'light' }; }
+}
+</script>
+</body>
+</html>

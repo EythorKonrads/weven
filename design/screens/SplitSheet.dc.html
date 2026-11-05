@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Split options</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./bs.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="bs scr {{themeClass}}" style="width: 390px; height: 844px">
+  <div class="appbar" aria-hidden="true"><span class="ib"></span><span class="ttl">Add expense</span><span class="ib"></span></div>
+  <div class="ghost" aria-hidden="true"><div class="blk" style="height: 130px"></div><div class="blk"></div><div class="blk"></div></div>
+  <div class="scrim"></div>
+
+  <section class="sheet" role="dialog" aria-label="Split options">
+    <div class="grab"></div>
+    <div class="sechead" style="align-items: center">
+      <h2 class="disp h2">Split 320.00 kr</h2>
+      <a href="AddExpense.dc.html" class="txtbtn" style="display: grid; place-items: center">Done</a>
+    </div>
+    <div class="seg" role="group" aria-label="Split method">
+      <button aria-pressed="false">Equal</button>
+      <button aria-pressed="false">Exact</button>
+      <button aria-pressed="false">%</button>
+      <button aria-pressed="true">Shares</button>
+    </div>
+    <p class="sub" style="margin: -4px 0 0">Good for uneven use, like nights stayed or rooms.</p>
+
+    <div class="list">
+      <div class="row" style="padding: 10px 0"><span class="check on" aria-label="Included"><svg class="ic xs" viewBox="0 0 24 24" style="stroke-width: 3"><path d="M5 12l5 5 9-10"></path></svg></span><span class="av sm c1">EY</span><span class="grow"><span class="t" style="font-size: 14px">You</span><span class="amt xs">128.00 kr</span></span>
+        <span style="display: flex; align-items: center; gap: 6px"><button class="ib boxed" aria-label="Fewer shares for you" style="width: 36px; height: 36px"><svg class="ic s" viewBox="0 0 24 24"><path d="M5 12h14"></path></svg></button><span class="amt" style="width: 22px; text-align: center">2</span><button class="ib boxed" aria-label="More shares for you" style="width: 36px; height: 36px"><svg class="ic s" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></button></span></div>
+      <div class="row" style="padding: 10px 0"><span class="check on" aria-label="Included"><svg class="ic xs" viewBox="0 0 24 24" style="stroke-width: 3"><path d="M5 12l5 5 9-10"></path></svg></span><span class="av sm c2">MK</span><span class="grow"><span class="t" style="font-size: 14px">Mikkel</span><span class="amt xs">64.00 kr</span></span>
+        <span style="display: flex; align-items: center; gap: 6px"><button class="ib boxed" aria-label="Fewer shares for Mikkel" style="width: 36px; height: 36px"><svg class="ic s" viewBox="0 0 24 24"><path d="M5 12h14"></path></svg></button><span class="amt" style="width: 22px; text-align: center">1</span><button class="ib boxed" aria-label="More shares for Mikkel" style="width: 36px; height: 36px"><svg class="ic s" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></button></span></div>
+      <div class="row" style="padding: 10px 0"><span class="check on" aria-label="Included"><svg class="ic xs" viewBox="0 0 24 24" style="stroke-width: 3"><path d="M5 12l5 5 9-10"></path></svg></span><span class="av sm c3">SO</span><span class="grow"><span class="t" style="font-size: 14px">Sofie</span><span class="amt xs">64.00 kr</span></span>
+        <span style="display: flex; align-items: center; gap: 6px"><button class="ib boxed" aria-label="Fewer shares for Sofie" style="width: 36px; height: 36px"><svg class="ic s" viewBox="0 0 24 24"><path d="M5 12h14"></path></svg></button><span class="amt" style="width: 22px; text-align: center">1</span><button class="ib boxed" aria-label="More shares for Sofie" style="width: 36px; height: 36px"><svg class="ic s" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></button></span></div>
+      <div class="row" style="padding: 10px 0"><span class="check on" aria-label="Included"><svg class="ic xs" viewBox="0 0 24 24" style="stroke-width: 3"><path d="M5 12l5 5 9-10"></path></svg></span><span class="av sm c4">JO</span><span class="grow"><span class="t" style="font-size: 14px">Jonas</span><span class="amt xs">64.00 kr</span></span>
+        <span style="display: flex; align-items: center; gap: 6px"><button class="ib boxed" aria-label="Fewer shares for Jonas" style="width: 36px; height: 36px"><svg class="ic s" viewBox="0 0 24 24"><path d="M5 12h14"></path></svg></button><span class="amt" style="width: 22px; text-align: center">1</span><button class="ib boxed" aria-label="More shares for Jonas" style="width: 36px; height: 36px"><svg class="ic s" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></button></span></div>
+      <div class="row" style="padding: 10px 0; opacity: 0.55"><span class="check" aria-label="Not included"></span><span class="av sm c2">AN</span><span class="grow"><span class="t" style="font-size: 14px">Anna</span><span class="xs">Not included</span></span></div>
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; border-radius: 14px; background: var(--surface2)">
+      <span class="sub">5 shares · 64.00 kr per share</span>
+      <span class="amt owed" style="display: flex; align-items: center; gap: 4px; font-size: 14px"><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>320.00 kr</span>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"dark":{"editor":"boolean","default":false},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return { themeClass: (this.props.dark ?? false) ? 'dark' : 'light' }; }
+}
+</script>
+</body>
+</html>

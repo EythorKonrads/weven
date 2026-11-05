@@ -51,7 +51,7 @@ Fallback if React Native is too much of a detour: Ionic + Capacitor. Everything 
 
 ## Web hosting
 
-Cloudflare Pages free plan for staging, PR previews and production. The web export is static files (`web.output: single`), so any static host works. Free includes custom domains (100 per project), unlimited static requests and unlimited preview deployments, and allows commercial use. Domain `wevenapp.com` (Namecheap, DNS on Cloudflare).
+Cloudflare Pages free plan for staging, PR previews and production. The web export is static files (`web.output: single`), so any static host works. Free includes custom domains (100 per project), unlimited static requests and unlimited preview deployments, and allows commercial use. Domain `wevenapp.com` (Namecheap, DNS on Cloudflare). Until launch it serves the static coming-soon page in `apps/landing`.
 
 Not EAS Hosting: its free tier has no custom domains; Starter costs USD 19/month for one domain. EAS stays for builds, submissions and OTA updates. If the web app ever needs server code (Expo API routes), revisit: EAS Hosting runs it, or Cloudflare Workers.
 

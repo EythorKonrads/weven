@@ -1,9 +1,12 @@
 pnpm-lock.yaml
 packages/core/src/database.types.ts
 factory/
+design/
 .claude/
 supabase/.temp/
 supabase/.branches/
 **/.expo/
 **/dist/
+apps/landing/public/styles.css
+**/expo-env.d.ts
 **/*.md

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Weven, coming soon</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./bs.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#121A2E}
+@keyframes cs-float{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-16px) rotate(var(--r,0deg))}}
+@keyframes cs-spin{to{transform:rotate(360deg)}}
+@keyframes cs-peek{0%,100%{transform:translateY(18px)}45%,60%{transform:translateY(0)}}
+@keyframes cs-blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+@keyframes cs-twinkle{0%,100%{opacity:.25}50%{opacity:.9}}
+.cs-float{animation:cs-float 6s ease-in-out infinite}
+.cs-spin{animation:cs-spin 18s linear infinite;transform-origin:50% 50%}
+.cs-peek{animation:cs-peek 5s ease-in-out infinite}
+.cs-eye{animation:cs-blink 4.5s infinite;transform-box:fill-box;transform-origin:center}
+.cs-star{animation:cs-twinkle 3s ease-in-out infinite}
+.cs-btn:hover{transform:translateY(-2px) rotate(-1deg)}
+@media (prefers-reduced-motion: reduce){.cs-float,.cs-spin,.cs-peek,.cs-eye,.cs-star{animation:none}}
+</style>
+</helmet>
+<div class="bs dark" style="min-height: 960px; position: relative; overflow: hidden; background: radial-gradient(120% 90% at 50% 0%, #22305A 0%, #121A2E 60%); color: #F2F2EF; font-family: Inter, system-ui, sans-serif">
+
+  <!-- stars -->
+  <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none">
+    <span class="cs-star" style="position: absolute; left: 8%; top: 18%; width: 4px; height: 4px; border-radius: 50%; background: #DCE5F7"></span>
+    <span class="cs-star" style="position: absolute; left: 22%; top: 62%; width: 3px; height: 3px; border-radius: 50%; background: #DCE5F7; animation-delay: 1s"></span>
+    <span class="cs-star" style="position: absolute; left: 74%; top: 14%; width: 5px; height: 5px; border-radius: 50%; background: #DCE5F7; animation-delay: .5s"></span>
+    <span class="cs-star" style="position: absolute; left: 88%; top: 48%; width: 3px; height: 3px; border-radius: 50%; background: #DCE5F7; animation-delay: 2s"></span>
+    <span class="cs-star" style="position: absolute; left: 56%; top: 8%; width: 3px; height: 3px; border-radius: 50%; background: #DCE5F7; animation-delay: 1.4s"></span>
+    <span class="cs-star" style="position: absolute; left: 38%; top: 30%; width: 2px; height: 2px; border-radius: 50%; background: #DCE5F7; animation-delay: .8s"></span>
+  </div>
+
+  <!-- floating mystery objects -->
+  <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none">
+    <div class="cs-float" style="position: absolute; left: 6%; top: 34%; --r: -12deg; width: 120px; padding: 14px 12px; border-radius: 8px; background: #ECEAE4; color: #3A3A38; font: 600 11px/1.6 'Courier New', monospace; box-shadow: 0 20px 40px rgba(0,0,0,.35)">
+      <div style="text-align: center; font-weight: 700">RECEIPT</div>
+      <div style="display: flex; justify-content: space-between"><span>Pizza</span><span>???</span></div>
+      <div style="display: flex; justify-content: space-between"><span>Wine</span><span>???</span></div>
+      <div style="display: flex; justify-content: space-between"><span>Who?</span><span>???</span></div>
+      <div style="border-top: 1px dashed #9A9A96; margin-top: 4px; padding-top: 4px; display: flex; justify-content: space-between"><span>TOTAL</span><span>?.??</span></div>
+    </div>
+    <div class="cs-float" style="position: absolute; right: 8%; top: 22%; --r: 10deg; animation-delay: -2s">
+      <svg width="110" height="110" viewBox="0 0 48 48"><path d="M24 24L43.32 18.82A20 20 0 1 1 34 6.68Z" fill="#3C5A99"></path><path d="M26.4 22.2L45.72 17.02A20 20 0 0 0 36.4 4.88Z" fill="#8FA9E0"></path></svg>
+    </div>
+    <div class="cs-float" style="position: absolute; right: 16%; top: 60%; --r: -6deg; animation-delay: -4s; width: 64px; height: 64px; border-radius: 50%; background: #FFCE6B; color: #6B4A00; display: grid; place-items: center; font: 800 30px 'Bricolage Grotesque', sans-serif; box-shadow: inset 0 -5px 0 rgba(0,0,0,.15)">?</div>
+    <div class="cs-float" style="position: absolute; left: 18%; top: 14%; --r: 8deg; animation-delay: -1s; width: 44px; height: 44px; border-radius: 50%; background: #5FD3C4; color: #0B3B35; display: grid; place-items: center; font: 800 20px 'Bricolage Grotesque', sans-serif; box-shadow: inset 0 -4px 0 rgba(0,0,0,.15)">kr</div>
+    <div class="cs-float" style="position: absolute; left: 30%; top: 70%; --r: 4deg; animation-delay: -3s; width: 52px; height: 52px; border-radius: 50%; background: #FF9A62; color: #5A2208; display: grid; place-items: center; font: 800 24px 'Bricolage Grotesque', sans-serif; box-shadow: inset 0 -4px 0 rgba(0,0,0,.15)">€</div>
+  </div>
+
+  <!-- nav -->
+  <header style="position: relative; max-width: 1200px; margin: 0 auto; padding: 28px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px">
+    <span style="display: flex; align-items: center; gap: 10px">
+      <svg width="34" height="34" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="12" r="6.5" fill="#8FA9E0"></circle><circle cx="15" cy="12" r="6.5" fill="#FFFFFF"></circle><path d="M12 6.23A6.5 6.5 0 0 1 12 17.77A6.5 6.5 0 0 1 12 6.23Z" fill="#3C5A99"></path></svg>
+      <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 26px; letter-spacing: -0.04em">weven</span>
+    </span>
+    <a href="#" class="cs-btn" style="height: 44px; padding: 0 20px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.35); color: #F2F2EF; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; transition: transform .15s"><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 17l5-5-5-5M15 12H3"></path><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3"></path></svg>Log in</a>
+  </header>
+
+  <!-- hero -->
+  <main style="position: relative; max-width: 860px; margin: 0 auto; padding: 56px 24px 260px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px">
+    <div style="position: relative; width: 150px; height: 150px">
+      <svg class="cs-spin" width="150" height="150" viewBox="0 0 150 150" aria-hidden="true"><defs><path id="csring" d="M75 75m-58 0a58 58 0 1 1 116 0a58 58 0 1 1-116 0"></path></defs><text fill="#8FA9E0" style="font: 700 13px Inter, sans-serif; letter-spacing: 4px"><textPath href="#csring">COMING SOON · COMING SOON · COMING SOON ·</textPath></text></svg>
+      <span style="position: absolute; inset: 42px; border-radius: 50%; background: #FFCE6B; color: #3A2A00; display: grid; place-items: center; font: 800 34px 'Bricolage Grotesque', sans-serif; transform: rotate(-8deg)">shh</span>
+    </div>
+
+    <h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(44px, 7vw, 92px); line-height: 0.98; letter-spacing: -0.045em">Somebody owes somebody.<br><span style="color: #8FA9E0">Not for long.</span></h1>
+    <p style="margin: 0; font-size: clamp(17px, 2vw, 21px); line-height: 1.5; color: #C9D2E8; max-width: 620px">Something is cooking that makes every group dinner, trip and shared flat come out… well, we can't say yet. But you'll like the ending.</p>
+
+    <form style="width: 100%; max-width: 520px; display: flex; flex-wrap: wrap; gap: 10px; padding: 8px; border-radius: 999px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16)">
+      <label style="flex: 1 1 220px; display: flex; align-items: center; padding: 0 18px"><span class="sr">Email address</span><input type="email" placeholder="you@example.com" style="width: 100%; height: 48px; border: 0; outline: 0; background: transparent; color: #FFFFFF; font: 400 16px Inter, sans-serif"></label>
+      <button type="button" class="cs-btn" style="flex: 0 0 auto; height: 52px; padding: 0 26px; border: 0; border-radius: 999px; background: #FFFFFF; color: #1C2742; font: 700 16px Inter, sans-serif; transition: transform .15s; cursor: pointer">Let me in early</button>
+    </form>
+    <span style="font-size: 13px; color: #9AA6C4; margin-top: -14px">One email when the doors open. No spam, pinky promise.</span>
+
+    <!-- blurred teasers -->
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 8px">
+      <span style="position: relative; padding: 10px 16px; border-radius: 999px; background: rgba(255,255,255,0.08); border: 1px dashed rgba(255,255,255,0.25); font-weight: 600; font-size: 14px"><span style="filter: blur(4px)" aria-hidden="true">Split by who had what</span><span class="sr">Secret feature</span><span aria-hidden="true" style="position: absolute; inset: 0; display: grid; place-items: center; font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; color: #FFCE6B">?</span></span>
+      <span style="position: relative; padding: 10px 16px; border-radius: 999px; background: rgba(255,255,255,0.08); border: 1px dashed rgba(255,255,255,0.25); font-weight: 600; font-size: 14px; transform: rotate(-2deg)"><span style="filter: blur(4px)" aria-hidden="true">Any currency, live rates</span><span class="sr">Secret feature</span><span aria-hidden="true" style="position: absolute; inset: 0; display: grid; place-items: center; font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; color: #FFCE6B">?</span></span>
+      <span style="position: relative; padding: 10px 16px; border-radius: 999px; background: rgba(255,255,255,0.08); border: 1px dashed rgba(255,255,255,0.25); font-weight: 600; font-size: 14px; transform: rotate(2deg)"><span style="filter: blur(4px)" aria-hidden="true">Settle up in one tap</span><span class="sr">Secret feature</span><span aria-hidden="true" style="position: absolute; inset: 0; display: grid; place-items: center; font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; color: #FFCE6B">?</span></span>
+    </div>
+  </main>
+
+  <!-- peeking characters -->
+  <div aria-hidden="true" style="position: absolute; left: 50%; bottom: -70px; transform: translateX(-50%); display: flex; gap: 0">
+    <div class="cs-peek">
+      <svg width="420" height="230" viewBox="0 0 420 230">
+        <circle cx="150" cy="150" r="120" fill="#8FA9E0"></circle>
+        <circle cx="270" cy="150" r="120" fill="#FFFFFF"></circle>
+        <path d="M210 46A120 120 0 0 1 210 254A120 120 0 0 1 210 46Z" fill="#3C5A99"></path>
+        <g class="cs-eye"><ellipse cx="118" cy="104" rx="9" ry="13" fill="#1C2742"></ellipse></g>
+        <g class="cs-eye"><ellipse cx="160" cy="104" rx="9" ry="13" fill="#1C2742"></ellipse></g>
+        <g class="cs-eye"><ellipse cx="262" cy="104" rx="9" ry="13" fill="#1C2742"></ellipse></g>
+        <g class="cs-eye"><ellipse cx="304" cy="104" rx="9" ry="13" fill="#1C2742"></ellipse></g>
+        <path d="M126 138Q139 148 152 138" fill="none" stroke="#1C2742" stroke-width="5" stroke-linecap="round"></path>
+        <path d="M270 138Q283 148 296 138" fill="none" stroke="#1C2742" stroke-width="5" stroke-linecap="round"></path>
+      </svg>
+    </div>
+  </div>
+
+  <footer style="position: absolute; left: 0; right: 0; bottom: 18px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; max-width: 1200px; margin: 0 auto; padding: 0 24px; font-size: 13px; color: #9AA6C4">
+    <span>wevenapp.com</span>
+    <span>Made in Copenhagen</span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":960}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

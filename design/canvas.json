@@ -1,0 +1,67 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Main.dc.html": {"h": 1260, "radius": 32, "title": "Home · Mobile · Light", "w": 390, "x": 0, "y": 0},
+    "HomeDark.dc.html": {"h": 1260, "radius": 32, "title": "Home · Mobile · Dark", "w": 390, "x": 470, "y": 0},
+    "HomeWeb.dc.html": {"expand": "fill", "h": 1060, "title": "Home · Web", "w": 1440, "x": 940, "y": 0},
+    "Logos.dc.html": {"x": 2540, "y": 0, "w": 2100, "h": 1000, "radius": 24, "title": "Name & logo · Weven, Piequal, Evenlig"},
+    "EvenligLogos.dc.html": {"x": 4720, "y": 0, "w": 1800, "h": 1100, "radius": 24, "title": "Evenlig · logo directions"},
+    "Components.dc.html": {"x": 6600, "y": 0, "w": 1800, "h": 3300, "radius": 24, "title": "Components · atomic design"},
+
+    "SignIn.dc.html": {"x": 0, "y": 1700, "w": 390, "h": 844, "radius": 32, "title": "Sign in"},
+    "Groups.dc.html": {"x": 470, "y": 1700, "w": 390, "h": 844, "radius": 32, "title": "Groups"},
+    "CreateGroup.dc.html": {"x": 940, "y": 1700, "w": 390, "h": 900, "radius": 32, "title": "Create group"},
+    "GroupDetail.dc.html": {"x": 1410, "y": 1700, "w": 390, "h": 1180, "radius": 32, "title": "Group · Expenses"},
+    "GroupBalances.dc.html": {"x": 1880, "y": 1700, "w": 390, "h": 900, "radius": 32, "title": "Group · Who owes who"},
+    "GroupStats.dc.html": {"x": 2350, "y": 1700, "w": 390, "h": 1060, "radius": 32, "title": "Group · Statistics"},
+    "GroupSettings.dc.html": {"x": 2820, "y": 1700, "w": 390, "h": 1200, "radius": 32, "title": "Group · Settings"},
+
+    "AddExpense.dc.html": {"x": 0, "y": 3280, "w": 390, "h": 1080, "radius": 32, "title": "Add expense"},
+    "SplitSheet.dc.html": {"x": 470, "y": 3280, "w": 390, "h": 844, "radius": 32, "title": "Split options"},
+    "CurrencySheet.dc.html": {"x": 940, "y": 3280, "w": 390, "h": 844, "radius": 32, "title": "Currency picker"},
+    "ExpenseDetail.dc.html": {"x": 1410, "y": 3280, "w": 390, "h": 1180, "radius": 32, "title": "Expense detail"},
+    "ScanBill.dc.html": {"x": 1880, "y": 3280, "w": 390, "h": 844, "radius": 32, "title": "Scan bill (V2)"},
+
+    "Friends.dc.html": {"x": 0, "y": 4840, "w": 390, "h": 900, "radius": 32, "title": "Friends"},
+    "FriendDetail.dc.html": {"x": 470, "y": 4840, "w": 390, "h": 960, "radius": 32, "title": "Friend"},
+    "SettleUp.dc.html": {"x": 940, "y": 4840, "w": 390, "h": 844, "radius": 32, "title": "Settle up · Choose"},
+    "SettlePay.dc.html": {"x": 1410, "y": 4840, "w": 390, "h": 1000, "radius": 32, "title": "Settle up · Pay"},
+
+    "Activity.dc.html": {"x": 0, "y": 6220, "w": 390, "h": 960, "radius": 32, "title": "Activity"},
+    "Account.dc.html": {"x": 470, "y": 6220, "w": 390, "h": 1060, "radius": 32, "title": "Account"},
+    "PaymentDetails.dc.html": {"x": 940, "y": 6220, "w": 390, "h": 900, "radius": 32, "title": "Payment details"},
+    "Settings.dc.html": {"x": 1410, "y": 6220, "w": 390, "h": 900, "radius": 32, "title": "Settings"},
+
+    "ScanReview.dc.html": {"x": 0, "y": 7660, "w": 390, "h": 1040, "radius": 32, "title": "Scan · 1 Check the bill"},
+    "ScanAssign.dc.html": {"x": 470, "y": 7660, "w": 390, "h": 1180, "radius": 32, "title": "Scan · 2 Who had what", "is_interactive": true},
+    "ScanShareSheet.dc.html": {"x": 940, "y": 7660, "w": 390, "h": 844, "radius": 32, "title": "Scan · 2b Share one item"},
+    "ScanSummary.dc.html": {"x": 1410, "y": 7660, "w": 390, "h": 1120, "radius": 32, "title": "Scan · 3 Who pays what"},
+
+    "ComingSoon.dc.html": {"x": 0, "y": 9220, "w": 1440, "h": 960, "expand": "fill", "title": "wevenapp.com · Coming soon"},
+    "Landing.dc.html": {"x": 1520, "y": 9220, "w": 1440, "h": 4600, "expand": "fill", "title": "wevenapp.com · Live landing page"}
+  },
+  "createdOnFiles": {"at": "2026-10-31T12:00:00Z", "v": 1},
+  "designSystems": [],
+  "launch": {"view": "canvas"},
+  "notes": {
+    "title": {"kind": "title1", "maxW": 2380, "text": "Home", "w": 240, "x": 0, "y": -300},
+    "rowGroups": {"kind": "title1", "maxW": 3210, "text": "Sign in & groups", "x": 0, "y": 1400},
+    "rowExpenses": {"kind": "title1", "maxW": 2270, "text": "Expenses", "x": 0, "y": 2980},
+    "rowFriends": {"kind": "title1", "maxW": 1800, "text": "Friends & settling up", "x": 0, "y": 4540},
+    "rowYou": {"kind": "title1", "maxW": 1800, "text": "Activity & account", "x": 0, "y": 5920},
+    "rowScan": {"kind": "title1", "maxW": 1800, "text": "Scan & split by item (V2)", "x": 0, "y": 7360},
+    "rowLanding": {"kind": "title1", "maxW": 2960, "text": "Landing pages · wevenapp.com", "x": 0, "y": 8920}
+  },
+  "order": [
+    "Main.dc.html", "HomeDark.dc.html", "HomeWeb.dc.html", "Logos.dc.html", "EvenligLogos.dc.html", "Components.dc.html",
+    "SignIn.dc.html", "Groups.dc.html", "CreateGroup.dc.html", "GroupDetail.dc.html", "GroupBalances.dc.html", "GroupStats.dc.html", "GroupSettings.dc.html",
+    "AddExpense.dc.html", "SplitSheet.dc.html", "CurrencySheet.dc.html", "ExpenseDetail.dc.html", "ScanBill.dc.html",
+    "Friends.dc.html", "FriendDetail.dc.html", "SettleUp.dc.html", "SettlePay.dc.html",
+    "Activity.dc.html", "Account.dc.html", "PaymentDetails.dc.html", "Settings.dc.html",
+    "ScanReview.dc.html", "ScanAssign.dc.html", "ScanShareSheet.dc.html", "ScanSummary.dc.html",
+    "ComingSoon.dc.html", "Landing.dc.html"
+  ],
+  "pages": [],
+  "title": "Weven"
+}

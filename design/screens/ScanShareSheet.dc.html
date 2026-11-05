@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Share one item</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./bs.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="bs scr {{themeClass}}" style="width: 390px; height: 844px">
+  <div class="appbar" aria-hidden="true"><span class="ib"></span><span class="ttl">Who had what?</span><span class="ib"></span></div>
+  <div class="ghost" aria-hidden="true"><div class="blk" style="height: 100px"></div><div class="blk"></div><div class="blk"></div></div>
+  <div class="scrim"></div>
+
+  <section class="sheet" role="dialog" aria-label="Share Vinho tinto">
+    <div class="grab"></div>
+    <div class="sechead" style="align-items: center">
+      <div style="display: flex; flex-direction: column; gap: 2px"><h2 class="disp h2">Vinho tinto</h2><span class="sub">€28.00 · who shared it?</span></div>
+      <a href="ScanAssign.dc.html" class="txtbtn" style="display: grid; place-items: center">Done</a>
+    </div>
+    <div class="seg" role="group" aria-label="How to share">
+      <button aria-pressed="false">Evenly</button>
+      <button aria-pressed="true">By portions</button>
+      <button aria-pressed="false">Amounts</button>
+    </div>
+    <p class="sub" style="margin: -4px 0 0">Count glasses, slices or anything else. 5 portions · €5.60 each.</p>
+
+    <div class="list">
+      <div class="row" style="padding: 10px 0"><span class="check on" aria-label="Shared"><svg class="ic xs" viewBox="0 0 24 24" style="stroke-width: 3"><path d="M5 12l5 5 9-10"></path></svg></span><span class="av sm c1">EY</span><span class="grow"><span class="t" style="font-size: 14px">You</span><span class="amt xs">€11.20</span></span>
+        <span style="display: flex; align-items: center; gap: 6px"><button class="ib boxed" aria-label="Fewer portions for you" style="width: 36px; height: 36px"><svg class="ic s" viewBox="0 0 24 24"><path d="M5 12h14"></path></svg></button><span class="amt" style="width: 22px; text-align: center">2</span><button class="ib boxed" aria-label="More portions for you" style="width: 36px; height: 36px"><svg class="ic s" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></button></span></div>
+      <div class="row" style="padding: 10px 0"><span class="check on" aria-label="Shared"><svg class="ic xs" viewBox="0 0 24 24" style="stroke-width: 3"><path d="M5 12l5 5 9-10"></path></svg></span><span class="av sm c2">MK</span><span class="grow"><span class="t" style="font-size: 14px">Mikkel</span><span class="amt xs">€11.20</span></span>
+        <span style="display: flex; align-items: center; gap: 6px"><button class="ib boxed" aria-label="Fewer portions for Mikkel" style="width: 36px; height: 36px"><svg class="ic s" viewBox="0 0 24 24"><path d="M5 12h14"></path></svg></button><span class="amt" style="width: 22px; text-align: center">2</span><button class="ib boxed" aria-label="More portions for Mikkel" style="width: 36px; height: 36px"><svg class="ic s" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></button></span></div>
+      <div class="row" style="padding: 10px 0"><span class="check on" aria-label="Shared"><svg class="ic xs" viewBox="0 0 24 24" style="stroke-width: 3"><path d="M5 12l5 5 9-10"></path></svg></span><span class="av sm c3">SO</span><span class="grow"><span class="t" style="font-size: 14px">Sofie</span><span class="amt xs">€5.60</span></span>
+        <span style="display: flex; align-items: center; gap: 6px"><button class="ib boxed" aria-label="Fewer portions for Sofie" style="width: 36px; height: 36px"><svg class="ic s" viewBox="0 0 24 24"><path d="M5 12h14"></path></svg></button><span class="amt" style="width: 22px; text-align: center">1</span><button class="ib boxed" aria-label="More portions for Sofie" style="width: 36px; height: 36px"><svg class="ic s" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></button></span></div>
+      <div class="row" style="padding: 10px 0; opacity: 0.55"><span class="check" aria-label="Not shared"></span><span class="av sm c4">JO</span><span class="grow"><span class="t" style="font-size: 14px">Jonas</span><span class="xs">Didn't have any</span></span></div>
+      <div class="row" style="padding: 10px 0; opacity: 0.55"><span class="check" aria-label="Not shared"></span><span class="av sm c2">AN</span><span class="grow"><span class="t" style="font-size: 14px">Anna</span><span class="xs">Didn't have any</span></span></div>
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; border-radius: 14px; background: var(--surface2)">
+      <span class="sub">5 portions</span>
+      <span class="amt owed" style="display: flex; align-items: center; gap: 4px; font-size: 14px"><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>€28.00 covered</span>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"dark":{"editor":"boolean","default":false},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return { themeClass: (this.props.dark ?? false) ? 'dark' : 'light' }; }
+}
+</script>
+</body>
+</html>

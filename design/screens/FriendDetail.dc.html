@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Friend</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="./bs.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="bs scr {{themeClass}}" style="width: 390px; height: 960px">
+  <div class="appbar">
+    <a href="Friends.dc.html" class="ib" aria-label="Back"><svg class="ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"></path></svg></a>
+    <span class="ttl"></span>
+    <button class="ib" aria-label="More"><svg class="ic" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"></circle><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle></svg></button>
+  </div>
+  <div class="body" style="gap: 20px">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+      <span class="av lg c2">MK</span>
+      <h1 class="disp h2" style="margin-top: 6px">Mikkel Holm</h1>
+      <span class="sub">mikkel.holm@mail.dk</span>
+    </div>
+
+    <section class="hero" aria-label="Balance with Mikkel">
+      <span class="dim">Mikkel owes you, all groups</span>
+      <div class="big" style="font-size: 40px">220.00 kr</div>
+      <div style="display: flex; gap: 10px">
+        <a href="SettleUp.dc.html" class="btn hbtn" style="height: 44px; flex: 1">Settle up</a>
+        <button class="btn" style="height: 44px; flex: 1; background: transparent; color: inherit; border: 1px solid rgba(255,255,255,0.22)">Send reminder</button>
+      </div>
+    </section>
+
+    <section class="sec">
+      <span class="lbl">How it adds up</span>
+      <div class="card list">
+        <a href="GroupDetail.dc.html" class="row"><span class="tile c4" style="width: 40px; height: 40px; border-radius: 12px"><svg class="ic s" viewBox="0 0 24 24"><path d="M22 2 11 13"></path><path d="M22 2l-7 20-4-9-9-4z"></path></svg></span><span class="grow"><span class="t">Lisbon trip</span><span class="xs">€52.70 ≈ 393.27 kr</span></span><span class="end"><span class="xs">owes you</span><span class="amt owed">393.27 kr</span></span></a>
+        <a href="#" class="row"><span class="tile c3" style="width: 40px; height: 40px; border-radius: 12px"><svg class="ic s" viewBox="0 0 24 24"><path d="M7 3v18"></path><path d="M4 3v5a3 3 0 0 0 6 0V3"></path><path d="M17 21V3c-2 0-3 2-3 6s1 5 3 5"></path></svg></span><span class="grow"><span class="t">Thursday dinner club</span><span class="xs">4 open expenses</span></span><span class="end"><span class="xs">you owe</span><span class="amt owe">173.27 kr</span></span></a>
+        <div class="row" style="background: var(--surface2); border-radius: 0 0 20px 20px"><span class="grow"><span class="t">Net balance</span></span><span class="amt owed">+220.00 kr</span></div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="sechead"><span class="lbl">Just the two of you</span><a href="AddExpense.dc.html" class="txtbtn" style="height: auto; padding: 0; font-size: 14px">Add expense</a></div>
+      <div class="card list">
+        <div class="row"><span class="tile c0" style="width: 40px; height: 40px; border-radius: 12px"><svg class="ic s" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg></span><span class="grow"><span class="t">Concert tickets</span><span class="sub">You paid 640.00 kr · 12 Sep</span></span><span class="pill">Settled</span></div>
+      </div>
+    </section>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"dark":{"editor":"boolean","default":false},"$preview":{"width":390,"height":960}}'>
+class Component extends DCLogic {
+  renderVals() { return { themeClass: (this.props.dark ?? false) ? 'dark' : 'light' }; }
+}
+</script>
+</body>
+</html>
