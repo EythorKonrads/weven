@@ -326,6 +326,23 @@ def escalate(job, why):
     (job_dir(job["id"]) / "decision.md").write_text(f"ESCALATE\n\n## Why\n{why}\n")
 
 
+FINDINGS_LIMIT = 3000  # characters per review; a PR comment holds 65536
+
+
+def outstanding_findings(job, changes):
+    """The Findings of each CHANGES review, so the needs-human comment stands
+    on its own: round-N/ is gitignored and lives only on the factory's machine."""
+    parts = []
+    for r in changes:
+        path = round_dir(job) / f"review-{r}.md"
+        text = section(path, "Findings") if path.exists() else None
+        text = text or "(no Findings section)"
+        if len(text) > FINDINGS_LIMIT:
+            text = text[:FINDINGS_LIMIT].rstrip() + f"\n\n… (truncated; full text in round-{job['round']}/review-{r}.md)"
+        parts.append(f"### {r} review\n\n{text}")
+    return "\n\n".join(parts)
+
+
 def git(job, *args, check=True):
     return run(["git", *args], cwd=job["worktree"], check=check)
 
@@ -438,7 +455,7 @@ def advance(job, stage):
                     f"round {job['round']} of {job['round_limit']}: go to {'needs-human' if last else 'build'}")
             if last:
                 escalate(job, f"Review rounds exhausted. Outstanding CHANGES in round-{job['round']}/ "
-                              f"from: {', '.join(changes)}.")
+                              f"from: {', '.join(changes)}.\n\n{outstanding_findings(job, changes)}")
             else:
                 next_round(job)
 
