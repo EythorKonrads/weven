@@ -1,0 +1,145 @@
+name: Landing preview
+
+# Deploys the landing page of every same-repo PR that changes it (or the shared
+# theme) to Cloudflare Pages (branch `pr-<n>` of the `weven-landing` Pages
+# project) and posts the URL as its own PR comment. Same pattern as preview.yml.
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+# Own prefix: concurrency groups are shared across workflows, and `pr-`,
+# `preview-` and `deploy-staging` belong to pr.yml, preview.yml and main.yml.
+concurrency:
+  group: landing-preview-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  # Fork PRs are skipped by every job: they get no secrets, and a preview would
+  # need CLOUDFLARE_API_TOKEN to run code from the fork.
+  changes:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: read # paths-filter lists the PR's changed files
+    outputs:
+      landing: ${{ steps.filter.outputs.landing }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dorny/paths-filter@v4
+        id: filter
+        with:
+          filters: |
+            landing:
+              - 'apps/landing/**'
+              - 'packages/theme/**'
+
+  # Holds CLOUDFLARE_API_TOKEN and runs PR code, so it has no write permissions.
+  deploy:
+    needs: changes
+    if: >-
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      needs.changes.outputs.landing == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: preview
+      url: ${{ steps.deploy.outputs.url }}
+    outputs:
+      url: ${{ steps.deploy.outputs.url }}
+    env:
+      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+      PAGES_PROJECT: weven-landing
+    steps:
+      # CLOUDFLARE_API_TOKEN is only set on the steps that need it, so install and
+      # build (which run PR code) never see it. Runs before checkout.
+      - name: Check preview environment
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          for name in CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID; do
+            if [ -z "${!name}" ]; then
+              echo "::error::$name is empty. Set it in the 'preview' GitHub Environment, see docs/ci-cd.md."
+              exit 1
+            fi
+          done
+
+      # Creates the Pages project on first use; a no-op afterwards. Runs before
+      # checkout, so no repo code can see the token here.
+      - name: Ensure Pages project
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          if ! npx -y wrangler@4.151.3 pages project list --json | grep -qF "\"Project Name\": \"$PAGES_PROJECT\""; then
+            npx -y wrangler@4.151.3 pages project create "$PAGES_PROJECT" --production-branch main
+          fi
+
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build landing page
+        run: pnpm --filter landing build
+
+      # Branch `pr-<n>` is a preview branch of the project, so it gets a stable alias
+      # URL (pr-<n>.<project>.pages.dev) that later pushes update. Never `main`:
+      # that is the production branch serving https://wevenapp.com.
+      - name: Deploy to Cloudflare Pages
+        id: deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          WRANGLER_OUTPUT_FILE_PATH: ${{ runner.temp }}/wrangler-output.json
+        run: |
+          npx -y wrangler@4.151.3 pages deploy apps/landing/public --project-name "$PAGES_PROJECT" --branch "pr-$PR_NUMBER" --commit-hash "$HEAD_SHA"
+          url=$(jq -ser 'map(select(.type == "pages-deploy-detailed")) | last | (.alias // .url)' "$WRANGLER_OUTPUT_FILE_PATH")
+          # PR code runs in this job, so only accept a Pages URL.
+          [[ "$url" =~ ^https://[a-z0-9.-]+\.pages\.dev/?$ ]] || { echo "::error::Unexpected deployment URL"; exit 1; }
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+
+  # Has write access but checks out nothing and gets no CLOUDFLARE_API_TOKEN.
+  comment:
+    needs: deploy
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PREVIEW_URL: ${{ needs.deploy.outputs.url }}
+      HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+      REPO: ${{ github.repository }}
+    steps:
+      # One comment per PR: found by its hidden marker and updated on later runs.
+      # The marker differs from preview.yml's, so the two comments never clash.
+      - name: Post or update comment
+        run: |
+          marker='<!-- weven-landing-preview -->'
+          body="$marker
+          **Landing preview:** $PREVIEW_URL
+
+          Commit: \`$HEAD_SHA\`"
+          id=$(gh api --paginate "repos/$REPO/issues/$PR_NUMBER/comments" \
+            --jq ".[] | select(.body | startswith(\"$marker\")) | .id" | head -n 1)
+          if [ -n "$id" ]; then
+            gh api --method PATCH "repos/$REPO/issues/comments/$id" -f body="$body"
+          else
+            gh api --method POST "repos/$REPO/issues/$PR_NUMBER/comments" -f body="$body"
+          fi
